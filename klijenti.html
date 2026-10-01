@@ -216,6 +216,19 @@
     .row .rt{margin-left:0;width:100%;}
   }
   @media (max-width:380px){ .inst-body{grid-template-columns:1fr;} }
+  /* shared list/registry components (hoisted for all screens) */
+  .ini{width:24px;height:24px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-weight:600;font-family:var(--mono);flex:none;font-size:10px;}
+  .kl-head{margin-bottom:14px;}
+  .kl-head h1{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 3px;}
+  .kl-head .date{font-size:13px;color:var(--ink-3);font-family:var(--mono);}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+  .chip{font-size:12.5px;font-weight:500;padding:5px 12px;border-radius:20px;border:1px solid var(--line-2);color:var(--ink-2);cursor:pointer;}
+  .chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .kl-strip{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 18px;font-size:13px;color:var(--ink-2);align-items:center;}
+  .kl-strip b{font-family:var(--mono);font-weight:600;color:var(--ink);margin-right:5px;}
+  .kl-strip .hot b{color:var(--accent);}
+  .btn.sm{font-size:12px;padding:5px 10px;}
+  .lnk{color:var(--accent);text-decoration:none;font-size:12.5px;font-weight:500;}
 
   .caa{font-family:var(--serif);font-style:italic;color:var(--accent);padding:0 3px;}
   .hint{font-size:11.5px;color:var(--ink-3);margin-top:10px;line-height:1.45;}
@@ -306,7 +319,7 @@
     <div class="scroll"><div class="wrap">
       <div class="kl-head"><div><h1>Klijenti</h1><div class="date">8 klijenata · 2 pravna, 6 fizička lica</div></div></div>
       <div class="chips"><span class="chip on">Svi</span><span class="chip">Pravna lica</span><span class="chip">Fizička lica</span><span class="chip">Paušalci</span></div>
-      <div class="kl-strip"><span><b>8</b> klijenata</span><span class="hot"><b>454.000 RSD</b> ukupno za naplatu</span></div>
+      <div class="kl-strip"><span><b>8</b> klijenata</span><span class="hot"><b>379.000 RSD</b> ukupno za naplatu</span></div>
       <div class="card">
         <div class="cl-hd"><span>Klijent</span><span>Način naplate</span><span>Predmeti</span><span>Za naplatu</span></div>
         <a class="cl-row" href="klijent.html"><span class="cl-nm">Proleter Gradnja d.o.o.<small>Pravno lice · PIB 100222333</small></span><span class="cl-nac"><span class="pill mut">Paušal + tarifa</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono due">75.000 · nacrt</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Slobodan Ilić<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Paušal + tarifa</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono due">56.000 RSD</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Nenad Lukić<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Tarifa</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono due">60.000 RSD</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Jovan Jovanović<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Tarifa</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono due">18.000 RSD</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Petar Petrović<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Paušal + tarifa</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono due">25.000 RSD</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Vojvodina Put d.o.o.<small>Pravno lice · PIB 101555777</small></span><span class="cl-nac"><span class="pill mut">Tarifa</span></span><span class="cl-pred mono">2 predmeta</span><span class="cl-potr mono due">220.000 RSD</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Mirjana Kostić<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Paušal</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono">—</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Dragan Simić<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Tarifa</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono">—</span></a>
