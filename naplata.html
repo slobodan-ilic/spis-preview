@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spis — Predmeti</title>
+<title>Spis — Naplata</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -230,32 +230,32 @@
   .btn.sm{font-size:12px;padding:5px 10px;}
   .lnk{color:var(--accent);text-decoration:none;font-size:12.5px;font-weight:500;}
 
-  .caa{font-family:var(--serif);font-style:italic;color:var(--accent);padding:0 3px;}
-  .kl-head{margin-bottom:14px;}
-  .kl-head h1{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 3px;}
-  .kl-head .date{font-size:13px;color:var(--ink-3);font-family:var(--mono);}
-  .chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
-  .chip{font-size:12.5px;font-weight:500;padding:5px 12px;border-radius:20px;border:1px solid var(--line-2);color:var(--ink-2);cursor:pointer;}
-  .chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
-  .kl-strip{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 18px;font-size:13px;color:var(--ink-2);align-items:center;}
-  .kl-strip b{font-family:var(--mono);font-weight:600;color:var(--ink);margin-right:5px;}
-  .kl-strip .hot b{color:var(--accent);}
-  .pr-hd{display:grid;grid-template-columns:1fr 56px 112px 126px 96px;gap:12px;padding:9px 16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line-2);}
-  .pr-row{display:grid;grid-template-columns:1fr 56px 112px 126px 96px;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid var(--line);font-size:13.5px;text-decoration:none;color:var(--ink);}
-  .pr-row:hover{background:var(--surface-2);}
-  .pr-p{font-weight:600;min-width:0;}
-  .pr-p small{display:block;font-weight:400;color:var(--ink-3);font-family:var(--mono);font-size:11px;margin-top:2px;}
-  .pr-adv .ini{width:26px;height:26px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:10px;font-weight:600;font-family:var(--mono);}
-  .pr-faza{color:var(--ink-2);font-size:12px;}
-  .nxt-none{color:var(--ink-3);}
-  .nxt-wait{font-family:var(--mono);font-size:11px;color:var(--warn);}
-  .pr-more{padding:12px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);font-family:var(--mono);}
-  .pr-more a{color:var(--accent);text-decoration:none;}
-  @media (max-width:760px){
-    .pr-hd{display:none;}
-    .pr-row{grid-template-columns:1fr auto;gap:6px 10px;}
-    .pr-p{grid-column:1/-1;}
-    .pr-adv{order:3;} .pr-faza{order:4;} .pr-nxt{order:2;} .pr-st{order:5;margin-left:auto;}
+  .wk-sum{font-family:var(--mono);font-size:12px;color:var(--ink-3);}
+  .np-cols{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;}
+  .np-hd{display:grid;grid-template-columns:1fr 90px 170px 104px;gap:12px;padding:9px 16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line-2);}
+  .np-row{display:grid;grid-template-columns:1fr 90px 170px 104px;gap:12px;align-items:center;padding:11px 16px;border-top:1px solid var(--line);font-size:13px;}
+  .np-row:first-of-type{border-top:0;}
+  .np-row.pay{grid-template-columns:1fr 100px 90px;}
+  .np-k{font-weight:600;min-width:0;}
+  .np-k small{display:block;font-weight:400;color:var(--ink-3);font-family:var(--mono);font-size:10.5px;margin-top:2px;}
+  .np-i{text-align:right;font-weight:600;}
+  .np-i.ok{color:var(--good);}
+  .np-r{color:var(--ink-2);font-size:11.5px;}
+  .np-s{text-align:right;}
+  .inv-note{font-size:11.5px;color:var(--ink-3);padding:11px 16px;border-top:1px solid var(--line);line-height:1.45;}
+  .age{margin-bottom:12px;}
+  .age-l{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px;}
+  .age-l .mono{font-weight:600;}
+  .age-bar{height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden;}
+  .age-bar > i{display:block;height:100%;background:var(--ink-3);border-radius:4px;}
+  .age-bar > i.crit{background:var(--accent);}
+  .hint{font-size:11.5px;color:var(--ink-3);margin-top:10px;line-height:1.45;}
+  @media (max-width:1000px){ .np-cols{grid-template-columns:1fr;} }
+  @media (max-width:640px){
+    .np-hd{display:none;}
+    .np-row,.np-row.pay{grid-template-columns:1fr auto;gap:5px 10px;}
+    .np-k{grid-column:1/-1;}
+    .np-r{order:2;} .np-i{order:1;} .np-s{order:3;margin-left:auto;}
   }
 
   /* mobile nav drawer */
@@ -277,7 +277,7 @@
     <div class="brand"><span class="mark">S</span><b>Spis</b><span>demo</span></div>
     <nav class="nav">
       <a href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
-      <a class="on" href="predmeti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti</a>
+      <a href="predmeti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti</a>
       <a href="klijenti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2.4"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/><path d="M11 6.5c1.3.3 2.3 1.4 2.3 2.8"/></svg>Klijenti</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6h12M5.5 1.5v3M10.5 1.5v3"/></svg>Kalendar</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
@@ -285,7 +285,7 @@
       <a href="zadaci.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h10v10H3z"/><path d="M5.7 8l1.4 1.4L10.6 6"/></svg>Zadaci</a>
       <div class="grp">Finansije</div>
       <a href="fakture-lista.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l2.5 2.5V14H4z"/><path d="M6 7h4M6 9.5h4"/></svg>Fakture</a>
-      <a href="naplata.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2v12" stroke-width="0"/><circle cx="8" cy="8" r="6"/><path d="M8 5.2v5.6M6.4 6.2h2.2a1.3 1.3 0 010 2.6H6.4h2.4"/></svg>Naplata</a>
+      <a class="on" href="naplata.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2v12" stroke-width="0"/><circle cx="8" cy="8" r="6"/><path d="M8 5.2v5.6M6.4 6.2h2.2a1.3 1.3 0 010 2.6H6.4h2.4"/></svg>Naplata</a>
       <a href="raspodela.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 8V2.2M8 8l5 2.9"/></svg>Doprinos i raspodela</a>
       <a href="troskovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13V9M6 13V5M10 13V7M14 13V3"/></svg>Troškovi</a>
       <a href="izvestaji.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 10l2-2 2 1.5L11 6"/></svg>Izveštaji</a>
@@ -299,19 +299,43 @@
     <div class="top">
       <button class="burger" aria-label="Meni" onclick="document.body.classList.toggle('nav-open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       <span class="mbrand"><span class="mark">S</span>Spis</span>
-      <div class="crumb"><b>Predmeti</b></div>
-      <div class="search"><input placeholder="Pretraga predmeta…" aria-label="Pretraga"></div>
+      <div class="crumb"><b>Naplata</b></div>
+      <div class="search"><input placeholder="Pretraga…" aria-label="Pretraga"></div>
       <span class="demo">DEMO · primer podaci</span>
-      <button class="btn pri">+ Novi predmet</button>
+      <button class="btn pri">+ Evidentiraj uplatu</button>
     </div>
     <div class="scroll"><div class="wrap">
-      <div class="kl-head"><div><h1>Predmeti</h1><div class="date">Registar predmeta kancelarije</div></div></div>
-      <div class="chips"><span class="chip on">Aktivni</span><span class="chip">Arhivirani</span><span class="chip">Moji</span><span class="chip">Svi advokati</span></div>
-      <div class="kl-strip"><span><b>19</b> aktivnih</span><span><b>4</b> arhivirana</span></div>
-      <div class="card">
-        <div class="pr-hd"><span>Predmet</span><span>Advokat</span><span>Faza</span><span>Sledeće</span><span>Status</span></div>
-        <a class="pr-row" href="predmet.html"><span class="pr-p">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>2026-0031 · U 123/26 · Upravni sud · poništaj rešenja</small></span><span class="pr-adv"><span class="ini">SS</span></span><span class="pr-faza mono">Prvostepeni</span><span class="pr-nxt"><span class="pill crit">ročište danas</span></span><span class="pr-st"><span class="pill ok">Aktivan</span></span></a><a class="pr-row" href="predmet.html"><span class="pr-p">Jovanović <span class="caa">ca</span> Marković<small>2026-0039 · P. 2210/25 · OS Novi Sad · smetanje državine</small></span><span class="pr-adv"><span class="ini">SS</span></span><span class="pr-faza mono">Prvostepeni</span><span class="pr-nxt"><span class="pill crit">rok danas</span></span><span class="pr-st"><span class="pill ok">Aktivan</span></span></a><a class="pr-row" href="predmet.html"><span class="pr-p">Lukić <span class="caa">ca</span> Delta osiguranje<small>2026-0028 · P. 1725/25 · OS Novi Sad · naknada štete</small></span><span class="pr-adv"><span class="ini">SP</span></span><span class="pr-faza mono">Prvostepeni</span><span class="pr-nxt"><span class="pill warn">ročište sutra</span></span><span class="pr-st"><span class="pill ok">Aktivan</span></span></a><a class="pr-row" href="predmet.html"><span class="pr-p">Ilić <span class="caa">ca</span> Cvilić<small>2026-0042 · P. 1650/24 · OS Novi Sad · naplata duga po ugovoru o zajmu</small></span><span class="pr-adv"><span class="ini">VB</span></span><span class="pr-faza mono">Prvostepeni</span><span class="pr-nxt"><span class="pill warn">rok 03.10</span></span><span class="pr-st"><span class="pill ok">Aktivan</span></span></a><a class="pr-row" href="predmet.html"><span class="pr-p">Petrović <span class="caa">ca</span> Petrović<small>2026-0017 · P. 980/25 · OS Novi Sad · deoba imovine</small></span><span class="pr-adv"><span class="ini">SP</span></span><span class="pr-faza mono">Prvostepeni</span><span class="pr-nxt"><span class="pill mut">ročište 06.10</span></span><span class="pr-st"><span class="pill ok">Aktivan</span></span></a><a class="pr-row" href="predmet.html"><span class="pr-p">Vojvodina Put <span class="caa">ca</span> Izvođač d.o.o.<small>2026-0040 · P. 410/26 · Privredni sud NS · naplata po ugovoru</small></span><span class="pr-adv"><span class="ini">VB</span></span><span class="pr-faza mono">Prvostepeni</span><span class="pr-nxt"><span class="pill mut">rok 20.10</span></span><span class="pr-st"><span class="pill ok">Aktivan</span></span></a><a class="pr-row" href="predmet.html"><span class="pr-p">Vojvodina Put <span class="caa">ca</span> Grad Novi Sad<small>2026-0025 · Už 88/26 · Upravni sud · upravni spor (žalba)</small></span><span class="pr-adv"><span class="ini">VB</span></span><span class="pr-faza mono">Drugostepeni</span><span class="pr-nxt"><span class="nxt-wait">čeka odluku suda</span></span><span class="pr-st"><span class="pill ok">Aktivan</span></span></a><a class="pr-row" href="predmet.html"><span class="pr-p">Simić <span class="caa">ca</span> Republika Srbija<small>2026-0012 · I. 333/25 · OS Novi Sad · izvršenje radi naplate</small></span><span class="pr-adv"><span class="ini">SS</span></span><span class="pr-faza mono">Izvršenje</span><span class="pr-nxt"><span class="pill mut">ročište 09.10</span></span><span class="pr-st"><span class="pill ok">Aktivan</span></span></a>
-        <div class="pr-more">Prikazano 8 od 19 aktivnih · <a href="#">Učitaj još →</a></div>
+      <div class="kl-head"><div><h1>Naplata i potraživanja</h1><div class="date">Stanje na dan 01.10.2026 · RSD</div></div></div>
+      <div class="chips"><span class="chip on">Sve</span><span class="chip">Dospelo</span><span class="chip">Nedospelo</span><span class="chip">Nacrti</span></div>
+      <div class="kl-strip"><span><b>110.000</b> naplaćeno</span><span class="hot"><b>379.000 RSD</b> za naplatu (izdato)</span><span><b>238.000</b> dospelo</span></div>
+      <div class="np-cols">
+        <div>
+          <div class="card">
+            <div class="ch"><h2>Potraživanja — izdate fakture</h2><span class="wk-sum">379.000 RSD</span></div>
+            <div class="np-hd"><span>Klijent</span><span>Iznos</span><span>Rok</span><span>Status</span></div>
+            <div class="np-row"><span class="np-k">Vojvodina Put d.o.o.<small>VB-2026-0013</small></span><span class="np-i mono">220.000</span><span class="np-r mono">rok 30.09 · kasni 1 dan</span><span class="np-s"><span class="pill crit">Dospelo</span></span></div><div class="np-row"><span class="np-k">Jovan Jovanović<small>SS-2026-0030</small></span><span class="np-i mono">18.000</span><span class="np-r mono">rok 25.09 · kasni 6 dana</span><span class="np-s"><span class="pill crit">Dospelo</span></span></div><div class="np-row"><span class="np-k">Nenad Lukić<small>VB-2026-0014</small></span><span class="np-i mono">60.000</span><span class="np-r mono">rok 05.10</span><span class="np-s"><span class="pill mut">Nedospelo</span></span></div><div class="np-row"><span class="np-k">Petar Petrović<small>SP-2026-0007</small></span><span class="np-i mono">25.000</span><span class="np-r mono">rok 03.10</span><span class="np-s"><span class="pill mut">Nedospelo</span></span></div><div class="np-row"><span class="np-k">Slobodan Ilić<small>SS-2026-0031</small></span><span class="np-i mono">56.000</span><span class="np-r mono">rok 09.10 · delimično (40.000 plaćeno)</span><span class="np-s"><span class="pill mut">Nedospelo</span></span></div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2>U pripremi (nacrt)</h2></div>
+            <div class="np-row"><span class="np-k">Proleter Gradnja d.o.o.<small>nacrt · broj se dodeljuje pri izdavanju</small></span><span class="np-i mono">75.000</span><span class="np-r mono">avans 40.000 primljen</span><span class="np-s"><span class="pill mut">Nacrt</span></span></div>
+            <div class="inv-note">Nacrt ne ulazi u „za naplatu" dok se ne izda.</div>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <div class="ch"><h2>Poslednje uplate</h2><span class="wk-sum">110.000 RSD</span></div>
+            <div class="np-row pay"><span class="np-k">Slobodan Ilić<small>SS-2026-0031 · Delimična uplata</small></span><span class="np-r mono">20.09.2026</span><span class="np-i mono ok">+40.000</span></div><div class="np-row pay"><span class="np-k">Mirjana Kostić<small>SP-2026-0006 · Uplata (paušal)</small></span><span class="np-r mono">05.09.2026</span><span class="np-i mono ok">+30.000</span></div><div class="np-row pay"><span class="np-k">Proleter Gradnja d.o.o.<small>nacrt · Avans</small></span><span class="np-r mono">02.09.2026</span><span class="np-i mono ok">+40.000</span></div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2>Starost duga</h2></div>
+            <div class="cb">
+              <div class="age"><div class="age-l"><span>Dospelo</span><span class="mono">238.000</span></div><div class="age-bar"><i class="crit" style="width:63%"></i></div></div>
+              <div class="age"><div class="age-l"><span>Nedospelo</span><span class="mono">141.000</span></div><div class="age-bar"><i style="width:37%"></i></div></div>
+              <div class="hint">Dospelo = rok plaćanja prošao. Zvati klijenta ili poslati opomenu.</div>
+            </div>
+          </div>
+          <div class="card"><div class="cb"><div class="hint">Devizna (EUR) potraživanja vode se posebno, po valuti. Ovaj prikaz je u RSD.</div></div></div>
+        </div>
       </div>
     </div></div>
   </div>
