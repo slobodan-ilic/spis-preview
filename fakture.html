@@ -262,6 +262,14 @@
   .sum.strong{font-weight:700;color:var(--ink);}
   .sum.tot{border-top:2px solid var(--ink);margin-top:6px;padding-top:10px;font-weight:700;color:var(--ink);font-size:15px;}
   .pay{margin-top:12px;padding-top:6px;border-top:1px solid var(--line);}
+  .pdv-status{display:flex;align-items:center;gap:10px;margin-bottom:4px;}
+  .pdv-badge{font-weight:700;font-size:14px;padding:4px 11px;border-radius:7px;background:var(--surface-2);border:1px solid var(--line-2);}
+  .pdv-badge.on{color:#fff;background:var(--accent);border-color:var(--accent);}
+  .pdv-src{font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);}
+  .chk.small{font-size:13px;font-weight:500;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);}
+  .chk.small input{width:15px;height:15px;}
+  .izz-box{display:none;margin-top:10px;padding:11px 13px;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;}
+  body.izz-on .izz-box{display:block;}
   .pdv-only{display:none;}
   body.pdv-on .pdv-only{display:block;}
   body.pdv-on .sum.pdv-only{display:flex;}
@@ -407,14 +415,31 @@
           <div class="card">
             <div class="ch"><h2>PDV</h2></div>
             <div class="cb">
-              <label class="chk"><input type="checkbox" id="pdvtgl" disabled><span>Račun sa PDV-om (20%)</span></label>
-              <div class="hint">PDV status se automatski povlači iz izabranog advokata (menja se u Podešavanja → Advokati). Advokat koji nije u sistemu PDV-a ne obračunava PDV.</div>
+              <div class="pdv-status">
+                <span class="pdv-badge nopdv-only">Bez PDV‑a</span>
+                <span class="pdv-badge on pdv-only">PDV 20%</span>
+                <span class="pdv-src">povlači se iz statusa advokata</span>
+              </div>
               <div class="osn nopdv-only">
-                <label class="fl" for="osn-inp">Osnov izuzeća od PDV-a (štampa se na fakturi)</label>
+                <label class="fl" for="osn-inp">Osnov (štampa se na fakturi)</label>
                 <input class="osn-inp" id="osn-inp" value="PDV nije obračunat — obveznik nije u sistemu PDV-a (čl. 33 Zakona o PDV-u)">
                 <div class="hint">Tačan član/tekst potvrditi sa Višnjom.</div>
               </div>
-              <div class="hint pdv-only">Obračunava se PDV po stopi 20% na osnovicu nagrade (troškovi su bez PDV-a).</div>
+              <div class="hint pdv-only">PDV 20% na osnovicu nagrade (troškovi su bez PDV‑a).</div>
+
+              <label class="chk small"><input type="checkbox" id="izz"><span>Poseban poreski tretman (izuzetak)</span></label>
+              <div class="izz-box">
+                <label class="fl" for="izzsel">Vrsta izuzetka</label>
+                <select class="sel" id="izzsel">
+                  <option>Oslobođeno — mesto prometa u inostranstvu</option>
+                  <option>Oslobođeno — drugi osnov</option>
+                  <option>Obračunaj PDV i pored statusa</option>
+                </select>
+                <label class="fl" for="izzosn" style="margin-top:8px">Obavezno obrazloženje</label>
+                <input class="osn-inp" id="izzosn" placeholder="npr. usluga stranom klijentu — mesto prometa u inostranstvu">
+                <div class="hint">Koristi se retko — kad PDV odstupa od statusa advokata (npr. inostrani klijent). Razlog je obavezan i štampa se na fakturi.</div>
+              </div>
+              <div class="hint">PDV status se postavlja kod advokata (Podešavanja → Advokati) i automatski se povlači ovde.</div>
             </div>
           </div>
 
@@ -470,8 +495,20 @@
       "Vladan Bošnjak":{adr:"Temerinska 89, 21000 Novi Sad",pib:"108221544",pdv:false,pref:"VB",no:"0014",bank:"OTP banka",rsd:"325-9500700123456-78",iban:"RS35 3250 0000 9876 5432 10",swift:"OTPVRS22"},
       "Stefan Petrović":{adr:"Temerinska 89, 21000 Novi Sad",pib:"111998003",pdv:true,pref:"SP",no:"0007",bank:"Raiffeisen banka",rsd:"265-0000112233445-66",iban:"RS35 2650 0001 1223 3445 66",swift:"RZBSRSBG"}
     };
-    var sel=document.getElementById("advsel"), body=document.body, pdv=document.getElementById("pdvtgl");
+    var sel=document.getElementById("advsel"), body=document.body;
+    var izz=document.getElementById("izz"), izzsel=document.getElementById("izzsel");
     function setT(id,v){var e=document.getElementById(id); if(e)e.textContent=v;}
+    function applyPdv(){
+      var a=ADV[sel.value];
+      var on=a?a.pdv:false;                       // default: derived from advokat status
+      if(izz&&izz.checked){                        // rare override, with mandatory reason
+        body.classList.add("izz-on");
+        on=/Obračunaj PDV/.test(izzsel?izzsel.value:"");
+      }else{
+        body.classList.remove("izz-on");
+      }
+      body.classList.toggle("pdv-on",on);
+    }
     function apply(){
       var a=ADV[sel.value]; if(!a)return;
       setT("iss-name","Advokat "+sel.value); setT("iss-adr",a.adr); setT("iss-pib","PIB: "+a.pib);
@@ -479,10 +516,11 @@
       var num=a.pref+"-2026-"+a.no; setT("inv-no",num); setT("inv-no2",num);
       setT("acc-rsd-bank",a.bank); setT("acc-eur-bank",a.bank);
       setT("acc-rsd-no",a.rsd); setT("acc-eur-iban",a.iban); setT("acc-swift",a.swift);
-      if(pdv){pdv.checked=a.pdv; pdv.disabled=true;}   // PDV derived from advokat, not a free toggle
-      body.classList.toggle("pdv-on",a.pdv);
+      applyPdv();
     }
     sel.addEventListener("change",apply);
+    if(izz)izz.addEventListener("change",applyPdv);
+    if(izzsel)izzsel.addEventListener("change",applyPdv);
     var r=document.getElementById("acceur"), t=document.getElementById("accrsd");
     function syncAcc(){body.classList.toggle("acc-eur-on", !!(r&&r.checked));}
     if(r)r.addEventListener("change",syncAcc);
