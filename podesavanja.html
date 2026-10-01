@@ -237,6 +237,10 @@
   .sec-head h2{font-size:15px;margin:0;}
   .wk-sum{font-family:var(--mono);font-size:12px;color:var(--ink-3);}
   .wk-sum b{color:var(--ink);}
+  .rule-banner{font-size:12.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-2);border-radius:8px;padding:10px 13px;margin-bottom:14px;}
+  .perm-row{display:flex;gap:11px;align-items:flex-start;padding:11px 16px;border-top:1px solid var(--line);font-size:13px;line-height:1.5;}
+  .perm-row:first-child{border-top:0;}
+  .perm-row .role-badge{flex:none;margin-top:1px;}
   .note-banner{font-size:12px;color:var(--ink-2);background:var(--accent-soft);border:1px solid var(--line-2);border-radius:8px;padding:10px 13px;margin-bottom:14px;line-height:1.5;}
   .btn.sm{font-size:12px;padding:5px 10px;}
   .adv-card{margin-bottom:14px;}
@@ -249,10 +253,10 @@
   .adv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;padding:14px 16px;}
   .kvv .k,.kvv2 .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px;}
   .kvv .v{font-size:13px;font-weight:500;}
-  .kvv2{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);}
+  .kvv2{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;}
   .kvv2:last-of-type{border-bottom:0;}
   .kvv2 .k{margin-bottom:0;align-self:center;}
-  .kvv2 .v{font-size:13.5px;font-weight:500;text-align:right;}
+  .kvv2 .v{font-size:13.5px;font-weight:500;text-align:right;overflow-wrap:anywhere;}
   .adv-actions{padding:0 16px 14px;}
   .tar-head{display:grid;grid-template-columns:1fr 90px 100px 130px;gap:10px;padding:9px 16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line-2);}
   .tar-row{display:grid;grid-template-columns:1fr 90px 100px 130px;gap:10px;align-items:center;padding:10px 16px;border-top:1px solid var(--line);font-size:13px;}
@@ -262,8 +266,7 @@
   .usr-row:first-child{border-top:0;}
   .usr-row .ini{width:30px;height:30px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:11px;font-weight:600;font-family:var(--mono);flex:none;}
   .usr-nm{font-size:13.5px;font-weight:600;flex:1;min-width:0;}
-  .usr-nm small{display:block;font-weight:400;color:var(--ink-3);font-family:var(--mono);font-size:11px;margin-top:1px;}
-  .usr-en{font-size:11px;color:var(--ink-3);width:66px;text-align:right;}
+  .usr-nm small{display:block;font-weight:400;color:var(--ink-3);font-family:var(--mono);font-size:11px;margin-top:1px;overflow-wrap:anywhere;}
   .role-badge{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.04em;padding:3px 9px;border-radius:20px;background:var(--surface-3);color:var(--ink-2);white-space:nowrap;}
   .role-badge.own{color:var(--accent);background:var(--accent-soft);}
   .hint{font-size:11.5px;color:var(--ink-3);margin-top:11px;line-height:1.45;}
@@ -272,7 +275,6 @@
     .tar-head{display:none;}
     .tar-row{grid-template-columns:1fr auto;gap:4px 10px;}
     .tar-o{grid-column:1/-1;}
-    .usr-en{display:none;}
   }
 
   /* mobile nav drawer */
@@ -295,7 +297,7 @@
     <nav class="nav">
       <a href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
       <a href="predmet.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti<span class="ct">6</span></a>
-      <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2.4"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/><path d="M11 6.5c1.3.3 2.3 1.4 2.3 2.8"/></svg>Klijenti</a>
+      <a href="klijenti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2.4"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/><path d="M11 6.5c1.3.3 2.3 1.4 2.3 2.8"/></svg>Klijenti</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6h12M5.5 1.5v3M10.5 1.5v3"/></svg>Kalendar</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
       <a href="vreme.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v6l3.5 2"/><circle cx="8" cy="8" r="6"/></svg>Evidencija vremena</a>
@@ -335,14 +337,13 @@
         <div class="st-panels">
           <section class="st-p p-adv">
             <div class="sec-head"><h2>Advokati — identiteti za fakturisanje</h2><button class="btn sm pri">+ Dodaj advokata</button></div>
-            <div class="note-banner">Svaki advokat je zaseban identitet za fakturisanje (svoj PIB, PDV status, prefiks broja i računi). Faktura i evidencija vremena povlače ove podatke odavde. Interna raspodela je odvojena (Layer 2).</div>
+            <div class="note-banner">Svaki advokat je zaseban identitet za fakturisanje (svoj PIB, PDV status, prefiks broja i računi). Faktura povlači ove podatke (PDV, prefiks, račun). Internu raspodelu vidi samo vlasnik i podešava se posebno. Satnica služi samo za interni izveštaj — ne fakturiše se po njoj.</div>
             <div class="card adv-card">
             <div class="adv-top"><span class="ini">SS</span><div><b>Strahinja Selaković</b><span class="adv-role">Vlasnik kancelarije</span></div><span class="pdv-badge">Bez PDV‑a</span></div>
             <div class="adv-grid">
               <div class="kvv"><div class="k">PIB</div><div class="v mono">109876543</div></div>
               <div class="kvv"><div class="k">Prefiks fakture</div><div class="v mono">SS-2026-####</div></div>
-              <div class="kvv"><div class="k">PDV status</div><div class="v">Nije u sistemu PDV-a</div></div>
-              <div class="kvv"><div class="k">Orijentaciona satnica</div><div class="v mono">9.000 RSD/h</div></div>
+              <div class="kvv"><div class="k">Satnica (ako je dogovorena)</div><div class="v mono">9.000 RSD/h</div></div>
               <div class="kvv"><div class="k">Tekući račun (RSD)</div><div class="v mono">Banca Intesa · 160-0000001234567-89</div></div>
               <div class="kvv"><div class="k">Devizni (EUR)</div><div class="v mono">RS35 1600 0000 0123 4567 89 · SWIFT DBDBRSBG</div></div>
             </div>
@@ -352,8 +353,7 @@
             <div class="adv-grid">
               <div class="kvv"><div class="k">PIB</div><div class="v mono">108221544</div></div>
               <div class="kvv"><div class="k">Prefiks fakture</div><div class="v mono">VB-2026-####</div></div>
-              <div class="kvv"><div class="k">PDV status</div><div class="v">Nije u sistemu PDV-a</div></div>
-              <div class="kvv"><div class="k">Orijentaciona satnica</div><div class="v mono">8.000 RSD/h</div></div>
+              <div class="kvv"><div class="k">Satnica (ako je dogovorena)</div><div class="v mono">8.000 RSD/h</div></div>
               <div class="kvv"><div class="k">Tekući račun (RSD)</div><div class="v mono">OTP banka · 325-9500700123456-78</div></div>
               <div class="kvv"><div class="k">Devizni (EUR)</div><div class="v mono">RS35 3250 0000 9876 5432 10 · SWIFT OTPVRS22</div></div>
             </div>
@@ -363,8 +363,7 @@
             <div class="adv-grid">
               <div class="kvv"><div class="k">PIB</div><div class="v mono">111998003</div></div>
               <div class="kvv"><div class="k">Prefiks fakture</div><div class="v mono">SP-2026-####</div></div>
-              <div class="kvv"><div class="k">PDV status</div><div class="v">U sistemu PDV-a (20%)</div></div>
-              <div class="kvv"><div class="k">Orijentaciona satnica</div><div class="v mono">8.000 RSD/h</div></div>
+              <div class="kvv"><div class="k">Satnica (ako je dogovorena)</div><div class="v mono">8.000 RSD/h</div></div>
               <div class="kvv"><div class="k">Tekući račun (RSD)</div><div class="v mono">Raiffeisen banka · 265-0000112233445-66</div></div>
               <div class="kvv"><div class="k">Devizni (EUR)</div><div class="v mono">RS35 2650 0001 1223 3445 66 · SWIFT RZBSRSBG</div></div>
             </div>
@@ -372,17 +371,24 @@
           </div>
           </section>
           <section class="st-p p-tar">
-            <div class="sec-head"><h2>Advokatska tarifa</h2><span class="wk-sum">Vrednost poena: <b class="mono">1.500 RSD</b></span></div>
-            <div class="note-banner">Tarifni brojevi, poeni i vrednost poena su <b>podrazumevane vrednosti</b> — proveriti sa Višnjom i važećom Advokatskom tarifom. Nagrada = poeni × koeficijent radnje × vrednost poena.</div>
+            <div class="sec-head"><h2>Advokatska tarifa</h2><span class="wk-sum">Vrednost poena: <b class="mono">1.500 RSD</b> · važi od 01.01.2026.</span></div>
+            <div class="rule-banner">⚖ Pravilo: ročišta i podnesci se uvek tarifiraju — nikada ne ulaze u paušal.</div>
+            <div class="note-banner">Tarifni brojevi i poeni su <b>podrazumevane vrednosti</b> — proveriti sa Višnjom i važećom Advokatskom tarifom. Nagrada se računa po tarifi (poeni po radnji × vrednost poena), zavisno od vrednosti spora i stepena postupka.</div>
             <div class="card">
               <div class="tar-head"><span>Radnja</span><span>Tar. broj</span><span>Poeni</span><span>Status</span></div>
-              <div class="tar-row"><span class="tar-o">Sastav tužbe</span><span class="tar-b mono">tb. 1</span><span class="tar-k mono">50 poena</span><span class="flag">izmeni · potvrditi</span></div><div class="tar-row"><span class="tar-o">Sastav odgovora na tužbu</span><span class="tar-b mono">tb. 1</span><span class="tar-k mono">50 poena</span><span class="flag">izmeni · potvrditi</span></div><div class="tar-row"><span class="tar-o">Sastav žalbe</span><span class="tar-b mono">tb. 4</span><span class="tar-k mono">75 poena</span><span class="flag">izmeni · potvrditi</span></div><div class="tar-row"><span class="tar-o">Sastav podneska</span><span class="tar-b mono">tb. 2</span><span class="tar-k mono">25 poena</span><span class="flag">izmeni · potvrditi</span></div><div class="tar-row"><span class="tar-o">Zastupanje na ročištu</span><span class="tar-b mono">tb. 3</span><span class="tar-k mono">50 poena</span><span class="flag">izmeni · potvrditi</span></div><div class="tar-row"><span class="tar-o">Dopis / urgencija</span><span class="tar-b mono">tb. 5</span><span class="tar-k mono">12,5 poena</span><span class="flag">izmeni · potvrditi</span></div>
+              <div class="tar-row"><span class="tar-o">Sastav tužbe</span><span class="tar-b mono">tb. 1</span><span class="tar-k mono">50 poena</span><span class="pill warn">podrazumevano</span></div><div class="tar-row"><span class="tar-o">Sastav odgovora na tužbu</span><span class="tar-b mono">tb. 1</span><span class="tar-k mono">50 poena</span><span class="pill warn">podrazumevano</span></div><div class="tar-row"><span class="tar-o">Sastav žalbe</span><span class="tar-b mono">tb. 4</span><span class="tar-k mono">75 poena</span><span class="pill warn">podrazumevano</span></div><div class="tar-row"><span class="tar-o">Sastav podneska</span><span class="tar-b mono">tb. 2</span><span class="tar-k mono">25 poena</span><span class="pill warn">podrazumevano</span></div><div class="tar-row"><span class="tar-o">Zastupanje na ročištu</span><span class="tar-b mono">tb. 3</span><span class="tar-k mono">50 poena</span><span class="pill warn">podrazumevano</span></div><div class="tar-row"><span class="tar-o">Dopis sudu</span><span class="tar-b mono">tb. 5</span><span class="tar-k mono">12,5 poena</span><span class="pill warn">podrazumevano</span></div>
             </div>
           </section>
           <section class="st-p p-usr">
             <div class="sec-head"><h2>Korisnici i uloge</h2><button class="btn sm pri">+ Dodaj korisnika</button></div>
-            <div class="note-banner">Uloge: <b>owner</b> (vlasnik — sve), <b>lawyer</b> (advokat), <b>trainee</b> (pripravnik — ograničeno). Interni novac i raspodelu vidi samo vlasnik.</div>
-            <div class="card"><div class="usr-row"><span class="ini">SS</span><span class="usr-nm">Strahinja Selaković<small>strahinja@ak-selakovic.rs</small></span><span class="role-badge own">Vlasnik</span><span class="usr-en mono">owner</span></div><div class="usr-row"><span class="ini">VB</span><span class="usr-nm">Vladan Bošnjak<small>vladan@ak-selakovic.rs</small></span><span class="role-badge ">Advokat</span><span class="usr-en mono">lawyer</span></div><div class="usr-row"><span class="ini">SP</span><span class="usr-nm">Stefan Petrović<small>stefan@ak-selakovic.rs</small></span><span class="role-badge ">Advokat</span><span class="usr-en mono">lawyer</span></div><div class="usr-row"><span class="ini">MJ</span><span class="usr-nm">Milica Jović<small>milica@ak-selakovic.rs</small></span><span class="role-badge ">Pripravnik</span><span class="usr-en mono">trainee</span></div></div>
+            <div class="note-banner">Tri uloge: Vlasnik, Advokat i Pripravnik. Interni novac i raspodelu vidi samo vlasnik.</div>
+            <div class="card"><div class="usr-row"><span class="ini">SS</span><span class="usr-nm">Strahinja Selaković<small>strahinja@ak-selakovic.rs</small></span><span class="role-badge own">Vlasnik</span></div><div class="usr-row"><span class="ini">VB</span><span class="usr-nm">Vladan Bošnjak<small>vladan@ak-selakovic.rs</small></span><span class="role-badge ">Advokat</span></div><div class="usr-row"><span class="ini">SP</span><span class="usr-nm">Stefan Petrović<small>stefan@ak-selakovic.rs</small></span><span class="role-badge ">Advokat</span></div><div class="usr-row"><span class="ini">MJ</span><span class="usr-nm">Milica Jović<small>milica@ak-selakovic.rs</small></span><span class="role-badge ">Pripravnik</span></div></div>
+            <div class="sec-head" style="margin-top:18px"><h2>Ko šta vidi</h2></div>
+            <div class="card">
+              <div class="perm-row"><span class="role-badge own">Vlasnik</span><span>Sve — predmeti, fakture, naplata i <b>interni novac i raspodela</b>.</span></div>
+              <div class="perm-row"><span class="role-badge">Advokat</span><span>Svoji predmeti, svoji sati i svoje fakture. Ne vidi tuđu zaradu ni internu raspodelu.</span></div>
+              <div class="perm-row"><span class="role-badge">Pripravnik</span><span>Samo ono što mu je dodeljeno. Ne vidi nikakve iznose.</span></div>
+            </div>
           </section>
           <section class="st-p p-off">
             <div class="sec-head"><h2>Kancelarija</h2></div>
