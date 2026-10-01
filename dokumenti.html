@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spis — Izveštaji</title>
+<title>Spis — Dokumenti</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -230,26 +230,55 @@
   .btn.sm{font-size:12px;padding:5px 10px;}
   .lnk{color:var(--accent);text-decoration:none;font-size:12.5px;font-weight:500;}
 
-  .rep-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
-  .rb-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);}
-  .rb-row:first-child{border-top:0;}
-  .rb-nm{font-size:12.5px;font-weight:600;width:76px;flex:none;}
-  .rb-nm.wide{width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .rb-track{flex:1;height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden;min-width:30px;}
-  .rb-track > i{display:block;height:100%;background:var(--accent);border-radius:4px;}
-  .rb-track > i.amber{background:var(--warn);}
-  .rb-n{font-size:11.5px;color:var(--ink);text-align:right;flex:none;white-space:nowrap;min-width:60px;}
-  .sum{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;color:var(--ink-2);}
-  .sum .mono{color:var(--ink);font-weight:500;}
-  .sum .mono.ok{color:var(--good);}
-  .sum.tot{border-top:2px solid var(--ink);margin-top:6px;padding-top:10px;font-weight:700;color:var(--ink);font-size:15px;}
-  .hint{font-size:11.5px;color:var(--ink-3);margin-top:10px;line-height:1.45;}
-  .rep-list{display:flex;flex-direction:column;}
-  .rep-list a{padding:9px 0;border-top:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px;font-weight:500;}
-  .rep-list a:first-child{border-top:0;}
-  .rep-list a:hover{color:var(--accent);}
-  .rep-list a::after{content:" →";color:var(--ink-3);}
-  @media (max-width:900px){ .rep-grid{grid-template-columns:1fr;} }
+  .kl-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+  .kl-head .acts{display:flex;gap:8px;}
+  .doc-hd{display:grid;grid-template-columns:1fr 120px 230px;gap:12px;padding:9px 16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line-2);}
+  .doc-row{display:grid;grid-template-columns:1fr 120px 230px;gap:12px;align-items:center;padding:11px 16px;border-top:1px solid var(--line);font-size:13px;}
+  .doc-f{display:flex;align-items:center;gap:11px;min-width:0;}
+  .doc-ic{width:30px;height:30px;border-radius:6px;display:grid;place-items:center;font-family:var(--mono);font-size:9px;font-weight:700;flex:none;color:#fff;}
+  .doc-ic.w{background:#2b579a;} .doc-ic.p{background:#b3261e;}
+  .doc-nm{font-weight:600;min-width:0;}
+  .doc-nm small{display:block;font-weight:400;color:var(--ink-3);font-family:var(--mono);font-size:10.5px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;}
+  .dtag{font-family:var(--mono);font-size:9px;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:5px;font-weight:600;}
+  .dk-a{color:var(--accent-ink);background:var(--accent);} .dk-b{color:var(--ink);background:var(--surface-3);}
+  .dk-c{color:var(--ink-3);background:var(--surface-2);border:1px solid var(--line-2);} .dk-d{color:var(--warn);background:var(--warn-soft);}
+  .doc-a{display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap;}
+  .dl{font-size:12px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap;}
+  .dl.pri{background:var(--accent);color:var(--accent-ink);padding:5px 10px;border-radius:7px;}
+  .dl.mut{color:var(--ink-3);font-weight:400;}
+  .inv-note{font-size:11.5px;color:var(--ink-3);margin-top:14px;line-height:1.5;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:11px 13px;}
+  /* modals (CSS-only via :target) */
+  .ov{display:none;position:fixed;inset:0;z-index:100;align-items:center;justify-content:center;padding:16px;}
+  .ov:target{display:flex;}
+  .ov .bg{position:absolute;inset:0;background:rgba(10,12,10,.5);}
+  .ov .box{position:relative;background:var(--surface);border:1px solid var(--line-2);border-radius:12px;max-width:460px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.35);max-height:90vh;overflow:auto;}
+  .ov .mh{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line);}
+  .ov .mh h3{font-family:var(--serif);font-size:16px;margin:0;font-weight:600;}
+  .ov .x{color:var(--ink-3);text-decoration:none;font-size:22px;line-height:1;}
+  .ov .mb{padding:16px;} .ov .mb.nopad{padding:0;}
+  .ov .mf{padding:12px 16px;border-top:1px solid var(--line);display:flex;justify-content:flex-end;gap:8px;}
+  .drop{border:2px dashed var(--line-2);border-radius:10px;padding:26px 16px;text-align:center;color:var(--ink-3);margin-bottom:14px;}
+  .drop svg{width:28px;height:28px;margin-bottom:8px;color:var(--ink-3);}
+  .drop-t{font-size:13.5px;color:var(--ink-2);} .drop-t b{color:var(--accent);}
+  .fld2{display:block;margin-bottom:11px;} .fld2 .fl{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px;}
+  .sel,.inp{width:100%;font:inherit;font-size:13.5px;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink);}
+  .tpl{display:block;padding:12px 13px;border:1px solid var(--line-2);border-radius:9px;margin-bottom:8px;text-decoration:none;color:var(--ink);font-weight:600;font-size:13.5px;}
+  .tpl:hover{border-color:var(--accent);} .tpl small{display:block;font-weight:400;color:var(--ink-3);font-size:11.5px;margin-top:2px;}
+  .shr-doc{display:flex;align-items:center;gap:9px;font-weight:600;font-size:13.5px;margin-bottom:12px;}
+  .seg{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
+  .sgo{display:flex;align-items:center;gap:6px;border:1px solid var(--line-2);border-radius:8px;padding:6px 10px;font-size:12.5px;cursor:pointer;}
+  .sgo input{accent-color:var(--accent);}
+  .ver-row{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);font-size:13px;}
+  .ver-row:first-child{border-top:0;}
+  .ver-n{font-weight:600;flex:none;width:120px;display:flex;align-items:center;gap:7px;}
+  .ver-m{flex:1;color:var(--ink-3);font-size:11.5px;} .ver-a{flex:none;}
+  .prev{height:180px;border:1px solid var(--line);border-radius:8px;display:grid;place-content:center;text-align:center;color:var(--ink-3);background:var(--surface-2);font-size:13px;}
+  .prev small{display:block;margin-top:5px;font-size:11px;}
+  @media (max-width:760px){
+    .doc-hd{display:none;}
+    .doc-row{grid-template-columns:1fr;gap:9px;}
+    .doc-k{order:2;} .doc-a{order:3;justify-content:flex-start;}
+  }
 
   /* mobile nav drawer */
   .burger{display:none;background:none;border:0;padding:6px;margin:-2px 2px -2px -4px;color:var(--ink);cursor:pointer;}
@@ -276,13 +305,13 @@
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
       <a href="vreme.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v6l3.5 2"/><circle cx="8" cy="8" r="6"/></svg>Evidencija vremena</a>
       <a href="zadaci.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h10v10H3z"/><path d="M5.7 8l1.4 1.4L10.6 6"/></svg>Zadaci</a>
-      <a href="dokumenti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h5l3 3v9H4z"/><path d="M9 2v4h3"/></svg>Dokumenti</a>
+      <a class="on" href="dokumenti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h5l3 3v9H4z"/><path d="M9 2v4h3"/></svg>Dokumenti</a>
       <div class="grp">Finansije</div>
       <a href="fakture-lista.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l2.5 2.5V14H4z"/><path d="M6 7h4M6 9.5h4"/></svg>Fakture</a>
       <a href="naplata.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2v12" stroke-width="0"/><circle cx="8" cy="8" r="6"/><path d="M8 5.2v5.6M6.4 6.2h2.2a1.3 1.3 0 010 2.6H6.4h2.4"/></svg>Naplata</a>
       <a href="raspodela.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 8V2.2M8 8l5 2.9"/></svg>Doprinos i raspodela</a>
       <a href="troskovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13V9M6 13V5M10 13V7M14 13V3"/></svg>Troškovi</a>
-      <a class="on" href="izvestaji.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 10l2-2 2 1.5L11 6"/></svg>Izveštaji</a>
+      <a href="izvestaji.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 10l2-2 2 1.5L11 6"/></svg>Izveštaji</a>
       <div class="grp">Administracija</div>
       <a href="podesavanja.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M14.5 8h-2M3.5 8h-2"/></svg>Podešavanja</a>
     </nav>
@@ -293,57 +322,76 @@
     <div class="top">
       <button class="burger" aria-label="Meni" onclick="document.body.classList.toggle('nav-open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       <span class="mbrand"><span class="mark">S</span>Spis</span>
-      <div class="crumb"><b>Izveštaji</b></div>
-      <div class="search"><input placeholder="Pretraga…" aria-label="Pretraga"></div>
+      <div class="crumb"><b>Dokumenti</b></div>
+      <div class="search"><input placeholder="Pretraga dokumenata…" aria-label="Pretraga"></div>
       <span class="demo">DEMO · primer podaci</span>
-      <button class="btn pri">Izvezi (PDF / Excel)</button>
+      <a class="btn pri" href="#upload">+ Otpremi</a>
     </div>
     <div class="scroll"><div class="wrap">
-      <div class="kl-head"><div><h1>Izveštaji</h1><div class="date">Septembar 2026 · kancelarija</div></div></div>
-      <div class="chips"><span class="chip on">Septembar</span><span class="chip">Q3 2026</span><span class="chip">Ova godina</span><span class="chip">Po advokatu</span></div>
-      <div class="kl-strip"><span><b>110.000</b> primljeno (uplate)</span><span class="hot"><b>379.000 RSD</b> za naplatu</span><span><b>+8.000</b> operativni rezultat</span></div>
-      <div class="rep-grid">
-        <div class="card rep">
-          <div class="ch"><h2>Naplaćeno po advokatu</h2><a class="lnk" href="#">Izvezi</a></div>
-          <div class="cb"><div class="rb-row"><span class="ini">SS</span><span class="rb-nm">Strahinja</span><span class="rb-track"><i style="width:100%"></i></span><span class="rb-n mono">80.000</span></div><div class="rb-row"><span class="ini">SP</span><span class="rb-nm">Stefan</span><span class="rb-track"><i style="width:38%"></i></span><span class="rb-n mono">30.000</span></div><div class="rb-row"><span class="ini">VB</span><span class="rb-nm">Vladan</span><span class="rb-track"><i style="width:0%"></i></span><span class="rb-n mono">0</span></div><div class="hint">Gotovina primljena (septembar), po advokatu na čiji je račun ušla. Vladan 0 — njegove fakture su još neplaćene. Interna raspodela je posebno (Doprinos i raspodela).</div></div>
-        </div>
-        <div class="card rep">
-          <div class="ch"><h2>Potraživanja po klijentu</h2><a class="lnk" href="#">Izvezi</a></div>
-          <div class="cb"><div class="rb-row"><span class="rb-nm wide">Vojvodina Put d.o.o.</span><span class="rb-track"><i class="amber" style="width:100%"></i></span><span class="rb-n mono">220.000</span></div><div class="rb-row"><span class="rb-nm wide">Nenad Lukić</span><span class="rb-track"><i class="amber" style="width:27%"></i></span><span class="rb-n mono">60.000</span></div><div class="rb-row"><span class="rb-nm wide">Slobodan Ilić</span><span class="rb-track"><i class="amber" style="width:25%"></i></span><span class="rb-n mono">56.000</span></div><div class="rb-row"><span class="rb-nm wide">Petar Petrović</span><span class="rb-track"><i class="amber" style="width:11%"></i></span><span class="rb-n mono">25.000</span></div><div class="rb-row"><span class="rb-nm wide">Jovan Jovanović</span><span class="rb-track"><i class="amber" style="width:8%"></i></span><span class="rb-n mono">18.000</span></div><div class="hint">Za naplatu po izdatim fakturama. Vojvodina Put i Jovanović su dospeli (kasne).</div></div>
-        </div>
-        <div class="card rep">
-          <div class="ch"><h2>Rad po advokatu</h2><a class="lnk" href="#">Izvezi</a></div>
-          <div class="cb"><div class="rb-row"><span class="ini">SS</span><span class="rb-nm">Strahinja</span><span class="rb-track"><i style="width:100%"></i></span><span class="rb-n mono">5 radnji</span></div><div class="rb-row"><span class="ini">VB</span><span class="rb-nm">Vladan</span><span class="rb-track"><i style="width:80%"></i></span><span class="rb-n mono">4 radnje</span></div><div class="rb-row"><span class="ini">SP</span><span class="rb-nm">Stefan</span><span class="rb-track"><i style="width:40%"></i></span><span class="rb-n mono">2 radnje</span></div><div class="hint">Broj radnji iz evidencije vremena (sedmica 28.09–04.10). Vreme je sporedno — tarifne radnje se ne mere satima.</div></div>
-        </div>
-        <div class="card rep">
-          <div class="ch"><h2>Fakturisano i naplata</h2><a class="lnk" href="#">Izvezi</a></div>
-          <div class="cb">
-            <div class="sum"><span>Izdato (fakture)</span><span class="mono">449.000</span></div>
-            <div class="sum"><span>Naplaćeno (po fakturama)</span><span class="mono ok">70.000</span></div>
-            <div class="sum"><span>Za naplatu</span><span class="mono">379.000</span></div>
-            <div class="sum"><span>Dospelo</span><span class="mono">238.000</span></div>
-            <div class="sum"><span>Nacrt (nije izdato)</span><span class="mono">115.000</span></div>
-            <div class="hint">„Naplaćeno (po fakturama)" broji samo izdate fakture (70.000). Uz avans na nacrtu (+40.000) ukupno primljeno je 110.000.</div>
-          </div>
-        </div>
-        <div class="card rep">
-          <div class="ch"><h2>Rezultat (operativni)</h2><a class="lnk" href="#">Izvezi</a></div>
-          <div class="cb">
-            <div class="sum"><span>Primljeno (uplate)</span><span class="mono ok">110.000</span></div>
-            <div class="sum"><span>Troškovi kancelarije</span><span class="mono">− 102.000</span></div>
-            <div class="sum tot"><span>Rezultat</span><span class="mono">+8.000 RSD</span></div>
-            <div class="hint">Pre poreza i isplata („plata na ruke") — vidi Troškovi / Doprinos i raspodela. Mesečno varira; „Ova godina" daje pravu sliku.</div>
-          </div>
-        </div>
-        <div class="card rep">
-          <div class="ch"><h2>Dostupni izveštaji</h2></div>
-          <div class="cb">
-            <div class="rep-list"><a href="#">Prihod po predmetu</a><a href="#">Prihod po klijentu</a><a href="#">Utrošeno vreme po predmetu</a><a href="#">Naplata i kašnjenja (aging)</a><a href="#">Raspodela po advokatu</a><a href="#">Promet za knjigovođu (Višnja)</a></div>
-          </div>
-        </div>
+      <div class="kl-head"><div><h1>Dokumenti</h1><div class="date">Svi predmeti · 7 dokumenata</div></div>
+        <div class="acts"><a class="btn" href="#template">+ Novo iz šablona</a><a class="btn" href="#upload">+ Otpremi</a></div></div>
+      <div class="chips"><span class="chip on">Svi</span><span class="chip">Podnesci</span><span class="chip">Punomoćja</span><span class="chip">Dokazi</span><span class="chip">Ugovori</span></div>
+      <div class="card">
+        <div class="doc-hd"><span>Dokument</span><span>Vrsta</span><span>Radnje</span></div>
+        <div class="doc-row"><span class="doc-f"><span class="doc-ic w">W</span><span class="doc-nm">Žalba — nacrt.docx<small>Proleter Gradnja ca Grad NS · SS · 30.09.2026 · 98 KB</small></span></span><span class="doc-k"><span class="dtag dk-b">Podnesak</span></span><span class="doc-a"><a class="dl pri" href="#open">Otvori u Word‑u</a><a class="dl" href="#share">Podeli</a><a class="dl" href="#versions">v3 · verzije</a></span></div><div class="doc-row"><span class="doc-f"><span class="doc-ic p">PDF</span><span class="doc-nm">Nalaz veštaka.pdf<small>Lukić ca Delta osiguranje · SP · 30.09.2026 · 2,1 MB</small></span></span><span class="doc-k"><span class="dtag dk-c">Dokaz</span></span><span class="doc-a"><a class="dl pri" href="#open">Otvori</a><a class="dl" href="#share">Podeli</a><span class="dl mut">v1</span></span></div><div class="doc-row"><span class="doc-f"><span class="doc-ic w">W</span><span class="doc-nm">Tužba.docx<small>Jovanović ca Marković · SS · 10.09.2026 · 126 KB</small></span></span><span class="doc-k"><span class="dtag dk-a">Tužba</span></span><span class="doc-a"><a class="dl pri" href="#open">Otvori u Word‑u</a><a class="dl" href="#share">Podeli</a><a class="dl" href="#versions">v2 · verzije</a></span></div><div class="doc-row"><span class="doc-f"><span class="doc-ic p">PDF</span><span class="doc-nm">Punomoćje — Proleter.pdf<small>Proleter Gradnja ca Grad NS · SS · 28.08.2026 · 84 KB</small></span></span><span class="doc-k"><span class="dtag dk-a">Punomoćje</span></span><span class="doc-a"><a class="dl pri" href="#open">Otvori</a><a class="dl" href="#share">Podeli</a><span class="dl mut">v1</span></span></div><div class="doc-row"><span class="doc-f"><span class="doc-ic p">PDF</span><span class="doc-nm">Ugovor o zajmu.pdf<small>Ilić ca Cvilić · VB · 24.08.2026 · 210 KB</small></span></span><span class="doc-k"><span class="dtag dk-b">Ugovor</span></span><span class="doc-a"><a class="dl pri" href="#open">Otvori</a><a class="dl" href="#share">Podeli</a><span class="dl mut">v1</span></span></div><div class="doc-row"><span class="doc-f"><span class="doc-ic p">PDF</span><span class="doc-nm">Rešenje — prvostepeno.pdf<small>Proleter Gradnja ca Grad NS · SS · 05.09.2026 · 150 KB</small></span></span><span class="doc-k"><span class="dtag dk-c">Rešenje</span></span><span class="doc-a"><a class="dl pri" href="#open">Otvori</a><a class="dl" href="#share">Podeli</a><span class="dl mut">v1</span></span></div><div class="doc-row"><span class="doc-f"><span class="doc-ic w">W</span><span class="doc-nm">Troškovnik.xlsx<small>Lukić ca Delta osiguranje · SP · 20.09.2026 · 22 KB</small></span></span><span class="doc-k"><span class="dtag dk-d">Troškovnik</span></span><span class="doc-a"><a class="dl pri" href="#open">Otvori u Word‑u</a><a class="dl" href="#share">Podeli</a><span class="dl mut">v1</span></span></div>
       </div>
+      <div class="inv-note">Fajlovi se čuvaju bezbedno (object storage); u bazi su samo podaci o dokumentu. „Otvori u Word‑u" preuzima .docx i otvara u Word‑u na računaru; PDF se otvara u pregledaču. Deljenje je interno (kolega) ili eksterno (link / email) sa dozvolom i rokom važenja.</div>
     </div></div>
   </div>
+
+  <div class="ov" id="upload"><a class="bg" href="#"></a><div class="box">
+    <div class="mh"><h3>Otpremi dokument</h3><a class="x" href="#">×</a></div>
+    <div class="mb">
+      <div class="drop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15V3M8 7l4-4 4 4M4 15v4a2 2 0 002 2h12a2 2 0 002-2v-4"/></svg>
+        <div class="drop-t">Prevuci fajl ovde ili <b>izaberi sa računara</b></div>
+        <div class="hint">PDF, Word, Excel, slike · do 25 MB</div></div>
+      <label class="fld2"><span class="fl">Vrsta</span><select class="sel"><option>Podnesak</option><option>Punomoćje</option><option>Tužba</option><option>Ugovor</option><option>Dokaz</option><option>Rešenje</option><option>Troškovnik</option><option>Ostalo</option></select></label>
+      <label class="fld2"><span class="fl">Predmet (opciono)</span><select class="sel"><option>— bez predmeta —</option><option>Proleter Gradnja ca Grad NS</option><option>Ilić ca Cvilić</option><option>Lukić ca Delta osiguranje</option></select></label>
+    </div>
+    <div class="mf"><a class="btn" href="#">Otkaži</a><a class="btn pri" href="#">Otpremi</a></div>
+  </div></div>
+
+  <div class="ov" id="template"><a class="bg" href="#"></a><div class="box">
+    <div class="mh"><h3>Novo iz šablona</h3><a class="x" href="#">×</a></div>
+    <div class="mb">
+      <div class="hint" style="margin:0 0 10px">Izaberi šablon — podaci o klijentu, predmetu i advokatu se automatski popune. Dobijaš .docx koji možeš da doradiš u Word‑u.</div>
+      <a class="tpl" href="#">Punomoćje<small>popunjava: klijent, advokat, predmet</small></a>
+      <a class="tpl" href="#">Tužba<small>stranke, vrednost spora, sud</small></a>
+      <a class="tpl" href="#">Podnesak<small>predmet, sud, broj</small></a>
+      <a class="tpl" href="#">Ugovor<small>klijent, predmet</small></a>
+      <a class="tpl" href="#">Troškovnik za sud<small>tarifne radnje + takse iz predmeta</small></a>
+    </div>
+  </div></div>
+
+  <div class="ov" id="share"><a class="bg" href="#"></a><div class="box">
+    <div class="mh"><h3>Podeli dokument</h3><a class="x" href="#">×</a></div>
+    <div class="mb">
+      <div class="shr-doc"><span class="doc-ic w">W</span> Žalba — nacrt.docx</div>
+      <div class="seg"><label class="sgo"><input type="radio" name="shk" checked><span>Kolega (interno)</span></label><label class="sgo"><input type="radio" name="shk"><span>Link</span></label><label class="sgo"><input type="radio" name="shk"><span>Email klijentu</span></label></div>
+      <label class="fld2"><span class="fl">Dozvola</span><select class="sel"><option>Pregled</option><option>Pregled i preuzimanje</option></select></label>
+      <label class="fld2"><span class="fl">Važi do</span><select class="sel"><option>7 dana</option><option>30 dana</option><option>bez isteka</option></select></label>
+      <label class="fld2"><span class="fl">Link</span><input class="inp" value="spis.rs/d/9f2a…" readonly></label>
+      <div class="hint">Interno: kolega vidi dokument u Spis‑u. Eksterno (link/email): klijent otvara bez naloga; pristup prestaje po isteku ili opozivu.</div>
+    </div>
+    <div class="mf"><a class="btn" href="#">Otkaži</a><a class="btn pri" href="#">Kopiraj link / pošalji</a></div>
+  </div></div>
+
+  <div class="ov" id="versions"><a class="bg" href="#"></a><div class="box">
+    <div class="mh"><h3>Verzije — Žalba — nacrt.docx</h3><a class="x" href="#">×</a></div>
+    <div class="mb nopad">
+      <div class="ver-row"><span class="ver-n">v3 <span class="pill ok">trenutna</span></span><span class="ver-m mono">30.09.2026 · Strahinja</span><span class="ver-a"><a class="dl" href="#open">Otvori</a></span></div>
+      <div class="ver-row"><span class="ver-n">v2</span><span class="ver-m mono">22.09.2026 · Vladan</span><span class="ver-a"><a class="dl" href="#">Vrati</a></span></div>
+      <div class="ver-row"><span class="ver-n">v1</span><span class="ver-m mono">15.09.2026 · Strahinja</span><span class="ver-a"><a class="dl" href="#">Vrati</a></span></div>
+    </div>
+  </div></div>
+
+  <div class="ov" id="open"><a class="bg" href="#"></a><div class="box">
+    <div class="mh"><h3>Žalba — nacrt.docx</h3><a class="x" href="#">×</a></div>
+    <div class="mb">
+      <div class="prev">Pregled dokumenta<small>(.docx se otvara u Word‑u; PDF u pregledaču)</small></div>
+    </div>
+    <div class="mf"><a class="btn" href="#">Preuzmi</a><a class="btn pri" href="#">Otvori u Word‑u</a></div>
+  </div></div>
 
 </div>
 </body>
