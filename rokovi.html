@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spis — Kontrolna tabla</title>
+<title>Spis — Rokovi i ročišta</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -219,32 +219,32 @@
 
   .greet h1{font-family:var(--serif);font-weight:600;font-size:25px;margin:0 0 3px;}
   .greet .date{font-size:13px;color:var(--ink-3);font-family:var(--mono);}
-  .alert-strip{display:flex;flex-wrap:wrap;align-items:center;gap:7px 16px;margin:16px 0 18px;font-size:13px;color:var(--ink-2);}
-  .alert-strip b{font-family:var(--mono);font-weight:600;color:var(--ink);margin-right:5px;}
-  .alert-strip .warn b{color:var(--warn);}
-  .alert-strip .dot{width:4px;height:4px;border-radius:50%;background:var(--line-2);}
-  .card.hero{border-color:var(--line-2);}
-  .card.hero > .ch h2{font-size:14px;}
-  .dash-cols{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;margin-top:18px;}
-  .dash-cols h2{font-size:12.5px;}
-  .matter-link a{color:var(--ink);text-decoration:none;font-weight:600;}
-  .matter-link a:hover{color:var(--accent);}
-  .matter-link .caa{font-family:var(--serif);font-style:italic;color:var(--accent);padding:0 3px;}
-  .matter-link small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);font-weight:400;margin-top:2px;}
-  .wl-legend{display:flex;gap:16px;padding:12px 16px 4px;font-size:11px;color:var(--ink-2);font-family:var(--mono);}
-  .wl-legend .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:middle;}
-  .wl-row{display:flex;align-items:center;gap:11px;padding:10px 16px;border-top:1px solid var(--line);}
-  .wl-row .ini{width:24px;height:24px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:10px;font-weight:600;font-family:var(--mono);flex:none;}
-  .wl-row .nm{font-size:12.5px;font-weight:600;width:84px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .wl-metrics{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0;}
-  .wl-m{display:flex;align-items:center;gap:8px;}
-  .wl-m .wl-k{font-family:var(--mono);font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);width:46px;flex:none;}
-  .wl-m .track{flex:1;height:6px;background:var(--surface-3);border-radius:4px;overflow:hidden;min-width:34px;}
-  .wl-m .track > i{display:block;height:100%;border-radius:4px;}
-  .wl-m.cases .track > i{background:var(--accent);}
-  .wl-m.tasks .track > i{background:var(--ink-3);}
-  .wl-m .wl-n{font-family:var(--mono);font-size:11.5px;color:var(--ink);width:20px;text-align:right;flex:none;}
-  @media (max-width:1000px){ .dash-cols{grid-template-columns:1fr;} }
+  .cal-legend{display:flex;gap:14px;font-size:11px;color:var(--ink-2);font-family:var(--mono);}
+  .cal-legend .sw,.tl .d{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle;}
+  .cal-legend .sw.r,.tl .d.r{background:var(--accent);}
+  .cal-legend .sw.d2,.tl .d.d2{background:var(--warn);}
+  .tl{display:flex;gap:10px;overflow-x:auto;padding:2px;}
+  .tl .wk{flex:1 0 128px;min-width:128px;border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:var(--surface-2);}
+  .tl .wk.now{border-color:var(--accent);background:var(--accent-soft);}
+  .tl .wk .rng{font-family:var(--mono);font-size:10.5px;color:var(--ink-2);letter-spacing:.03em;margin-bottom:8px;}
+  .tl .wk .dots{display:flex;flex-wrap:wrap;gap:5px;min-height:11px;}
+  .tl .wk .dots .d{margin:0;}
+  .tl .wk .dots .none{color:var(--ink-3);font-family:var(--mono);}
+  .tl .wk .cnt{font-size:11px;color:var(--ink-2);margin-top:9px;}
+  .cal-wrap{overflow-x:auto;}
+  .cal{width:100%;min-width:680px;border-collapse:separate;border-spacing:0;}
+  .cal th{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500;padding:0 8px 8px;text-align:left;}
+  .cal td{vertical-align:top;border:1px solid var(--line);height:96px;width:14.28%;padding:6px 7px;background:var(--surface);}
+  .cal td.pad{background:var(--surface-2);}
+  .cal td.we{background:var(--surface-2);}
+  .cal td.today{box-shadow:inset 0 0 0 2px var(--accent);}
+  .cal .dn{font-family:var(--mono);font-size:12px;color:var(--ink-2);font-weight:600;margin-bottom:4px;}
+  .cal td.today .dn{color:var(--accent);}
+  .ev{font-size:10.5px;border-radius:5px;padding:2px 6px;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.4;}
+  .ev .evt{font-weight:600;}
+  .ev.ev-r{background:var(--accent-soft);color:var(--accent);}
+  .ev.ev-d{background:var(--warn-soft);color:var(--warn);}
+  .mnav{display:flex;gap:6px;}
 </style>
 </head>
 <body>
@@ -252,11 +252,11 @@
 <aside class="side">
     <div class="brand"><span class="mark">S</span><b>Spis</b><span>demo</span></div>
     <nav class="nav">
-      <a class="on" href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
+      <a href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
       <a href="predmet.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti<span class="ct">6</span></a>
       <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2.4"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/><path d="M11 6.5c1.3.3 2.3 1.4 2.3 2.8"/></svg>Klijenti</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6h12M5.5 1.5v3M10.5 1.5v3"/></svg>Kalendar</a>
-      <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
+      <a class="on" href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
       <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v6l3.5 2"/><circle cx="8" cy="8" r="6"/></svg>Evidencija vremena</a>
       <div class="grp">Finansije</div>
       <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l2.5 2.5V14H4z"/><path d="M6 7h4M6 9.5h4"/></svg>Fakture</a>
@@ -272,62 +272,22 @@
   <div class="main">
     <div class="top">
       <span class="mbrand"><span class="mark">S</span>Spis</span>
-      <div class="crumb"><b>Kontrolna tabla</b></div>
-      <div class="search"><input placeholder="Pretraga predmeta, klijenata, faktura…" aria-label="Pretraga"></div>
+      <div class="crumb"><b>Rokovi i ročišta</b></div>
+      <div class="search"><input placeholder="Pretraga…" aria-label="Pretraga"></div>
       <span class="demo">DEMO · primer podaci</span>
       <button class="btn pri">+ Brzo kreiranje</button>
     </div>
     <div class="scroll"><div class="wrap">
-      <div class="greet"><h1>Dobar dan, Strahinja</h1><div class="date">četvrtak, 1. oktobar 2026 · Advokatska kancelarija Selaković</div></div>
-      <div class="alert-strip">
-        <span class="warn"><b>6</b> rokova ističe ≤ 7 dana</span><span class="dot"></span>
-        <span><b>4</b> ročišta ove nedelje</span><span class="dot"></span>
-        <span><b>19</b> aktivnih predmeta</span><span class="dot"></span>
-        <span><b>33</b> otvorena zadatka</span>
+      <div class="greet"><h1>Rokovi i ročišta</h1><div class="date">Svi rokovi i ročišta kancelarije · oktobar 2026</div></div>
+
+      <div class="card">
+        <div class="ch"><h2>Vremenska linija</h2><div class="cal-legend"><span><span class="sw r"></span>ročište</span><span><span class="sw d2"></span>rok</span></div></div>
+        <div class="cb"><div class="tl"><div class="wk now"><div class="rng">1–4. okt</div><div class="dots"><span class="d r" title="1. okt — Ročište: Pripremno ročište (Proleter ca Grad NS)"></span><span class="d d2" title="1. okt — Rok: Rok: odgovor na tužbu (Jovanović ca Marković)"></span><span class="d r" title="2. okt — Ročište: Glavna rasprava (Lukić ca Delta osig.)"></span><span class="d d2" title="3. okt — Rok: Rok: dostava dokaza (Ilić ca Cvilić)"></span></div><div class="cnt">2 ročišta · 2 roka</div></div><div class="wk"><div class="rng">5–11. okt</div><div class="dots"><span class="d r" title="6. okt — Ročište: Saslušanje svedoka (Petrović ca Petrović)"></span><span class="d d2" title="8. okt — Rok: Rok: podnesak (Proleter ca Grad NS)"></span></div><div class="cnt">1 ročišta · 1 rok</div></div><div class="wk"><div class="rng">12–18. okt</div><div class="dots"><span class="d r" title="14. okt — Ročište: Glavna rasprava (Ilić ca Cvilić)"></span></div><div class="cnt">1 ročišta</div></div><div class="wk"><div class="rng">19–25. okt</div><div class="dots"><span class="d r" title="20. okt — Ročište: Žalbeno veće (Lukić ca Delta osig.)"></span><span class="d d2" title="22. okt — Rok: Rok: dostava dokaza (Jovanović ca Marković)"></span></div><div class="cnt">1 ročišta · 1 rok</div></div><div class="wk"><div class="rng">26–31. okt</div><div class="dots"><span class="d r" title="27. okt — Ročište: Glavna rasprava (Jovanović ca Marković)"></span></div><div class="cnt">1 ročišta</div></div></div></div>
       </div>
-      <div class="card hero">
-        <div class="ch"><h2>Rokovi i ročišta</h2><a class="lnk" href="rokovi.html">Svi rokovi →</a></div>
-        <div class="rows">
-          <div class="sec">Danas · četvrtak, 1. oktobar</div>
-          <div class="row"><span class="when">12:00</span><span class="ti">Rok: odgovor na tužbu<small>Jovanović ca Marković · 2026-0039</small></span><span class="rt"><span class="pill crit">Danas</span></span></div>
-          <div class="row"><span class="when">14:00</span><span class="ti">Ročište: pripremno ročište<small>Proleter Gradnja ca Grad NS · 2026-0031</small></span><span class="rt"><span class="pill crit">Danas</span></span></div>
-          <div class="sec">Ova nedelja</div>
-          <div class="row"><span class="when">02. okt · 09:00</span><span class="ti">Ročište: glavna rasprava<small>Lukić ca Delta osiguranje · 2026-0028</small></span><span class="rt"><span class="pill warn">Sutra</span></span></div>
-          <div class="row"><span class="when">03. okt · 12:00</span><span class="ti">Rok: dostava dokaza i predlog za veštačenje<small>Ilić ca Cvilić · 2026-0042</small></span><span class="rt"><span class="pill warn">Za 2 dana</span></span></div>
-          <div class="row"><span class="when">06. okt · 10:00</span><span class="ti">Ročište: saslušanje svedoka<small>Petrović ca Petrović · 2026-0017</small></span><span class="rt"><span class="pill mut">Za 5 dana</span></span></div>
-        </div>
-      </div>
-      <div class="dash-cols">
-        <div>
-          <div class="card">
-            <div class="ch"><h2>Predmeti u fokusu</h2><a class="lnk" href="predmet.html">Svi predmeti</a></div>
-            <div class="rows">
-              <div class="row"><span class="ti matter-link"><a href="predmet.html">Ilić <span class="caa">ca</span> Cvilić</a><small>2026-0042 · naplata duga po ugovoru o zajmu</small></span><span class="rt"><span class="pill mut">ročište 14.10</span></span></div>
-              <div class="row"><span class="ti matter-link"><a href="predmet.html">Proleter Gradnja <span class="caa">ca</span> Grad NS</a><small>2026-0031 · poništaj rešenja</small></span><span class="rt"><span class="pill crit">ročište danas</span></span></div>
-              <div class="row"><span class="ti matter-link"><a href="predmet.html">Lukić <span class="caa">ca</span> Delta osiguranje</a><small>2026-0028 · naknada štete</small></span><span class="rt"><span class="pill warn">ročište sutra</span></span></div>
-              <div class="row"><span class="ti matter-link"><a href="predmet.html">Jovanović <span class="caa">ca</span> Marković</a><small>2026-0039 · smetanje državine</small></span><span class="rt"><span class="pill crit">rok danas</span></span></div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="card">
-            <div class="ch"><h2>Opterećenje tima</h2></div>
-            <div class="wl-legend"><span><span class="sw" style="background:var(--accent)"></span>aktivni predmeti</span><span><span class="sw" style="background:var(--ink-3)"></span>otvoreni zadaci</span></div>
-            <div>
-              <div class="wl-row"><span class="ini">SS</span><span class="nm">Strahinja S.</span><div class="wl-metrics"><div class="wl-m cases"><span class="wl-k">predmeti</span><span class="track"><i style="width:100%"></i></span><span class="wl-n">9</span></div><div class="wl-m tasks"><span class="wl-k">zadaci</span><span class="track"><i style="width:100%"></i></span><span class="wl-n">14</span></div></div></div>
-              <div class="wl-row"><span class="ini">VB</span><span class="nm">Vladan B.</span><div class="wl-metrics"><div class="wl-m cases"><span class="wl-k">predmeti</span><span class="track"><i style="width:67%"></i></span><span class="wl-n">6</span></div><div class="wl-m tasks"><span class="wl-k">zadaci</span><span class="track"><i style="width:57%"></i></span><span class="wl-n">8</span></div></div></div>
-              <div class="wl-row"><span class="ini">SP</span><span class="nm">Stefan P.</span><div class="wl-metrics"><div class="wl-m cases"><span class="wl-k">predmeti</span><span class="track"><i style="width:44%"></i></span><span class="wl-n">4</span></div><div class="wl-m tasks"><span class="wl-k">zadaci</span><span class="track"><i style="width:79%"></i></span><span class="wl-n">11</span></div></div></div>
-            </div>
-          </div>
-          <div class="card feed">
-            <div class="ch"><h2>Nedavne aktivnosti</h2></div>
-            <div class="cb">
-              <div class="fi"><span class="ini">VB</span><div class="tx"><b>Vladan</b> uneo rad: 01:10 — priprema podneska · Ilić ca Cvilić<time>danas · 14:20</time></div></div>
-              <div class="fi"><span class="ini">SS</span><div class="tx"><b>Strahinja</b> zakazao ročište · Proleter Gradnja ca Grad NS<time>danas · 11:40</time></div></div>
-              <div class="fi"><span class="ini">SP</span><div class="tx"><b>Stefan</b> dodao dokument: <i>Nalaz veštaka.pdf</i> · Lukić ca Delta<time>juče · 16:30</time></div></div>
-            </div>
-          </div>
-        </div>
+
+      <div class="card" style="margin-top:18px">
+        <div class="ch"><h2>Oktobar 2026</h2><div class="mnav"><button class="btn icon" aria-label="Prethodni">‹</button><button class="btn icon" aria-label="Sledeći">›</button></div></div>
+        <div class="cb"><div class="cal-wrap"><table class="cal"><thead><tr><th>Pon</th><th>Uto</th><th>Sre</th><th>Čet</th><th>Pet</th><th>Sub</th><th>Ned</th></tr></thead><tbody><tr><td class="pad"></td><td class="pad"></td><td class="pad"></td><td class="day today"><div class="dn">1</div><div class="ev ev-r" title="Ročište: Pripremno ročište — Proleter ca Grad NS"><span class="evt">Ročište</span> Proleter ca Grad NS</div><div class="ev ev-d" title="Rok: Rok: odgovor na tužbu — Jovanović ca Marković"><span class="evt">Rok</span> Jovanović ca Marković</div></td><td class="day"><div class="dn">2</div><div class="ev ev-r" title="Ročište: Glavna rasprava — Lukić ca Delta osig."><span class="evt">Ročište</span> Lukić ca Delta osig.</div></td><td class="day we"><div class="dn">3</div><div class="ev ev-d" title="Rok: Rok: dostava dokaza — Ilić ca Cvilić"><span class="evt">Rok</span> Ilić ca Cvilić</div></td><td class="day we"><div class="dn">4</div></td></tr><tr><td class="day"><div class="dn">5</div></td><td class="day"><div class="dn">6</div><div class="ev ev-r" title="Ročište: Saslušanje svedoka — Petrović ca Petrović"><span class="evt">Ročište</span> Petrović ca Petrović</div></td><td class="day"><div class="dn">7</div></td><td class="day"><div class="dn">8</div><div class="ev ev-d" title="Rok: Rok: podnesak — Proleter ca Grad NS"><span class="evt">Rok</span> Proleter ca Grad NS</div></td><td class="day"><div class="dn">9</div></td><td class="day we"><div class="dn">10</div></td><td class="day we"><div class="dn">11</div></td></tr><tr><td class="day"><div class="dn">12</div></td><td class="day"><div class="dn">13</div></td><td class="day"><div class="dn">14</div><div class="ev ev-r" title="Ročište: Glavna rasprava — Ilić ca Cvilić"><span class="evt">Ročište</span> Ilić ca Cvilić</div></td><td class="day"><div class="dn">15</div></td><td class="day"><div class="dn">16</div></td><td class="day we"><div class="dn">17</div></td><td class="day we"><div class="dn">18</div></td></tr><tr><td class="day"><div class="dn">19</div></td><td class="day"><div class="dn">20</div><div class="ev ev-r" title="Ročište: Žalbeno veće — Lukić ca Delta osig."><span class="evt">Ročište</span> Lukić ca Delta osig.</div></td><td class="day"><div class="dn">21</div></td><td class="day"><div class="dn">22</div><div class="ev ev-d" title="Rok: Rok: dostava dokaza — Jovanović ca Marković"><span class="evt">Rok</span> Jovanović ca Marković</div></td><td class="day"><div class="dn">23</div></td><td class="day we"><div class="dn">24</div></td><td class="day we"><div class="dn">25</div></td></tr><tr><td class="day"><div class="dn">26</div></td><td class="day"><div class="dn">27</div><div class="ev ev-r" title="Ročište: Glavna rasprava — Jovanović ca Marković"><span class="evt">Ročište</span> Jovanović ca Marković</div></td><td class="day"><div class="dn">28</div></td><td class="day"><div class="dn">29</div></td><td class="day"><div class="dn">30</div></td><td class="day we"><div class="dn">31</div></td><td class="pad"></td></tr></tbody></table></div></div>
       </div>
     </div></div>
   </div>
