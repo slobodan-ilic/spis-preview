@@ -77,6 +77,7 @@
   .btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
   .btn.pri:hover{background:var(--accent-2);}
   .btn.icon{padding:7px 10px;}
+  .btn.crit{background:var(--crit);color:#fff;border-color:var(--crit);}
   .btn:hover{border-color:var(--ink-3);}
   .nh{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:20px;}
   .nh svg{width:12px;height:12px;}
@@ -233,6 +234,7 @@
   .sec2{font-family:var(--serif);font-size:16px;font-weight:600;margin:22px 0 12px;}
   .ux-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:start;}
   .ux-grid.wide2{grid-template-columns:repeat(2,1fr);}
+  .ux-grid.g3{grid-template-columns:repeat(3,1fr);}
   .card.ux{overflow:hidden;}
   .ux-h{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);padding:10px 14px;border-bottom:1px solid var(--line);background:var(--surface-2);}
   .ux-b{padding:14px;}
@@ -243,12 +245,13 @@
   .sk{height:12px;border-radius:6px;background:linear-gradient(90deg,var(--surface-2),var(--surface-3),var(--surface-2));background-size:200% 100%;animation:shine 1.3s infinite;margin-bottom:9px;}
   .sk1{width:70%;} .sk2{width:100%;} .sk3{width:45%;}
   @keyframes shine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+  @media (prefers-reduced-motion:reduce){ .sk{animation:none;} }
   .banner{font-size:12.5px;line-height:1.5;border-radius:8px;padding:10px 12px;}
-  .banner.err{color:#8a2018;background:#fbe7e5;border:1px solid #f0c3bd;}
+  .banner.err{color:var(--crit);background:var(--crit-soft);border:1px solid var(--line-2);}
   .banner.lock{color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line-2);}
   .perm-ok{font-size:12.5px;color:var(--good);background:var(--good-soft);border:1px solid var(--line-2);border-radius:8px;padding:10px 12px;}
-  .toast{font-size:12.5px;color:#fff;background:#2e6a4e;border-radius:8px;padding:9px 12px;margin-bottom:8px;box-shadow:0 6px 18px rgba(0,0,0,.18);}
-  .toast.warn2{background:#8f6416;}
+  .toast{font-size:12.5px;color:var(--good);background:var(--good-soft);border:1px solid var(--line-2);border-radius:8px;padding:9px 12px;margin-bottom:8px;}
+  .toast.warn2{color:var(--warn);background:var(--warn-soft);}
   .dlg{background:var(--surface);border:1px solid var(--line-2);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);overflow:hidden;}
   .dlg-h{font-family:var(--serif);font-size:15px;font-weight:600;padding:13px 15px;border-bottom:1px solid var(--line);}
   .dlg-b{padding:14px 15px;font-size:13px;line-height:1.55;color:var(--ink-2);}
@@ -260,16 +263,17 @@
   .srch-res a small{display:block;color:var(--ink-3);font-family:var(--mono);font-size:10px;font-weight:400;}
   .srch-res .caa{font-family:var(--serif);font-style:italic;color:var(--accent);padding:0 2px;}
   .dp{border:1px solid var(--line-2);border-radius:8px;padding:10px;}
-  .dp-h{font-size:12.5px;font-weight:600;text-align:center;margin-bottom:8px;}
+  .dp-h{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:600;margin-bottom:8px;}
+  .dp-x{text-decoration:none;color:var(--ink-3);font-size:15px;padding:0 6px;}
   .dp-g{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;}
   .dp-g span{font-family:var(--mono);font-size:9px;color:var(--ink-3);}
-  .dp-g i{font-style:normal;font-size:12px;padding:4px 0;border-radius:6px;color:var(--ink-2);}
-  .dp-g i.on{background:var(--accent);color:var(--accent-ink);font-weight:600;}
+  .dp-g b{height:0;} .dp-g i{font-style:normal;font-size:12px;padding:6px 0;border-radius:6px;color:var(--ink-2);}
+  .dp-g i.on{background:var(--accent);color:var(--accent-ink);font-weight:700;}
   .pag{display:flex;align-items:center;justify-content:space-between;gap:10px;}
   .pag .mono{font-size:11.5px;color:var(--ink-3);}
   .inv-note{font-size:11.5px;color:var(--ink-3);margin-top:16px;line-height:1.5;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:11px 13px;}
-  @media (max-width:1000px){ .ux-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:620px){ .ux-grid,.ux-grid.wide2{grid-template-columns:1fr;} }
+  @media (max-width:1000px){ .ux-grid{grid-template-columns:repeat(2,1fr);} .ux-grid.g3{grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:620px){ .ux-grid,.ux-grid.wide2,.ux-grid.g3{grid-template-columns:1fr;} }
 
   /* mobile nav drawer */
   .burger{display:none;background:none;border:0;padding:6px;margin:-2px 2px -2px -4px;color:var(--ink);cursor:pointer;}
@@ -330,28 +334,32 @@
       </div>
 
       <h2 class="sec2">Dozvole — ko šta vidi</h2>
-      <div class="ux-grid">
+      <div class="ux-grid g3">
         <div class="card ux"><div class="ux-h">Vlasnik</div><div class="ux-b"><div class="perm-ok">Sve — uklj. interni novac i raspodelu.</div></div></div>
-        <div class="card ux"><div class="ux-h">Advokat</div><div class="ux-b"><div class="banner lock">🔒 Interni novac i raspodelu vidi samo vlasnik.</div><div class="hint">Vidi svoje predmete, sate i fakture.</div></div></div>
+        <div class="card ux"><div class="ux-h">Advokat</div><div class="ux-b"><div class="hint">Vidi svoje predmete, sate, fakture i <b>svoju zaradu</b>.</div><div class="banner lock">🔒 Tuđu zaradu i raspodelu vidi samo vlasnik.</div></div></div>
         <div class="card ux"><div class="ux-h">Pripravnik</div><div class="ux-b"><div class="banner lock">🔒 Nema pristup iznosima.</div><div class="hint">Vidi samo dodeljene predmete i zadatke.</div></div></div>
       </div>
 
       <h2 class="sec2">Dijalozi (potvrde)</h2>
       <div class="ux-grid wide2">
-        <div class="dlg"><div class="dlg-h">Storniraj fakturu?</div><div class="dlg-b">Faktura <b>SS‑2026‑0031</b> će biti stornirana. Broj se <b>zadržava</b> (bez rupa); ispravka se radi novom fakturom. Uplate prelaze na avans.</div><div class="dlg-f"><button class="btn sm2">Odustani</button><button class="btn pri sm2">Storniraj</button></div></div>
+        <div class="dlg"><div class="dlg-h">Storniraj fakturu?</div><div class="dlg-b">Faktura <b>SS‑2026‑0031</b> će biti stornirana. Broj se <b>zadržava</b> (bez rupa); ispravka se radi novom fakturom. Uplate prelaze na avans.</div><div class="dlg-f"><button class="btn sm2">Odustani</button><button class="btn crit sm2">Storniraj</button></div></div>
         <div class="dlg"><div class="dlg-h">Brisanje nije moguće</div><div class="dlg-b">Finansijski zapis (faktura, uplata, raspodela) <b>ne može da se obriše</b> — čuva se trag. Koristi <b>Storno</b>.</div><div class="dlg-f"><button class="btn pri sm2">U redu</button></div></div>
-        <div class="dlg"><div class="dlg-h">Nesačuvane izmene</div><div class="dlg-b">Imaš izmene koje nisu sačuvane. Napustiti stranicu?</div><div class="dlg-f"><button class="btn sm2">Ostani</button><button class="btn pri sm2">Napusti</button></div></div>
-        <div class="dlg"><div class="dlg-h">⚠ Mogući sukob interesa</div><div class="dlg-b">„Grad Novi Sad" se već pojavljuje kao <b>protivna strana</b> u predmetu 2026‑0031. Proveri pre nego što nastaviš.</div><div class="dlg-f"><button class="btn sm2">Odustani</button><button class="btn pri sm2">Razumem, nastavi</button></div></div>
+        <div class="dlg"><div class="dlg-h">Nesačuvane izmene</div><div class="dlg-b">Imaš izmene koje nisu sačuvane.</div><div class="dlg-f"><button class="btn sm2">Nastavi uređivanje</button><button class="btn crit sm2">Odbaci izmene</button></div></div>
+        <div class="dlg"><div class="dlg-h">⚠ Mogući sukob interesa</div><div class="dlg-b">„Grad Novi Sad" se već pojavljuje kao <b>protivna strana</b> (predmet U 123/26, vodi Strahinja, aktivan) i kao <b>bivši klijent</b>. Proveri pre nego što nastaviš. Upozorenje ne blokira; „Razumem" se beleži.</div><div class="dlg-f"><button class="btn sm2">Odustani</button><button class="btn pri sm2">Razumem, nastavi</button></div></div>
+        <div class="dlg"><div class="dlg-h">Zatvoriti predmet sa dugom?</div><div class="dlg-b">Predmet ima <b>80.000 RSD za naplatu</b>. Zatvaranjem ostaje evidentirano potraživanje. Nastaviti?</div><div class="dlg-f"><button class="btn sm2">Odustani</button><button class="btn pri sm2">Zatvori predmet</button></div></div>
+        <div class="dlg"><div class="dlg-h">Obrisati dokument?</div><div class="dlg-b">„Nalaz veštaka.pdf" će biti obrisan. (Fakture i uplate se ne brišu — za njih je Storno.)</div><div class="dlg-f"><button class="btn sm2">Odustani</button><button class="btn crit sm2">Obriši</button></div></div>
+        <div class="dlg"><div class="dlg-h">⚠ Preklapanje ročišta</div><div class="dlg-b">Strahinja već ima ročište 01.10. u 14:00 (Proleter ca Grad NS). Novo ročište se preklapa. Zakazati svejedno?</div><div class="dlg-f"><button class="btn sm2">Izmeni vreme</button><button class="btn pri sm2">Zakaži svejedno</button></div></div>
+        <div class="dlg"><div class="dlg-h">⚠ Paušal ne pokriva ovu radnju</div><div class="dlg-b">Ročišta i podnesci se uvek tarifiraju — ne ulaze u paušal. Dodati kao tarifnu radnju?</div><div class="dlg-f"><button class="btn sm2">Otkaži</button><button class="btn pri sm2">Dodaj kao tarifu</button></div></div>
       </div>
 
       <h2 class="sec2">Elementi</h2>
       <div class="ux-grid">
-        <div class="card ux"><div class="ux-h">Globalna pretraga</div><div class="ux-b"><div class="srch"><input class="inp" value="prolet" readonly><div class="srch-res"><div class="sg">Predmeti</div><a href="#">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>2026‑0031</small></a><div class="sg">Klijenti</div><a href="#">Proleter Gradnja d.o.o.<small>PIB 100222333</small></a><div class="sg">Fakture</div><a href="#">SS‑2026‑0032<small>115.000 · nacrt</small></a></div></div></div></div>
-        <div class="card ux"><div class="ux-h">Izbor datuma</div><div class="ux-b"><div class="dp"><div class="dp-h">oktobar 2026</div><div class="dp-g"><span>p</span><span>u</span><span>s</span><span>č</span><span>p</span><span>s</span><span>n</span><i>1</i><i>2</i><i>3</i><i>4</i><i class="on">5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>10</i></div></div></div></div>
+        <div class="card ux"><div class="ux-h">Globalna pretraga</div><div class="ux-b"><div class="hint" style="margin-bottom:6px">Pretraga po: stranke, broj predmeta, sudski broj, PIB/JMBG, broj fakture. Min 2 znaka · rezultati filtrirani po ulozi · stanja: prazno / nema rezultata / učitavanje. Na telefonu: pretraga preko celog ekrana.</div><div class="srch"><input class="inp" value="prolet" readonly><div class="srch-res"><div class="sg">Predmeti</div><a href="#">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>2026‑0031 · U 123/26 · protivna: Grad NS</small></a><div class="sg">Klijenti</div><a href="#">Proleter Gradnja d.o.o.<small>PIB 100222333</small></a><div class="sg">Fakture</div><a href="#">SS‑2026‑0032<small>115.000 · nacrt</small></a></div></div></div></div>
+        <div class="card ux"><div class="ux-h">Izbor datuma</div><div class="ux-b"><div class="dp"><div class="dp-h"><a class="dp-x" href="#">‹</a><span>oktobar 2026</span><a class="dp-x" href="#">›</a></div><div class="dp-g"><span>p</span><span>u</span><span>s</span><span>č</span><span>p</span><span>s</span><span>n</span><b></b><b></b><b></b><i class="on">1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>10</i><i>11</i><i>12</i><i>13</i><i>14</i><i>15</i><i>16</i><i>17</i><i>18</i><i>19</i><i>20</i><i>21</i><i>22</i><i>23</i><i>24</i><i>25</i><i>26</i><i>27</i><i>28</i><i>29</i><i>30</i><i>31</i></div><div class="hint" style="margin-top:7px">Danas = 01.10. Nedelja počinje ponedeljkom.</div></div></div></div>
         <div class="card ux"><div class="ux-h">Paginacija</div><div class="ux-b"><div class="pag"><span class="mono">Prikazano 8 od 19</span><button class="btn sm2">Učitaj još →</button></div></div></div>
         <div class="card ux"><div class="ux-h">Filteri (čipovi)</div><div class="ux-b"><div class="chips" style="margin:0"><span class="chip on">Svi</span><span class="chip">Aktivni</span><span class="chip">Moji</span></div></div></div>
       </div>
-      <div class="inv-note">Sve navedeno radi i na telefonu: dijalozi se centriraju i skroluju unutar sebe, pretraga i kalendar se prilagođavaju širini, tabele prelaze u kartice. Boje, fontovi i komponente su jedinstveni kroz celu aplikaciju (oxblood + ink, Spectral/IBM Plex, svetla i tamna tema).</div>
+      <div class="inv-note">Na telefonu: dijalozi se prikazuju centrirano (ili kao donja fioka), <b>max‑visina 90dvh sa unutrašnjim skrolom</b>, dugmad puna širine; pretraga ide preko celog ekrana; tabele prelaze u kartice. Destruktivne radnje (Storno, Obriši, Odbaci) su crvene. Boje/fontovi/komponente su jedinstveni (oxblood + ink, Spectral/IBM Plex, svetla i tamna tema).</div>
     </div></div>
   </div>
 
