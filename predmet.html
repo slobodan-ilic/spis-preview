@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spis — Kontrolna tabla</title>
+<title>Spis — Predmet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -216,44 +216,16 @@
     .row .rt{margin-left:0;width:100%;}
   }
   @media (max-width:380px){ .inst-body{grid-template-columns:1fr;} }
-
-  /* ---- dashboard ---- */
-  .greet h1{font-family:var(--serif);font-weight:600;font-size:26px;margin:0 0 3px;}
-  .greet .date{font-size:13px;color:var(--ink-3);font-family:var(--mono);}
-  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0;}
-  .tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:15px 16px;}
-  .tile .tn{font-family:var(--mono);font-size:26px;font-weight:600;letter-spacing:-.01em;line-height:1;}
-  .tile .tl{font-size:12px;color:var(--ink-2);margin-top:7px;}
-  .tile.alert .tn{color:var(--warn);}
-  .dash-cols{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;}
-  .matter-link a{color:var(--ink);text-decoration:none;font-weight:600;}
-  .matter-link a:hover{color:var(--accent);}
-  .matter-link .caa{font-family:var(--serif);font-style:italic;color:var(--accent);padding:0 3px;}
-  .matter-link small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);font-weight:400;margin-top:2px;}
-  .wl-legend{display:flex;gap:16px;padding:12px 16px 4px;font-size:11px;color:var(--ink-2);font-family:var(--mono);}
-  .wl-legend .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:middle;}
-  .wl-row{display:flex;align-items:center;gap:11px;padding:11px 16px;border-top:1px solid var(--line);}
-  .wl-row .ini{width:26px;height:26px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:10.5px;font-weight:600;font-family:var(--mono);flex:none;}
-  .wl-row .nm{font-size:13px;font-weight:600;width:88px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .wl-metrics{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;}
-  .wl-m{display:flex;align-items:center;gap:8px;}
-  .wl-m .wl-k{font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);width:48px;flex:none;}
-  .wl-m .track{flex:1;height:7px;background:var(--surface-3);border-radius:4px;overflow:hidden;min-width:36px;}
-  .wl-m .track > i{display:block;height:100%;border-radius:4px;}
-  .wl-m.cases .track > i{background:var(--accent);}
-  .wl-m.tasks .track > i{background:var(--ink-3);}
-  .wl-m .wl-n{font-family:var(--mono);font-size:12px;color:var(--ink);width:20px;text-align:right;flex:none;}
-  @media (max-width:1000px){ .tiles{grid-template-columns:repeat(2,1fr);} .dash-cols{grid-template-columns:1fr;} }
-  @media (max-width:560px){ .tiles{grid-template-columns:1fr 1fr;} }
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="side">
+  <!-- SIDEBAR -->
+  <aside class="side">
     <div class="brand"><span class="mark">S</span><b>Spis</b><span>demo</span></div>
     <nav class="nav">
-      <a class="on" href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
-      <a href="predmet.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti<span class="ct">6</span></a>
+      <a href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
+      <a class="on" href="predmet.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti<span class="ct">6</span></a>
       <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2.4"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/><path d="M11 6.5c1.3.3 2.3 1.4 2.3 2.8"/></svg>Klijenti</a>
       <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6h12M5.5 1.5v3M10.5 1.5v3"/></svg>Kalendar</a>
       <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
@@ -269,77 +241,160 @@
     <div class="me"><span class="ava">SS</span><div><div class="nm">Strahinja Selaković</div><div class="rl">Partner · vlasnik</div></div></div>
   </aside>
 
+  <!-- MAIN -->
   <div class="main">
     <div class="top">
       <span class="mbrand"><span class="mark">S</span>Spis</span>
-      <div class="crumb"><b>Kontrolna tabla</b></div>
+      <div class="crumb"><b>Predmeti</b> / <span class="mono">2026-0042</span></div>
       <div class="search"><input placeholder="Pretraga predmeta, klijenata, faktura…" aria-label="Pretraga"></div>
       <span class="demo">DEMO · primer podaci</span>
       <button class="btn pri">+ Brzo kreiranje</button>
     </div>
-    <div class="scroll"><div class="wrap">
 
-      <div class="greet">
-        <h1>Dobar dan, Strahinja</h1>
-        <div class="date">sreda, 1. oktobar 2026 · Advokatska kancelarija Selaković</div>
-      </div>
+    <div class="scroll">
+      <div class="wrap">
 
-      <div class="tiles">
-        <div class="tile"><div class="tn">19</div><div class="tl">Aktivni predmeti</div></div>
-        <div class="tile"><div class="tn">33</div><div class="tl">Otvoreni zadaci</div></div>
-        <div class="tile"><div class="tn">4</div><div class="tl">Ročišta ove nedelje</div></div>
-        <div class="tile alert"><div class="tn">6</div><div class="tl">Rokovi ističu ≤ 7 dana</div></div>
-      </div>
+        <!-- header -->
+        <div class="head">
+          <div>
+            <div class="no"><span class="caseno">2026-0042</span><span class="pill ok">Aktivan</span><span class="nh"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.6V8l2.3 1.4"/></svg>Sledeće ročište · 14.10. u 09:00</span></div>
+            <h1>Slobodan Ilić <span class="ca">ca</span> Radmila Cvilić</h1>
+            <div class="subtitle">Naplata potraživanja po ugovoru o zajmu</div>
+            <div class="counsel-line"><span><b>klijent</b>Slobodan Ilić</span><span><b>protivna</b>Radmila Cvilić</span><span><b>njihov advokat</b>Nenad Kovač</span></div>
+          </div>
+          <div class="acts">
+            <button class="btn">+ Unesi rad / vreme</button>
+            <button class="btn pri">Nova faktura</button>
+            <button class="btn">Izmeni</button>
+            <button class="btn icon" aria-label="Više">⋯</button>
+          </div>
+        </div>
 
-      <div class="dash-cols">
-        <div>
-          <div class="card">
-            <div class="ch"><h2>Rokovi i ročišta</h2><a class="lnk" href="#">Svi rokovi</a></div>
-            <div class="rows">
-              <div class="row"><span class="when">danas · 12:00</span><span class="ti">Rok: odgovor na tužbu<small>Jovanović ca Marković · 2026-0039</small></span><span class="rt"><span class="pill crit">Danas</span></span></div>
-              <div class="row"><span class="when">danas · 14:00</span><span class="ti">Ročište: pripremno ročište<small>Proleter Gradnja ca Grad NS · 2026-0031</small></span><span class="rt"><span class="pill crit">Danas</span></span></div>
-              <div class="row"><span class="when">02. okt · 09:00</span><span class="ti">Ročište: glavna rasprava<small>Lukić ca Delta osiguranje · 2026-0028</small></span><span class="rt"><span class="pill warn">Sutra</span></span></div>
-              <div class="row"><span class="when">03. okt · 12:00</span><span class="ti">Rok: dostava dokaza i predlog za veštačenje<small>Ilić ca Cvilić · 2026-0042</small></span><span class="rt"><span class="pill warn">Za 2 dana</span></span></div>
-              <div class="row"><span class="when">06. okt · 10:00</span><span class="ti">Ročište: saslušanje svedoka<small>Petrović ca Petrović · 2026-0017</small></span><span class="rt"><span class="pill mut">Za 5 dana</span></span></div>
+        <!-- sudski podaci / instance -->
+        <div class="instance">
+          <div class="inst-tabs">
+            <button class="on"><span class="dot"></span>Prvostepeni · <span class="mono">P. 1650/24</span></button>
+            <button disabled><span class="dot"></span>Žalbeni</button>
+            <button disabled><span class="dot"></span>Revizija</button>
+            <button class="add" title="Dodaj instancu">+ instanca</button>
+          </div>
+          <div class="inst-body">
+            <div class="cell"><div class="k">Sud</div><div class="v">Osnovni sud u Novom Sadu</div></div>
+            <div class="cell"><div class="k">Sudija</div><div class="v">Olivera Bila</div></div>
+            <div class="cell"><div class="k">Sudnica / sprat</div><div class="v">soba 30 · II sprat</div></div>
+            <div class="cell"><div class="k">Broj predmeta</div><div class="v mono">P. 1650/24</div></div>
+            <div class="cell"><div class="k">Vrednost spora</div><div class="v mono">120.000,00 RSD</div></div>
+            <div class="cell"><div class="k">Faza postupka</div><div class="v">Glavna rasprava</div></div>
+          </div>
+        </div>
+
+        <!-- section tabs -->
+        <nav class="tabs">
+          <a class="on" href="#">Pregled</a>
+          <a href="#">Ročišta <span class="ct">2</span></a>
+          <a href="#">Rokovi <span class="ct">3</span></a>
+          <a href="#">Beleške <span class="ct">4</span></a>
+          <a href="#">Dokumenti <span class="ct">6</span></a>
+          <a href="#">Fakture <span class="ct">2</span></a>
+          <a href="#">Vreme</a>
+          <a href="#">Istorija faza</a>
+        </nav>
+
+        <!-- overview -->
+        <div class="cols">
+          <!-- left -->
+          <div>
+            <div class="card">
+              <div class="ch"><h2>Osnovne informacije</h2><a class="lnk" href="#">Izmeni</a></div>
+              <div class="cb">
+                <div class="kv">
+                  <div><div class="k">Oblast prava</div><div class="v">Obligaciono pravo</div></div>
+                  <div><div class="k">Tip predmeta</div><div class="v">Parnični postupak</div></div>
+                  <div><div class="k">Datum otvaranja</div><div class="v mono">31.08.2026.</div></div>
+                  <div><div class="k">Zaduženi advokati</div><div class="v">Strahinja S. · Vladan · Stefan</div></div>
+                  <div><div class="k">Način obračuna</div><div class="v">Paušal + tarifa (ročišta)</div></div>
+                  <div class="full"><div class="k">Opis</div><p class="desc">Klijent potražuje isplatu duga po ugovoru o zajmu sa zateznom kamatom. Tuženi osporava visinu duga; potrebno pribaviti izvod iz poslovnih knjiga i uskladiti obračun kamate do dana veštačenja.</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="ch"><h2>Ročišta i rokovi</h2><a class="lnk" href="#">Zakaži ročište</a></div>
+              <div class="rows">
+                <div class="row">
+                  <span class="when">03. okt · 12:00</span>
+                  <span class="ti">Podnesak — dostava dokaza i predlog za veštačenje<small>Rok za podnesak</small></span>
+                  <span class="rt"><span class="pill warn">Za 5 dana</span></span>
+                </div>
+                <div class="row">
+                  <span class="when">14. okt · 09:00</span>
+                  <span class="ti">Glavna rasprava<small>Osnovni sud u NS · soba 30 · Strahinja, Vladan</small></span>
+                  <span class="rt"><span class="pill mut">Za 16 dana</span></span>
+                </div>
+                <div class="sec">Završeno</div>
+                <div class="row">
+                  <span class="when">10. sep · —</span>
+                  <span class="ti">Odgovor na tužbu<small>Vladan Bošnjak</small></span>
+                  <span class="rt"><span class="pill ok">Završeno</span></span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="card">
-            <div class="ch"><h2>Predmeti u fokusu</h2><a class="lnk" href="predmet.html">Svi predmeti</a></div>
-            <div class="rows">
-              <div class="row"><span class="ti matter-link"><a href="predmet.html">Ilić <span class="caa">ca</span> Cvilić</a><small>2026-0042 · naplata duga po ugovoru o zajmu</small></span><span class="rt"><span class="pill mut">ročište 14.10</span></span></div>
-              <div class="row"><span class="ti matter-link"><a href="predmet.html">Proleter Gradnja <span class="caa">ca</span> Grad NS</a><small>2026-0031 · poništaj rešenja</small></span><span class="rt"><span class="pill crit">ročište danas</span></span></div>
-              <div class="row"><span class="ti matter-link"><a href="predmet.html">Lukić <span class="caa">ca</span> Delta osiguranje</a><small>2026-0028 · naknada štete</small></span><span class="rt"><span class="pill warn">ročište sutra</span></span></div>
-              <div class="row"><span class="ti matter-link"><a href="predmet.html">Jovanović <span class="caa">ca</span> Marković</a><small>2026-0039 · smetanje državine</small></span><span class="rt"><span class="pill crit">rok danas</span></span></div>
+          <!-- right rail -->
+          <div>
+            <div class="card money">
+              <div class="ch"><h2>Naplata</h2><span class="pill warn" style="font-size:11px">Delimično</span></div>
+              <div class="cb">
+                <div><span class="big num">96.000,00</span> <span class="cur">RSD · nagrada (fakturisano)</span></div>
+                <div class="split">
+                  <div><div class="k">Naplaćeno</div><div class="n ok">40.000,00</div></div>
+                  <div><div class="k">Za naplatu</div><div class="n out">56.000,00</div></div>
+                </div>
+                <div class="bar" role="img" aria-label="Naplaćeno 42%"><i style="width:42%"></i></div>
+                <div class="barcap"><span>42% naplaćeno</span><span>RSD</span></div>
+                <div class="costs">
+                  <div class="k">Troškovi — predujam za klijenta</div>
+                  <div class="crow"><span>Predujmljeno (taksa, veštačenje)</span><span class="mono">18.000,00</span></div>
+                  <div class="crow"><span>Za refundaciju</span><span class="mono out">18.000,00</span></div>
+                  <div class="cnote">Odvojeno od nagrade — klijentov trošak koji se refundira; ne ulazi u zaradu ni u „za naplatu“ iznad.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card contrib">
+              <div class="ch"><h2>Vreme i doprinos</h2><a class="lnk" href="#">Detaljno</a></div>
+              <div class="cb">
+                <div class="tot"><span style="color:var(--ink-2);font-size:12.5px">Ukupno na predmetu</span><b>11 h 00 min</b></div>
+                <div class="lw"><span class="ini">SS</span><span class="nm">Strahinja S.</span><span class="track"><i style="width:45%"></i></span><span class="hr">5 h 00 m</span><span class="pc">45%</span></div>
+                <div class="lw"><span class="ini">VB</span><span class="nm">Vladan B.</span><span class="track"><i style="width:27%"></i></span><span class="hr">3 h 00 m</span><span class="pc">27%</span></div>
+                <div class="lw"><span class="ini">SP</span><span class="nm">Stefan P.</span><span class="track"><i style="width:27%"></i></span><span class="hr">3 h 00 m</span><span class="pc">27%</span></div>
+                <p class="note">Doprinos je predlog za raspodelu naplaćenog — konačnu podelu postavljaš ručno po uplati. Interno, ne prikazuje se klijentu.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="ch"><h2>Punomoćje</h2><a class="lnk" href="#">Otvori</a></div>
+              <div class="cb">
+                <div class="mini"><div><div class="k">Obim</div><div class="v">Opšte punomoćje</div></div></div>
+                <div class="mini"><div><div class="k">Izdato</div><div class="v mono">12.01.2026.</div></div><div style="margin-left:auto"><div class="k">Advokat</div><div class="v">Strahinja S.</div></div></div>
+              </div>
+            </div>
+
+            <div class="card feed">
+              <div class="ch"><h2>Nedavne aktivnosti</h2></div>
+              <div class="cb">
+                <div class="fi"><span class="ini">VB</span><div class="tx"><b>Vladan</b> uneo vreme: 01:10 — priprema podneska<time>danas · 14:20</time></div></div>
+                <div class="fi"><span class="ini">SS</span><div class="tx"><b>Strahinja</b> izdao fakturu <span class="mono">SS-2026-0031</span> · 56.000 RSD<time>juče · 17:05</time></div></div>
+                <div class="fi"><span class="ini">SP</span><div class="tx"><b>Stefan</b> dodao dokument: <i>Izvod iz KPO.pdf</i><time>26.09. · 10:12</time></div></div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div>
-          <div class="card">
-            <div class="ch"><h2>Opterećenje tima</h2></div>
-            <div class="wl-legend"><span><span class="sw" style="background:var(--accent)"></span>aktivni predmeti</span><span><span class="sw" style="background:var(--ink-3)"></span>otvoreni zadaci</span></div>
-            <div>
-              <div class="wl-row"><span class="ini">SS</span><span class="nm">Strahinja S.</span><div class="wl-metrics"><div class="wl-m cases"><span class="wl-k">predmeti</span><span class="track"><i style="width:100%"></i></span><span class="wl-n">9</span></div><div class="wl-m tasks"><span class="wl-k">zadaci</span><span class="track"><i style="width:100%"></i></span><span class="wl-n">14</span></div></div></div>
-              <div class="wl-row"><span class="ini">VB</span><span class="nm">Vladan B.</span><div class="wl-metrics"><div class="wl-m cases"><span class="wl-k">predmeti</span><span class="track"><i style="width:67%"></i></span><span class="wl-n">6</span></div><div class="wl-m tasks"><span class="wl-k">zadaci</span><span class="track"><i style="width:57%"></i></span><span class="wl-n">8</span></div></div></div>
-              <div class="wl-row"><span class="ini">SP</span><span class="nm">Stefan P.</span><div class="wl-metrics"><div class="wl-m cases"><span class="wl-k">predmeti</span><span class="track"><i style="width:44%"></i></span><span class="wl-n">4</span></div><div class="wl-m tasks"><span class="wl-k">zadaci</span><span class="track"><i style="width:79%"></i></span><span class="wl-n">11</span></div></div></div>
-            </div>
-          </div>
-
-          <div class="card feed">
-            <div class="ch"><h2>Nedavne aktivnosti</h2></div>
-            <div class="cb">
-              <div class="fi"><span class="ini">VB</span><div class="tx"><b>Vladan</b> uneo rad: 01:10 — priprema podneska · Ilić ca Cvilić<time>danas · 14:20</time></div></div>
-              <div class="fi"><span class="ini">SS</span><div class="tx"><b>Strahinja</b> zakazao ročište · Proleter Gradnja ca Grad NS<time>danas · 11:40</time></div></div>
-              <div class="fi"><span class="ini">SP</span><div class="tx"><b>Stefan</b> dodao dokument: <i>Nalaz veštaka.pdf</i> · Lukić ca Delta<time>juče · 16:30</time></div></div>
-            </div>
-          </div>
-        </div>
       </div>
-
-    </div></div>
+    </div>
   </div>
-
 </div>
 </body>
 </html>
