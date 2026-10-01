@@ -247,6 +247,7 @@
   .inv-note{font-size:11.5px;color:var(--ink-3);padding:12px 16px;line-height:1.5;border-top:1px solid var(--line);}
   .chk{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;cursor:pointer;}
   .chk input{width:17px;height:17px;accent-color:var(--accent);}
+  .chk input:disabled{opacity:.55;cursor:not-allowed;}
   .osn{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);}
   .osn-inp{width:100%;font:inherit;font-size:12.5px;padding:7px 9px;border:1px solid var(--line-2);border-radius:7px;background:var(--surface);color:var(--ink);margin-top:2px;}
   .accsel{display:flex;gap:8px;margin-bottom:12px;}
@@ -269,7 +270,7 @@
   body.acc-eur-on .acc-eur{display:block;}
   body.acc-eur-on .acc-rsd{display:none;}
   @media (max-width:1000px){ .fakt-cols{grid-template-columns:1fr;} }
-  @media (max-width:700px){ .inv-wrap{display:none;} .inv-cards{display:block;} }
+  @media (max-width:700px){ .inv-wrap{display:none;} .inv-cards{display:block;} .fakt-h1{font-size:20px;} }
   @media (max-width:560px){ .meta2{grid-template-columns:1fr;} }
 
   /* mobile nav drawer */
@@ -304,7 +305,7 @@
       <div class="grp">Administracija</div>
       <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M14.5 8h-2M3.5 8h-2"/></svg>Podešavanja</a>
     </nav>
-    <div class="me"><span class="ava">SS</span><div><div class="nm">Strahinja Selaković</div><div class="rl">Partner · vlasnik</div></div></div>
+    <div class="me"><span class="ava">SS</span><div><div class="nm">Strahinja Selaković</div><div class="rl">Advokat · vlasnik kancelarije</div></div></div>
   </aside>
 
   <div class="main">
@@ -325,7 +326,7 @@
         </div>
         <div class="acts">
           <button class="btn">Sačuvaj nacrt</button>
-          <button class="btn pri">Izdaj fakturu</button>
+          <button class="btn pri">Izvezi za Višnju</button>
           <button class="btn icon" aria-label="Više">⋯</button>
         </div>
       </div>
@@ -344,8 +345,10 @@
                 <div class="m"><div class="k">Datum izdavanja</div><div class="v mono">01.10.2026.</div></div>
                 <div class="m"><div class="k">Datum prometa</div><div class="v mono">30.09.2026.</div></div>
                 <div class="m"><div class="k">Mesto izdavanja</div><div class="v">Novi Sad</div></div>
-                <div class="m"><div class="k">Poziv na broj (model 97)</div><div class="v mono">2026-0031</div></div>
+                <div class="m"><div class="k">Poziv na broj (interni)</div><div class="v mono">2026-0031</div></div>
               </div>
+              <div class="hint">Za klijenta fizičko lice: PIB/matični su opcioni, a JMBG se ne prikazuje na fakturi. Poziv na broj / model 97 — tačan format potvrđuje Višnja.</div>
+              <label class="fld" style="margin-top:12px"><span class="fl">Napomena (štampa se na dnu fakture)</span><input class="osn-inp" value="Hvala na saradnji."></label>
             </div>
           </div>
 
@@ -374,7 +377,7 @@
             <div class="inv-wrap">
               <div class="lhead"><div>Opis</div><div class="r">JM</div><div class="r">Kol</div><div class="r">Cena</div><div class="r">Iznos</div></div>
               <div class="lgrp">Paušal</div>
-              <div class="lrow"><div class="opis">Paušal za oktobar 2026 — pravno praćenje i konsultacije</div><div class="r">mes.</div><div class="r">1</div><div class="r">30.000,00</div><div class="r">30.000,00</div></div>
+              <div class="lrow"><div class="opis">Paušal za septembar 2026 — pravno praćenje i konsultacije</div><div class="r">mes.</div><div class="r">1</div><div class="r">30.000,00</div><div class="r">30.000,00</div></div>
               <div class="lgrp">Po advokatskoj tarifi</div>
               <div class="lrow"><div class="opis">Zastupanje na ročištu 12.09.2026.<div class="sub">Tarifa · vrednost spora 1.200.000 · tar. br. 2</div></div><div class="r">kom</div><div class="r">1</div><div class="r">16.000,00</div><div class="r">16.000,00</div></div>
               <div class="lrow"><div class="opis">Sastav žalbe<div class="sub">Tarifa · pravni lek · tar. br. 4</div></div><div class="r">kom</div><div class="r">1</div><div class="r">24.000,00</div><div class="r">24.000,00</div></div>
@@ -386,13 +389,13 @@
             </div>
             <div class="inv-cards">
               <div class="lcg">Paušal</div>
-              <div class="lc"><div class="lc-o">Paušal za oktobar 2026 — pravno praćenje</div><div class="lc-v"><span>1 × 30.000,00</span><b>30.000,00</b></div></div>
+              <div class="lc"><div class="lc-o">Paušal za septembar 2026 — pravno praćenje</div><div class="lc-v"><span>1 × 30.000,00</span><b>30.000,00</b></div></div>
               <div class="lcg">Po advokatskoj tarifi</div>
-              <div class="lc"><div class="lc-o">Zastupanje na ročištu 12.09.<div class="sub">Tarifa · vrsp 1.200.000 · tar. br. 2</div></div><div class="lc-v"><span>1 × 16.000,00</span><b>16.000,00</b></div></div>
-              <div class="lc"><div class="lc-o">Sastav žalbe<div class="sub">Tarifa · pravni lek</div></div><div class="lc-v"><span>1 × 24.000,00</span><b>24.000,00</b></div></div>
+              <div class="lc"><div class="lc-o">Zastupanje na ročištu 12.09.<div class="sub">Tarifa · vrednost spora 1.200.000 · tar. br. 2</div></div><div class="lc-v"><span>1 × 16.000,00</span><b>16.000,00</b></div></div>
+              <div class="lc"><div class="lc-o">Sastav žalbe<div class="sub">Tarifa · pravni lek · tar. br. 4</div></div><div class="lc-v"><span>1 × 24.000,00</span><b>24.000,00</b></div></div>
               <div class="lcg">Po satu</div>
               <div class="lc"><div class="lc-o">Savetovanje i prepiska (3h)</div><div class="lc-v"><span>3 × 9.000,00</span><b>27.000,00</b></div></div>
-              <div class="lcg">Troškovi — u ime klijenta (bez PDV-a)</div>
+              <div class="lcg">Troškovi — u ime i za račun klijenta (bez PDV-a)</div>
               <div class="lc"><div class="lc-o">Sudska taksa na tužbu</div><div class="lc-v"><span>1 × 12.000,00</span><b>12.000,00</b></div></div>
               <div class="lc"><div class="lc-o">Veštačenje — predujam</div><div class="lc-v"><span>1 × 6.000,00</span><b>6.000,00</b></div></div>
             </div>
@@ -404,10 +407,11 @@
           <div class="card">
             <div class="ch"><h2>PDV</h2></div>
             <div class="cb">
-              <label class="chk"><input type="checkbox" id="pdvtgl"><span>Račun sa PDV-om (20%)</span></label>
+              <label class="chk"><input type="checkbox" id="pdvtgl" disabled><span>Račun sa PDV-om (20%)</span></label>
+              <div class="hint">PDV status se povlači iz izabranog advokata (Podešavanja → Advokati). Da li advokat van sistema PDV-a ikada izdaje sa PDV-om — pitanje za Strahinju/Višnju.</div>
               <div class="osn nopdv-only">
-                <div class="fl">Osnov izuzeća od PDV-a (štampa se na fakturi)</div>
-                <input class="osn-inp" value="PDV nije obračunat — obveznik nije u sistemu PDV-a (čl. 33 Zakona o PDV-u)">
+                <label class="fl" for="osn-inp">Osnov izuzeća od PDV-a (štampa se na fakturi)</label>
+                <input class="osn-inp" id="osn-inp" value="PDV nije obračunat — obveznik nije u sistemu PDV-a (čl. 33 Zakona o PDV-u)">
                 <div class="hint">Tačan član/tekst potvrditi sa Višnjom.</div>
               </div>
               <div class="hint pdv-only">Obračunava se PDV po stopi 20% na osnovicu nagrade (troškovi su bez PDV-a).</div>
@@ -422,16 +426,16 @@
                 <label class="rchip"><input type="radio" name="acc" id="acceur"><span>Devizni · EUR</span></label>
               </div>
               <div class="acc-rsd">
-                <div class="kv2"><div class="k">Banka</div><div class="v">Banca Intesa</div></div>
+                <div class="kv2"><div class="k">Banka</div><div class="v" id="acc-rsd-bank">Banca Intesa</div></div>
                 <div class="kv2"><div class="k">Račun</div><div class="v mono" id="acc-rsd-no">160-0000123456-78</div></div>
                 <div class="kv2"><div class="k">Valuta</div><div class="v">RSD</div></div>
               </div>
               <div class="acc-eur">
-                <div class="kv2"><div class="k">Banka</div><div class="v">Banca Intesa</div></div>
-                <div class="kv2"><div class="k">IBAN</div><div class="v mono" id="acc-eur-iban">RS35 1600 0000 1234 5678</div></div>
+                <div class="kv2"><div class="k">Banka</div><div class="v" id="acc-eur-bank">Banca Intesa</div></div>
+                <div class="kv2"><div class="k">IBAN</div><div class="v mono" id="acc-eur-iban">RS35 1600 0000 0123 4567 89</div></div>
                 <div class="kv2"><div class="k">SWIFT / BIC</div><div class="v mono" id="acc-swift">DBDBRSBG</div></div>
                 <div class="kv2"><div class="k">Valuta</div><div class="v">EUR</div></div>
-                <div class="hint">Instrukcije za devizne uplate (korespondentna banka) štampaju se na fakturi. Preračun po kursu NBS na dan — potvrditi sa Višnjom.</div>
+                <div class="hint">Brojevi računa su primer. Instrukcije za devizne uplate (korespondentna banka) štampaju se na fakturi. Preračun po kursu NBS i da li se domaćem klijentu sme fakturisati u EUR — potvrditi sa Višnjom.</div>
               </div>
             </div>
           </div>
@@ -451,8 +455,8 @@
                 <div class="kv2"><div class="k">Način plaćanja</div><div class="v">Virman</div></div>
                 <div class="kv2"><div class="k">Rok plaćanja</div><div class="v mono">16.10.2026. · 15 dana</div></div>
               </div>
-              <div class="hint">Na PDF-u: mesto za M.P. i potpis (Otpremio · Primio · Fakturisao).</div>
-              <button class="btn" style="width:100%;justify-content:center;margin-top:12px">Pregled PDF-a</button>
+              <div class="hint">Na PDF-u: mesto za pečat (M.P.) i potpis — „Fakturisao”. Spis ne izdaje zvaničnu e-fakturu; zvanično ide preko Višnje (SEF).</div>
+              <button class="btn" style="width:100%;justify-content:center;margin-top:12px">Pregled i izvoz (za Višnju)</button>
             </div>
           </div>
         </div>
@@ -462,9 +466,9 @@
   <script>
   (function(){
     var ADV={
-      "Strahinja Selaković":{adr:"Temerinska 89, 21000 Novi Sad",pib:"109876543",pdv:false,pref:"SS",rsd:"160-0000123456-78",iban:"RS35 1600 0000 1234 5678",swift:"DBDBRSBG"},
-      "Vladan Bošnjak":{adr:"Temerinska 89, 21000 Novi Sad",pib:"108221544",pdv:false,pref:"VB",rsd:"205-0000987654-32",iban:"RS35 2050 0000 9876 5432",swift:"NBIORSBG"},
-      "Stefan Petrović":{adr:"Temerinska 89, 21000 Novi Sad",pib:"111998003",pdv:true,pref:"SP",rsd:"170-0000112233-44",iban:"RS35 1700 0000 1122 3344",swift:"RZBSRSBG"}
+      "Strahinja Selaković":{adr:"Temerinska 89, 21000 Novi Sad",pib:"109876543",pdv:false,pref:"SS",no:"0032",bank:"Banca Intesa",rsd:"160-0000123456-78",iban:"RS35 1600 0000 0123 4567 89",swift:"DBDBRSBG"},
+      "Vladan Bošnjak":{adr:"Temerinska 89, 21000 Novi Sad",pib:"108221544",pdv:false,pref:"VB",no:"0014",bank:"OTP banka",rsd:"325-9500700123456-78",iban:"RS35 3250 0000 9876 5432 10",swift:"OTPVRS22"},
+      "Stefan Petrović":{adr:"Temerinska 89, 21000 Novi Sad",pib:"111998003",pdv:true,pref:"SP",no:"0007",bank:"Raiffeisen banka",rsd:"265-0000112233445-66",iban:"RS35 2650 0001 1223 3445 66",swift:"RZBSRSBG"}
     };
     var sel=document.getElementById("advsel"), body=document.body, pdv=document.getElementById("pdvtgl");
     function setT(id,v){var e=document.getElementById(id); if(e)e.textContent=v;}
@@ -472,17 +476,20 @@
       var a=ADV[sel.value]; if(!a)return;
       setT("iss-name","Advokat "+sel.value); setT("iss-adr",a.adr); setT("iss-pib","PIB: "+a.pib);
       setT("iss-pdv",a.pdv?"U sistemu PDV-a (20%)":"Nije u sistemu PDV-a");
-      setT("inv-no",a.pref+"-2026-0032"); setT("inv-no2",a.pref+"-2026-0032");
+      var num=a.pref+"-2026-"+a.no; setT("inv-no",num); setT("inv-no2",num);
+      setT("acc-rsd-bank",a.bank); setT("acc-eur-bank",a.bank);
       setT("acc-rsd-no",a.rsd); setT("acc-eur-iban",a.iban); setT("acc-swift",a.swift);
-      pdv.checked=a.pdv; body.classList.toggle("pdv-on",a.pdv);
+      if(pdv){pdv.checked=a.pdv; pdv.disabled=true;}   // PDV derived from advokat, not a free toggle
+      body.classList.toggle("pdv-on",a.pdv);
     }
     sel.addEventListener("change",apply);
-    pdv.addEventListener("change",function(e){body.classList.toggle("pdv-on",e.target.checked);});
     var r=document.getElementById("acceur"), t=document.getElementById("accrsd");
-    if(r)r.addEventListener("change",function(){body.classList.add("acc-eur-on");});
-    if(t)t.addEventListener("change",function(){body.classList.remove("acc-eur-on");});
-    apply();                                   // on-load sync (fixes reload/bfcache desync)
-    body.classList.toggle("acc-eur-on", !!(r&&r.checked));
+    function syncAcc(){body.classList.toggle("acc-eur-on", !!(r&&r.checked));}
+    if(r)r.addEventListener("change",syncAcc);
+    if(t)t.addEventListener("change",syncAcc);
+    function syncAll(){apply();syncAcc();}
+    syncAll();                                  // on-load sync of control state
+    window.addEventListener("pageshow",syncAll); // re-sync if browser restores form state (bfcache)
   })();
   </script>
 
