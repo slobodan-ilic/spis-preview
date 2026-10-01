@@ -217,6 +217,8 @@
   }
   @media (max-width:380px){ .inst-body{grid-template-columns:1fr;} }
 
+  .caa{font-family:var(--serif);font-style:italic;color:var(--accent);padding:0 3px;}
+  .hint{font-size:11.5px;color:var(--ink-3);margin-top:10px;line-height:1.45;}
   .kl-head{margin-bottom:14px;}
   .kl-head h1{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 3px;}
   .kl-head .date{font-size:13px;color:var(--ink-3);font-family:var(--mono);}
@@ -276,7 +278,7 @@
     <div class="brand"><span class="mark">S</span><b>Spis</b><span>demo</span></div>
     <nav class="nav">
       <a href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
-      <a href="predmet.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti<span class="ct">6</span></a>
+      <a href="predmeti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti<span class="ct">6</span></a>
       <a class="on" href="klijenti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2.4"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/><path d="M11 6.5c1.3.3 2.3 1.4 2.3 2.8"/></svg>Klijenti</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6h12M5.5 1.5v3M10.5 1.5v3"/></svg>Kalendar</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
@@ -299,7 +301,7 @@
       <div class="crumb"><a href="klijenti.html">Klijenti</a> / <b>Proleter Gradnja d.o.o.</b></div>
       <div class="search"><input placeholder="Pretraga…" aria-label="Pretraga"></div>
       <span class="demo">DEMO · primer podaci</span>
-      <button class="btn pri">+ Nova faktura</button>
+      <button class="btn pri">+ Brzo kreiranje</button>
     </div>
     <div class="scroll"><div class="wrap">
       <div class="cl-detail-head">
@@ -309,8 +311,8 @@
       </div>
       <div class="kl-strip">
         <span><b>1</b> predmet</span>
-        <span><b>115.000</b> fakturisano</span>
-        <span><b>40.000</b> naplaćeno</span>
+        <span><b>115.000</b> obračunato</span>
+        <span><b>40.000</b> avans</span>
         <span class="hot"><b>75.000 RSD</b> za naplatu</span>
       </div>
       <div class="kl-cols">
@@ -318,7 +320,7 @@
           <div class="card">
             <div class="ch"><h2>Predmeti</h2><a class="lnk" href="predmeti.html">Svi predmeti</a></div>
             <a class="d-row" href="predmet.html">
-              <span class="d-main">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>2026-0031 · poništaj rešenja · prvostepeni</small></span>
+              <span class="d-main">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>2026-0031 · poništaj rešenja · prvostepeni · vodi: Strahinja</small></span>
               <span class="pill crit">ročište danas</span>
             </a>
           </div>
@@ -326,8 +328,12 @@
             <div class="ch"><h2>Fakture</h2><a class="lnk" href="fakture-lista.html">Sve fakture</a></div>
             <a class="d-row" href="fakture.html">
               <span class="d-main">SS-2026-0032<small>01.10.2026 · izdavalac: Strahinja Selaković</small></span>
-              <span class="d-amt mono">115.000 RSD <span class="pill warn">delimično</span></span>
+              <span class="d-amt mono">115.000 RSD <span class="pill mut">Nacrt</span></span>
             </a>
+          </div>
+          <div class="card">
+            <div class="ch"><h2>Uplate</h2></div>
+            <div class="d-row"><span class="d-main">Avans<small>02.09.2026 · na predmet 2026-0031</small></span><span class="d-amt mono">40.000 RSD</span></div>
           </div>
         </div>
         <div>
@@ -337,7 +343,7 @@
               <div class="kvv2"><div class="k">PIB · matični</div><div class="v mono">100222333 · 20123456</div></div>
               <div class="kvv2"><div class="k">Adresa</div><div class="v">Jurija Gagarina 14, 11070 Novi Beograd</div></div>
               <div class="kvv2"><div class="k">Kontakt</div><div class="v mono">pravna@proletergradnja.rs</div></div>
-              <div class="kvv2"><div class="k">Način naplate</div><div class="v">Tarifa (nema paušala)</div></div>
+              <div class="kvv2"><div class="k">Način naplate</div><div class="v">Paušal + tarifa</div></div>
               <div class="kvv2"><div class="k">Rok plaćanja</div><div class="v">15 dana</div></div>
             </div>
           </div>
@@ -346,6 +352,15 @@
             <div class="cb">
               <div class="kvv2"><div class="k">Osoba</div><div class="v">Dragan Marić (direktor)</div></div>
               <div class="kvv2"><div class="k">Telefon</div><div class="v mono">011 316 4455</div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2>Paušalni ugovor</h2></div>
+            <div class="cb">
+              <div class="kvv2"><div class="k">Mesečni paušal</div><div class="v mono">30.000 RSD</div></div>
+              <div class="kvv2"><div class="k">Važi od</div><div class="v mono">01.01.2024.</div></div>
+              <div class="kvv2"><div class="k">Pokriva</div><div class="v">Konsultacije, statusna pitanja, manji ugovori</div></div>
+              <div class="hint">Ročišta i podnesci se ne vode u paušal — naplaćuju se po tarifi odvojeno.</div>
             </div>
           </div>
         </div>
