@@ -236,7 +236,7 @@
     <div class="brand"><span class="mark">S</span><b>Spis</b><span>demo</span></div>
     <nav class="nav">
       <a href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
-      <a href="predmeti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti<span class="ct">6</span></a>
+      <a class="on" href="predmeti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti</a>
       <a href="klijenti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2.4"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/><path d="M11 6.5c1.3.3 2.3 1.4 2.3 2.8"/></svg>Klijenti</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6h12M5.5 1.5v3M10.5 1.5v3"/></svg>Kalendar</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
@@ -256,7 +256,7 @@
     <div class="top">
       <button class="burger" aria-label="Meni" onclick="document.body.classList.toggle('nav-open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       <span class="mbrand"><span class="mark">S</span>Spis</span>
-      <div class="crumb"><b>Predmeti</b> / <span class="mono">2026-0042</span></div>
+      <div class="crumb"><a href="predmeti.html">Predmeti</a> / <span class="mono">2026-0042</span></div>
       <div class="search"><input placeholder="Pretraga predmeta, klijenata, faktura…" aria-label="Pretraga"></div>
       <span class="demo">DEMO · primer podaci</span>
       <button class="btn pri">+ Brzo kreiranje</button>
@@ -335,12 +335,12 @@
                 <div class="row">
                   <span class="when">03. okt · 12:00</span>
                   <span class="ti">Podnesak — dostava dokaza i predlog za veštačenje<small>Rok za podnesak</small></span>
-                  <span class="rt"><span class="pill warn">Za 5 dana</span></span>
+                  <span class="rt"><span class="pill warn">Za 2 dana</span></span>
                 </div>
                 <div class="row">
                   <span class="when">14. okt · 09:00</span>
                   <span class="ti">Glavna rasprava<small>Osnovni sud u NS · soba 30 · Strahinja, Vladan</small></span>
-                  <span class="rt"><span class="pill mut">Za 16 dana</span></span>
+                  <span class="rt"><span class="pill mut">Za 13 dana</span></span>
                 </div>
                 <div class="sec">Završeno</div>
                 <div class="row">
@@ -357,19 +357,18 @@
             <div class="card money">
               <div class="ch"><h2>Naplata</h2><span class="pill warn" style="font-size:11px">Delimično</span></div>
               <div class="cb">
-                <div><span class="big num">97.000,00</span> <span class="cur">RSD · nagrada (obračunato)</span></div>
+                <div><span class="big num">96.000,00</span> <span class="cur">RSD · nagrada (fakturisano)</span></div>
                 <div class="split">
                   <div><div class="k">Naplaćeno</div><div class="n ok">40.000,00</div></div>
-                  <div><div class="k">Za naplatu (nagrada)</div><div class="n out">57.000,00</div></div>
+                  <div><div class="k">Za naplatu</div><div class="n out">56.000,00</div></div>
                 </div>
-                <div class="bar" role="img" aria-label="Naplaćeno 42%"><i style="width:41%"></i></div>
-                <div class="barcap"><span>41% naplaćeno (avans)</span><span>RSD</span></div>
+                <div class="bar" role="img" aria-label="Naplaćeno 42%"><i style="width:42%"></i></div>
+                <div class="barcap"><span>42% naplaćeno</span><span>RSD</span></div>
                 <div class="costs">
                   <div class="k">Troškovi — predujam za klijenta</div>
                   <div class="crow"><span>Predujmljeno (taksa, veštačenje)</span><span class="mono">18.000,00</span></div>
                   <div class="crow"><span>Za refundaciju</span><span class="mono out">18.000,00</span></div>
-                  <div class="cnote">Odvojeno od nagrade — klijentov trošak koji se refundira; ne ulazi u zaradu.</div>
-                  <div class="crow"><span><b>Ukupno za naplatu</b> (nagrada 57.000 + troškovi 18.000)</span><span class="mono"><b>75.000,00</b></span></div>
+                  <div class="cnote">Odvojeno od nagrade — klijentov trošak koji se refundira; ne ulazi u zaradu ni u „za naplatu“ iznad.</div>
                 </div>
               </div>
             </div>
@@ -397,7 +396,7 @@
               <div class="ch"><h2>Nedavne aktivnosti</h2></div>
               <div class="cb">
                 <div class="fi"><span class="ini">VB</span><div class="tx"><b>Vladan</b> uneo vreme: 01:10 — priprema podneska<time>danas · 14:20</time></div></div>
-                <div class="fi"><span class="ini">SS</span><div class="tx"><b>Strahinja</b> pripremio fakturu <span class="mono">SS-2026-0032</span> · 115.000 RSD (nacrt)<time>juče · 17:05</time></div></div>
+                <div class="fi"><span class="ini">SS</span><div class="tx"><b>Strahinja</b> izdao fakturu <span class="mono">SS-2026-0031</span> · 56.000 RSD<time>juče · 17:05</time></div></div>
                 <div class="fi"><span class="ini">SP</span><div class="tx"><b>Stefan</b> dodao dokument: <i>Izvod iz KPO.pdf</i><time>26.09. · 10:12</time></div></div>
               </div>
             </div>
