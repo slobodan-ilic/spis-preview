@@ -222,11 +222,9 @@
   .vr-head .date{font-size:13px;color:var(--ink-3);font-family:var(--mono);}
   .wk-nav{display:flex;align-items:center;gap:8px;}
   .wk-nav .wk-lbl{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);min-width:150px;text-align:center;}
-  .btn.icon{padding:5px 11px;font-size:16px;line-height:1;}
+  .wk-nav .btn{padding:5px 11px;font-size:16px;line-height:1;}
   .wk-sum{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);}
-  .vr-strip{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 18px;font-size:13px;color:var(--ink-2);align-items:center;}
-  .vr-strip b{font-family:var(--mono);font-weight:600;color:var(--ink);margin-right:5px;}
-  .vr-strip .hot b{color:var(--accent);}
+  .subnote{font-size:11px;color:var(--ink-3);margin-top:8px;line-height:1.4;}
   .vr-cols{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;}
   .vr-cols h2{font-size:13px;}
   .te-form{display:grid;grid-template-columns:repeat(6,1fr);gap:11px 12px;}
@@ -250,13 +248,12 @@
   .te-who .ini{width:22px;height:22px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:9.5px;font-weight:600;font-family:var(--mono);flex:none;}
   .te-d{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;}
   .tp{justify-self:start;font-family:var(--mono);font-size:9px;letter-spacing:.03em;text-transform:uppercase;padding:3px 7px;border-radius:5px;font-weight:600;white-space:nowrap;}
-  .tp.tp-tar{color:#fff;background:var(--accent);}
+  .tp.tp-tar{color:var(--accent-ink);background:var(--accent);}
+  .tp.tp-pau{color:var(--accent-ink);background:var(--accent-2);}
   .tp.tp-sat{color:var(--ink);background:var(--surface-3);}
   .tp.tp-int{color:var(--ink-3);background:var(--surface-2);border:1px solid var(--line-2);}
   .te-st{justify-self:end;}
-  .pill.ok{color:#2a6b3f;background:#e4f2e8;border-color:#bfe0cc;}
-  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .pill.ok{color:#9fe0b6;background:#16281c;border-color:#2f5338;} }
-  :root[data-theme="dark"] .pill.ok{color:#9fe0b6;background:#16281c;border-color:#2f5338;}
+  .te-int{color:var(--ink-3);font-style:italic;}
   .sum{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;color:var(--ink-2);}
   .sum .mono{color:var(--ink);font-weight:500;}
   .sum.strong{font-weight:700;color:var(--ink);border-top:1px solid var(--line);margin-top:4px;padding-top:10px;}
@@ -273,6 +270,7 @@
     .te-p{flex:1 1 100%;order:0;}
     .te-who{order:1;} .tp{order:2;} .te-d{order:3;margin-left:auto;} .te-st{order:4;}
   }
+  @media (max-width:560px){ .te-form{grid-template-columns:1fr;} .te-form .ff.wide,.te-form .ff.act{grid-column:span 1;} }
 
   /* mobile nav drawer */
   .burger{display:none;background:none;border:0;padding:6px;margin:-2px 2px -2px -4px;color:var(--ink);cursor:pointer;}
@@ -320,14 +318,8 @@
     </div>
     <div class="scroll"><div class="wrap">
       <div class="vr-head">
-        <div><h1>Evidencija vremena</h1><div class="date">Nedelja: 28.09 – 04.10.2026.</div></div>
-        <div class="wk-nav"><button class="btn icon" aria-label="Prethodna nedelja">‹</button><span class="wk-lbl">28.09 – 04.10.2026.</span><button class="btn icon" aria-label="Sledeća nedelja">›</button></div>
-      </div>
-      <div class="vr-strip">
-        <span><b>13h</b> ukupno</span>
-        <span><b>12h 15min</b> naplativo</span>
-        <span><b>45min</b> nenaplativo</span>
-        <span class="hot"><b>11h 45min</b> spremno za fakturisanje</span>
+        <div><h1>Evidencija vremena</h1><div class="date">Sedmica: 28.09 – 04.10.2026.</div></div>
+        <div class="wk-nav"><button class="btn icon" aria-label="Prethodna sedmica">‹</button><span class="wk-lbl">28.09 – 04.10.2026.</span><button class="btn icon" aria-label="Sledeća sedmica">›</button></div>
       </div>
       <div class="vr-cols">
         <div>
@@ -336,37 +328,39 @@
             <div class="cb">
               <div class="te-form">
                 <label class="ff"><span class="fl">Datum</span><input class="inp" type="text" value="01.10.2026."></label>
-                <label class="ff wide"><span class="fl">Predmet</span><select class="sel"><option>Proleter Gradnja ca Grad NS — 2026-0031</option><option>Ilić ca Cvilić — 2026-0042</option><option>Lukić ca Delta osiguranje — 2026-0028</option><option>Jovanović ca Marković — 2026-0039</option><option>Petrović ca Petrović — 2026-0017</option></select></label>
-                <label class="ff"><span class="fl">Trajanje</span><input class="inp" type="text" value="01:00" placeholder="h:min"></label>
-                <label class="ff wide"><span class="fl">Opis radnje</span><input class="inp" type="text" placeholder="npr. sastav podneska, zastupanje na ročištu…"></label>
+                <label class="ff wide"><span class="fl">Predmet</span><select class="sel" id="tf-pred"><option>Proleter Gradnja ca Grad NS — 2026-0031</option><option>Ilić ca Cvilić — 2026-0042</option><option>Lukić ca Delta osiguranje — 2026-0028</option><option>Jovanović ca Marković — 2026-0039</option><option>Petrović ca Petrović — 2026-0017</option></select></label>
+                <label class="ff"><span class="fl">Tip radnje</span><select class="sel" id="tf-tip"><option value="tarifa">Tarifna radnja</option><option value="pausal">Paušal</option><option value="sat">Po satu</option><option value="interno">Interno — nenaplativo</option></select></label>
+                <label class="ff wide" id="ff-vrsta"><span class="fl">Vrsta radnje (tarifa)</span><select class="sel"><option>Sastav tužbe</option><option>Sastav odgovora na tužbu</option><option>Sastav žalbe</option><option>Sastav podneska</option><option>Zastupanje na ročištu</option><option>Dopis sudu</option><option>Ostalo</option></select></label>
+                <label class="ff wide" id="ff-opis"><span class="fl">Opis</span><input class="inp" type="text" placeholder="npr. konsultacija, status predmeta…"></label>
+                <label class="ff"><span class="fl">Trajanje (opciono)</span><input class="inp" type="text" placeholder="h:min"></label>
                 <label class="ff"><span class="fl">Advokat (ko je radio)</span><select class="sel"><option>Strahinja</option><option>Vladan</option><option>Stefan</option></select></label>
-                <label class="ff"><span class="fl">Tip radnje</span><select class="sel" id="tf-tip"><option value="tarifa">Tarifna radnja</option><option value="sat">Po satu</option><option value="interno">Interno — nenaplativo</option></select></label>
-                <label class="ff chkff"><input type="checkbox" id="tf-bill" checked><span>Naplativo</span></label>
-                <div class="ff act"><button class="btn pri" style="width:100%;justify-content:center">+ Dodaj unos</button></div>
+                <label class="ff chkff" id="ff-bill"><input type="checkbox" id="tf-bill" checked><span>Naplativo</span></label>
+                <div class="ff act"><button class="btn pri" style="width:100%;justify-content:center">+ Dodaj</button></div>
               </div>
-              <div class="hint">Vreme se vodi na advokata koji je radio (doprinos — Layer 2). Ko će fakturisati bira se posebno na fakturi — može i preko drugog advokata.</div>
+              <div class="hint">Vreme se vodi na advokata koji je radio (doprinos). Ko će fakturisati bira se posebno na fakturi — može i preko drugog kolege. Tarifne radnje (ročišta, podnesci) ne idu u paušal.</div>
             </div>
           </div>
           <div class="card">
-            <div class="ch"><h2>Nedeljni pregled</h2><span class="wk-sum">13h ukupno · 10 unosa</span></div>
-            <div class="te-list"><div class="te-day"><span class="td-h">Ponedeljak · 28.09</span><span class="td-s">3h 30min</span></div><div class="te-row"><span class="te-p">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>Sastav žalbe</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-tar">Tarifa</span><span class="te-d">2h</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p">Ilić <span class="caa">ca</span> Cvilić<small>Priprema podneska</small></span><span class="te-who"><span class="ini">VB</span>Vladan</span><span class="tp tp-sat">Po satu</span><span class="te-d">1h 30min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-day"><span class="td-h">Utorak · 29.09</span><span class="td-s">3h</span></div><div class="te-row"><span class="te-p">Lukić <span class="caa">ca</span> Delta osiguranje<small>Proučavanje nalaza veštaka</small></span><span class="te-who"><span class="ini">SP</span>Stefan</span><span class="tp tp-sat">Po satu</span><span class="te-d">2h 15min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p">Interno<small>Kolegijum i organizacija rada</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-int">Interno</span><span class="te-d">45min</span><span class="te-st"><span class="pill mut">nenaplativo</span></span></div><div class="te-day"><span class="td-h">Sreda · 30.09</span><span class="td-s">2h 30min</span></div><div class="te-row"><span class="te-p">Jovanović <span class="caa">ca</span> Marković<small>Zastupanje na ročištu</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-tar">Tarifa</span><span class="te-d">1h 30min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>Konsultacija sa klijentom</small></span><span class="te-who"><span class="ini">VB</span>Vladan</span><span class="tp tp-sat">Po satu</span><span class="te-d">1h</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-day today"><span class="td-h">Četvrtak · 01.10 · danas</span><span class="td-s">2h 10min</span></div><div class="te-row"><span class="te-p">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>Pripremno ročište</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-tar">Tarifa</span><span class="te-d">1h</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p">Ilić <span class="caa">ca</span> Cvilić<small>Priprema podneska</small></span><span class="te-who"><span class="ini">VB</span>Vladan</span><span class="tp tp-sat">Po satu</span><span class="te-d">1h 10min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-day"><span class="td-h">Petak · 02.10</span><span class="td-s">1h 50min</span></div><div class="te-row"><span class="te-p">Petrović <span class="caa">ca</span> Petrović<small>Priprema za saslušanje svedoka</small></span><span class="te-who"><span class="ini">SP</span>Stefan</span><span class="tp tp-sat">Po satu</span><span class="te-d">1h 20min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p">Lukić <span class="caa">ca</span> Delta osiguranje<small>Dopis sudu</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-tar">Tarifa</span><span class="te-d">30min</span><span class="te-st"><span class="pill ok">fakturisano</span></span></div><div class="te-day"><span class="td-h">Subota · 03.10</span><span class="td-s">—</span></div><div class="te-day"><span class="td-h">Nedelja · 04.10</span><span class="td-s">—</span></div></div>
+            <div class="ch"><h2>Nedeljni pregled</h2><span class="wk-sum">11 radnji · 11h 55min</span></div>
+            <div class="te-list"><div class="te-day"><span class="td-h">Ponedeljak · 28.09</span><span class="td-s">2 radnje · 2h 40min</span></div><div class="te-row"><span class="te-p">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>Sastav žalbe</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-tar">Tarifa</span><span class="te-d">2h</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p">Ilić <span class="caa">ca</span> Cvilić<small>Konsultacija sa klijentom</small></span><span class="te-who"><span class="ini">VB</span>Vladan</span><span class="tp tp-pau">Paušal</span><span class="te-d">40min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-day"><span class="td-h">Utorak · 29.09</span><span class="td-s">2 radnje · 2h 20min</span></div><div class="te-row"><span class="te-p">Lukić <span class="caa">ca</span> Delta osiguranje<small>Sastav obrazloženog podneska</small></span><span class="te-who"><span class="ini">SP</span>Stefan</span><span class="tp tp-tar">Tarifa</span><span class="te-d">1h 35min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p"><span class="te-int">Interno</span><small>Kolegijum i organizacija rada</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-int">Interno</span><span class="te-d">45min</span><span class="te-st"><span class="pill mut">nenaplativo</span></span></div><div class="te-day"><span class="td-h">Sreda · 30.09</span><span class="td-s">2 radnje · 2h</span></div><div class="te-row"><span class="te-p">Jovanović <span class="caa">ca</span> Marković<small>Zastupanje na ročištu</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-tar">Tarifa</span><span class="te-d">1h 30min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>Status predmeta i dopis klijentu</small></span><span class="te-who"><span class="ini">VB</span>Vladan</span><span class="tp tp-pau">Paušal</span><span class="te-d">30min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-day today"><span class="td-h">Četvrtak · 01.10 · danas</span><span class="td-s">2 radnje · 2h 10min</span></div><div class="te-row"><span class="te-p">Proleter Gradnja <span class="caa">ca</span> Grad NS<small>Pripremno ročište</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-tar">Tarifa</span><span class="te-d">1h</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p">Ilić <span class="caa">ca</span> Cvilić<small>Sastav podneska</small></span><span class="te-who"><span class="ini">VB</span>Vladan</span><span class="tp tp-tar">Tarifa</span><span class="te-d">1h 10min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-day"><span class="td-h">Petak · 02.10</span><span class="td-s">3 radnje · 2h 45min</span></div><div class="te-row"><span class="te-p">Petrović <span class="caa">ca</span> Petrović<small>Zastupanje — saslušanje svedoka</small></span><span class="te-who"><span class="ini">SP</span>Stefan</span><span class="tp tp-tar">Tarifa</span><span class="te-d">1h 20min</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-row"><span class="te-p">Lukić <span class="caa">ca</span> Delta osiguranje<small>Dopis sudu</small></span><span class="te-who"><span class="ini">SS</span>Strahinja</span><span class="tp tp-tar">Tarifa</span><span class="te-d">25min</span><span class="te-st"><span class="pill ok">fakturisano</span></span></div><div class="te-row"><span class="te-p">Ilić <span class="caa">ca</span> Cvilić<small>Pravno istraživanje (naplata po satu)</small></span><span class="te-who"><span class="ini">VB</span>Vladan</span><span class="tp tp-sat">Po satu</span><span class="te-d">1h</span><span class="te-st"><span class="pill">nefakturisano</span></span></div><div class="te-day"><span class="td-h">Subota · 03.10</span><span class="td-s">—</span></div><div class="te-day"><span class="td-h">Nedelja · 04.10</span><span class="td-s">—</span></div></div>
           </div>
         </div>
         <div>
           <div class="card">
             <div class="ch"><h2>Nedeljni zbir</h2></div>
             <div class="cb">
-              <div class="sum"><span>Ukupno</span><span class="mono">13h</span></div>
-              <div class="sum"><span>Naplativo</span><span class="mono">12h 15min</span></div>
-              <div class="sum"><span>Nenaplativo</span><span class="mono">45min</span></div>
-              <div class="sum"><span>Već fakturisano</span><span class="mono">30min</span></div>
-              <div class="sum strong"><span>Spremno za fakturisanje</span><span class="mono">11h 45min</span></div>
+              <div class="sum"><span>Unosa (radnji)</span><span class="mono">11</span></div>
+              <div class="sum"><span>Naplativo</span><span class="mono">10</span></div>
+              <div class="sum"><span>Nenaplativo (interno)</span><span class="mono">1</span></div>
+              <div class="sum"><span>Već fakturisano</span><span class="mono">1</span></div>
+              <div class="sum strong"><span>Za fakturisanje</span><span class="mono">9 radnji</span></div>
+              <div class="subnote">Evidentirano vreme: 11h 55min · trajanje je opciono.</div>
               <a class="btn" href="fakture.html" style="width:100%;justify-content:center;margin-top:12px">Napravi fakturu iz vremena →</a>
             </div>
           </div>
           <div class="card">
-            <div class="ch"><h2>Po advokatu (doprinos)</h2></div>
-            <div class="cb"><div class="vl-row"><span class="ini">SS</span><span class="vl-nm">Strahinja</span><span class="vl-track"><i style="width:100%"></i></span><span class="vl-n">5h 45min</span></div><div class="vl-row"><span class="ini">VB</span><span class="vl-nm">Vladan</span><span class="vl-track"><i style="width:64%"></i></span><span class="vl-n">3h 40min</span></div><div class="vl-row"><span class="ini">SP</span><span class="vl-nm">Stefan</span><span class="vl-track"><i style="width:62%"></i></span><span class="vl-n">3h 35min</span></div></div>
+            <div class="ch"><h2>Po advokatu (urađeno)</h2></div>
+            <div class="cb"><div class="vl-row"><span class="ini">SS</span><span class="vl-nm">Strahinja</span><span class="vl-track"><i style="width:100%"></i></span><span class="vl-n">5 · 5h 40min</span></div><div class="vl-row"><span class="ini">VB</span><span class="vl-nm">Vladan</span><span class="vl-track"><i style="width:80%"></i></span><span class="vl-n">4 · 3h 20min</span></div><div class="vl-row"><span class="ini">SP</span><span class="vl-nm">Stefan</span><span class="vl-track"><i style="width:40%"></i></span><span class="vl-n">2 · 2h 55min</span></div><div class="subnote">Broj radnji ove sedmice (vreme uz svaku). Raspodela se ne računa po satima.</div></div>
           </div>
         </div>
       </div>
@@ -375,9 +369,19 @@
 
   <script>
   (function(){
-    var tip=document.getElementById("tf-tip"), bill=document.getElementById("tf-bill");
-    function sync(){ if(tip.value==="interno"){ bill.checked=false; bill.disabled=true; } else { bill.disabled=false; } }
-    if(tip&&bill){ tip.addEventListener("change",sync); sync(); }
+    var tip=document.getElementById("tf-tip");
+    if(!tip) return;
+    var pred=document.getElementById("tf-pred"), bill=document.getElementById("tf-bill");
+    var ffv=document.getElementById("ff-vrsta"), ffo=document.getElementById("ff-opis");
+    function show(el,on){ if(el) el.style.display=on?"":"none"; }
+    function sync(){
+      var t=tip.value;
+      show(ffv, t==="tarifa");               // vrsta radnje only for tarifa
+      show(ffo, t!=="tarifa");               // free-text opis otherwise
+      if(pred) pred.disabled=(t==="interno");// interno has no predmet
+      if(bill){ if(t==="interno"){ bill.checked=false; bill.disabled=true; } else { bill.disabled=false; bill.checked=true; } }
+    }
+    tip.addEventListener("change",sync); sync();
   })();
   </script>
 
