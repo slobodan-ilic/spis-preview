@@ -218,33 +218,35 @@
   @media (max-width:380px){ .inst-body{grid-template-columns:1fr;} }
 
   /* ---- dashboard ---- */
-  .greet h1{font-family:var(--serif);font-weight:600;font-size:26px;margin:0 0 3px;}
+  .greet h1{font-family:var(--serif);font-weight:600;font-size:25px;margin:0 0 3px;}
   .greet .date{font-size:13px;color:var(--ink-3);font-family:var(--mono);}
-  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0;}
-  .tile{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:15px 16px;}
-  .tile .tn{font-family:var(--mono);font-size:26px;font-weight:600;letter-spacing:-.01em;line-height:1;}
-  .tile .tl{font-size:12px;color:var(--ink-2);margin-top:7px;}
-  .tile.alert .tn{color:var(--warn);}
-  .dash-cols{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;}
+  .alert-strip{display:flex;flex-wrap:wrap;align-items:center;gap:7px 16px;margin:16px 0 18px;font-size:13px;color:var(--ink-2);}
+  .alert-strip b{font-family:var(--mono);font-weight:600;color:var(--ink);margin-right:5px;}
+  .alert-strip .warn b{color:var(--warn);}
+  .alert-strip .dot{width:4px;height:4px;border-radius:50%;background:var(--line-2);}
+  .card.hero{border-color:var(--line-2);}
+  .card.hero > .ch{padding-top:15px;padding-bottom:15px;}
+  .card.hero > .ch h2{font-size:14px;}
+  .dash-cols{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;margin-top:18px;}
+  .dash-cols h2{font-size:12.5px;}
   .matter-link a{color:var(--ink);text-decoration:none;font-weight:600;}
   .matter-link a:hover{color:var(--accent);}
   .matter-link .caa{font-family:var(--serif);font-style:italic;color:var(--accent);padding:0 3px;}
   .matter-link small{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-3);font-weight:400;margin-top:2px;}
   .wl-legend{display:flex;gap:16px;padding:12px 16px 4px;font-size:11px;color:var(--ink-2);font-family:var(--mono);}
   .wl-legend .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:middle;}
-  .wl-row{display:flex;align-items:center;gap:11px;padding:11px 16px;border-top:1px solid var(--line);}
-  .wl-row .ini{width:26px;height:26px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:10.5px;font-weight:600;font-family:var(--mono);flex:none;}
-  .wl-row .nm{font-size:13px;font-weight:600;width:88px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-  .wl-metrics{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;}
+  .wl-row{display:flex;align-items:center;gap:11px;padding:10px 16px;border-top:1px solid var(--line);}
+  .wl-row .ini{width:24px;height:24px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:10px;font-weight:600;font-family:var(--mono);flex:none;}
+  .wl-row .nm{font-size:12.5px;font-weight:600;width:84px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .wl-metrics{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0;}
   .wl-m{display:flex;align-items:center;gap:8px;}
-  .wl-m .wl-k{font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);width:48px;flex:none;}
-  .wl-m .track{flex:1;height:7px;background:var(--surface-3);border-radius:4px;overflow:hidden;min-width:36px;}
+  .wl-m .wl-k{font-family:var(--mono);font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);width:46px;flex:none;}
+  .wl-m .track{flex:1;height:6px;background:var(--surface-3);border-radius:4px;overflow:hidden;min-width:34px;}
   .wl-m .track > i{display:block;height:100%;border-radius:4px;}
   .wl-m.cases .track > i{background:var(--accent);}
   .wl-m.tasks .track > i{background:var(--ink-3);}
-  .wl-m .wl-n{font-family:var(--mono);font-size:12px;color:var(--ink);width:20px;text-align:right;flex:none;}
-  @media (max-width:1000px){ .tiles{grid-template-columns:repeat(2,1fr);} .dash-cols{grid-template-columns:1fr;} }
-  @media (max-width:560px){ .tiles{grid-template-columns:1fr 1fr;} }
+  .wl-m .wl-n{font-family:var(--mono);font-size:11.5px;color:var(--ink);width:20px;text-align:right;flex:none;}
+  @media (max-width:1000px){ .dash-cols{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -252,7 +254,7 @@
 <aside class="side">
     <div class="brand"><span class="mark">S</span><b>Spis</b><span>demo</span></div>
     <nav class="nav">
-      <a class="on" href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
+      <a href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
       <a href="predmet.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti<span class="ct">6</span></a>
       <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2.4"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/><path d="M11 6.5c1.3.3 2.3 1.4 2.3 2.8"/></svg>Klijenti</a>
       <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6h12M5.5 1.5v3M10.5 1.5v3"/></svg>Kalendar</a>
@@ -284,26 +286,28 @@
         <div class="date">sreda, 1. oktobar 2026 · Advokatska kancelarija Selaković</div>
       </div>
 
-      <div class="tiles">
-        <div class="tile"><div class="tn">19</div><div class="tl">Aktivni predmeti</div></div>
-        <div class="tile"><div class="tn">33</div><div class="tl">Otvoreni zadaci</div></div>
-        <div class="tile"><div class="tn">4</div><div class="tl">Ročišta ove nedelje</div></div>
-        <div class="tile alert"><div class="tn">6</div><div class="tl">Rokovi ističu ≤ 7 dana</div></div>
+      <div class="alert-strip">
+        <span class="warn"><b>6</b> rokova ističe ≤ 7 dana</span><span class="dot"></span>
+        <span><b>4</b> ročišta ove nedelje</span><span class="dot"></span>
+        <span><b>19</b> aktivnih predmeta</span><span class="dot"></span>
+        <span><b>33</b> otvorena zadatka</span>
+      </div>
+
+      <div class="card hero">
+        <div class="ch"><h2>Rokovi i ročišta</h2><a class="lnk" href="#">Svi rokovi →</a></div>
+        <div class="rows">
+          <div class="sec">Danas · sreda, 1. oktobar</div>
+          <div class="row"><span class="when">12:00</span><span class="ti">Rok: odgovor na tužbu<small>Jovanović ca Marković · 2026-0039</small></span><span class="rt"><span class="pill crit">Danas</span></span></div>
+          <div class="row"><span class="when">14:00</span><span class="ti">Ročište: pripremno ročište<small>Proleter Gradnja ca Grad NS · 2026-0031</small></span><span class="rt"><span class="pill crit">Danas</span></span></div>
+          <div class="sec">Ova nedelja</div>
+          <div class="row"><span class="when">02. okt · 09:00</span><span class="ti">Ročište: glavna rasprava<small>Lukić ca Delta osiguranje · 2026-0028</small></span><span class="rt"><span class="pill warn">Sutra</span></span></div>
+          <div class="row"><span class="when">03. okt · 12:00</span><span class="ti">Rok: dostava dokaza i predlog za veštačenje<small>Ilić ca Cvilić · 2026-0042</small></span><span class="rt"><span class="pill warn">Za 2 dana</span></span></div>
+          <div class="row"><span class="when">06. okt · 10:00</span><span class="ti">Ročište: saslušanje svedoka<small>Petrović ca Petrović · 2026-0017</small></span><span class="rt"><span class="pill mut">Za 5 dana</span></span></div>
+        </div>
       </div>
 
       <div class="dash-cols">
         <div>
-          <div class="card">
-            <div class="ch"><h2>Rokovi i ročišta</h2><a class="lnk" href="#">Svi rokovi</a></div>
-            <div class="rows">
-              <div class="row"><span class="when">danas · 12:00</span><span class="ti">Rok: odgovor na tužbu<small>Jovanović ca Marković · 2026-0039</small></span><span class="rt"><span class="pill crit">Danas</span></span></div>
-              <div class="row"><span class="when">danas · 14:00</span><span class="ti">Ročište: pripremno ročište<small>Proleter Gradnja ca Grad NS · 2026-0031</small></span><span class="rt"><span class="pill crit">Danas</span></span></div>
-              <div class="row"><span class="when">02. okt · 09:00</span><span class="ti">Ročište: glavna rasprava<small>Lukić ca Delta osiguranje · 2026-0028</small></span><span class="rt"><span class="pill warn">Sutra</span></span></div>
-              <div class="row"><span class="when">03. okt · 12:00</span><span class="ti">Rok: dostava dokaza i predlog za veštačenje<small>Ilić ca Cvilić · 2026-0042</small></span><span class="rt"><span class="pill warn">Za 2 dana</span></span></div>
-              <div class="row"><span class="when">06. okt · 10:00</span><span class="ti">Ročište: saslušanje svedoka<small>Petrović ca Petrović · 2026-0017</small></span><span class="rt"><span class="pill mut">Za 5 dana</span></span></div>
-            </div>
-          </div>
-
           <div class="card">
             <div class="ch"><h2>Predmeti u fokusu</h2><a class="lnk" href="predmet.html">Svi predmeti</a></div>
             <div class="rows">
@@ -314,7 +318,6 @@
             </div>
           </div>
         </div>
-
         <div>
           <div class="card">
             <div class="ch"><h2>Opterećenje tima</h2></div>
@@ -325,7 +328,6 @@
               <div class="wl-row"><span class="ini">SP</span><span class="nm">Stefan P.</span><div class="wl-metrics"><div class="wl-m cases"><span class="wl-k">predmeti</span><span class="track"><i style="width:44%"></i></span><span class="wl-n">4</span></div><div class="wl-m tasks"><span class="wl-k">zadaci</span><span class="track"><i style="width:79%"></i></span><span class="wl-n">11</span></div></div></div>
             </div>
           </div>
-
           <div class="card feed">
             <div class="ch"><h2>Nedavne aktivnosti</h2></div>
             <div class="cb">
