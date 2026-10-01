@@ -86,14 +86,14 @@
 
   /* ---------- matter header ---------- */
   .head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
-  .head .no{font-family:var(--mono);font-size:12px;color:var(--ink-3);letter-spacing:.02em;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-  h1{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.15;margin:6px 0 8px;text-wrap:balance;letter-spacing:.005em;}
-  .parties{display:flex;align-items:center;gap:12px;font-size:14.5px;flex-wrap:wrap;}
-  .parties .p{font-weight:600;}
-  .parties .p small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500;margin-bottom:1px;}
-  .parties .ca{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:16px;padding:0 2px;}
-  .parties .counsel{display:block;font-size:11.5px;color:var(--ink-3);font-weight:500;margin-top:2px;}
-  .head .acts{display:flex;gap:8px;align-items:center;}
+  .head .no{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px;}
+  .head .no .caseno{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--ink);letter-spacing:.01em;}
+  h1{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.14;margin:0 0 5px;text-wrap:balance;letter-spacing:.005em;}
+  h1 .ca{font-style:italic;color:var(--accent);font-weight:500;padding:0 5px;}
+  .subtitle{font-size:14.5px;color:var(--ink-2);font-weight:500;margin-bottom:8px;}
+  .counsel-line{font-size:12.5px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:4px 14px;}
+  .counsel-line b{color:var(--ink-3);font-weight:600;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;margin-right:3px;}
+  .head .acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
 
   .pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:20px;font-family:var(--sans);}
   .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
@@ -209,7 +209,7 @@
     .inst-body{grid-template-columns:repeat(2,1fr);}
     .kv{grid-template-columns:1fr;}
     .head .acts{width:100%;}
-    .head .acts .btn{flex:1;justify-content:center;}
+    .head .acts .btn{flex:1 1 40%;justify-content:center;}
     .head .acts .btn.icon{flex:0 0 44px;}
     .row{flex-wrap:wrap;}
     .row .when{width:auto;}
@@ -257,17 +257,15 @@
         <!-- header -->
         <div class="head">
           <div>
-            <div class="no"><span class="mono">2026-0042</span> · <span class="pill ok">Aktivan</span> · <span class="nh"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.6V8l2.3 1.4"/></svg>Sledeće ročište · 14.10. u 09:00</span></div>
-            <h1>Naplata potraživanja po ugovoru o zajmu</h1>
-            <div class="parties">
-              <span class="p"><small>Klijent</small>Slobodan Ilić</span>
-              <span class="ca">ca</span>
-              <span class="p"><small>Protivna stranka</small>Radmila Cvilić<em class="counsel">punomoćnik: adv. Nenad Kovač</em></span>
-            </div>
+            <div class="no"><span class="caseno">2026-0042</span><span class="pill ok">Aktivan</span><span class="nh"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.6V8l2.3 1.4"/></svg>Sledeće ročište · 14.10. u 09:00</span></div>
+            <h1>Slobodan Ilić <span class="ca">ca</span> Radmila Cvilić</h1>
+            <div class="subtitle">Naplata potraživanja po ugovoru o zajmu</div>
+            <div class="counsel-line"><span><b>klijent</b>Slobodan Ilić</span><span><b>protivna</b>Radmila Cvilić</span><span><b>njihov advokat</b>Nenad Kovač</span></div>
           </div>
           <div class="acts">
-            <button class="btn">Izmeni</button>
+            <button class="btn">+ Unesi rad / vreme</button>
             <button class="btn pri">Nova faktura</button>
+            <button class="btn">Izmeni</button>
             <button class="btn icon" aria-label="Više">⋯</button>
           </div>
         </div>
