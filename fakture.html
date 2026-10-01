@@ -217,16 +217,35 @@
   }
   @media (max-width:380px){ .inst-body{grid-template-columns:1fr;} }
 
-  .fakt-cols{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;}
+  .fakt-cols{display:grid;grid-template-columns:1fr 330px;gap:18px;align-items:start;}
   .add-acts{display:flex;gap:6px;flex-wrap:wrap;}
   .btn.sm{font-size:12px;padding:5px 9px;}
-  .inv{width:100%;min-width:560px;border-collapse:collapse;font-size:13px;}
-  .inv th{text-align:left;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:500;padding:10px;border-bottom:1px solid var(--line-2);}
-  .inv th.r,.inv td.r{text-align:right;}
-  .inv td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;}
-  .inv td.r{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;}
-  .inv tr.grp td{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--surface-2);padding:7px 10px;font-weight:600;}
+  .fld{display:block;margin-bottom:12px;}
+  .fl{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px;}
+  .sel{width:100%;font:inherit;font-size:14px;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink);}
+  .issuer{background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:11px 13px;}
+  .issuer .ib{font-size:13px;line-height:1.5;}
+  .issuer .ib.muted{color:var(--ink-3);font-size:12px;margin-top:2px;}
+  .hint{font-size:11.5px;color:var(--ink-3);margin-top:9px;line-height:1.45;}
+  .lhead,.lrow{display:grid;grid-template-columns:1fr 46px 42px 104px 108px;gap:10px;align-items:baseline;padding:9px 16px;}
+  .lhead{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line-2);}
+  .lrow{border-top:1px solid var(--line);font-size:13px;}
+  .lhead .r,.lrow .r{text-align:right;}
+  .lrow .r{font-family:var(--mono);font-variant-numeric:tabular-nums;}
+  .lgrp,.lcg{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:var(--surface-2);padding:7px 16px;font-weight:600;}
+  .inv-cards{display:none;}
+  .lc{padding:11px 16px;border-top:1px solid var(--line);}
+  .lc-o{font-size:13.5px;font-weight:500;margin-bottom:5px;}
+  .lc-v{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:12.5px;color:var(--ink-2);}
+  .lc-v b{color:var(--ink);font-size:13.5px;}
   .inv-note{font-size:11.5px;color:var(--ink-3);padding:12px 16px;line-height:1.5;border-top:1px solid var(--line);}
+  .chk{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;cursor:pointer;}
+  .chk input{width:17px;height:17px;accent-color:var(--accent);}
+  .osn{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);}
+  .osn-v{font-size:13px;color:var(--ink-2);}
+  .accsel{display:flex;gap:8px;margin-bottom:12px;}
+  .rchip{display:flex;align-items:center;gap:7px;border:1px solid var(--line-2);border-radius:8px;padding:7px 11px;font-size:13px;font-weight:500;cursor:pointer;flex:1;}
+  .rchip input{accent-color:var(--accent);}
   .kv2{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px;}
   .kv2:last-child{border-bottom:0;}
   .kv2 .k{color:var(--ink-3);font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;}
@@ -235,7 +254,15 @@
   .sum .mono{color:var(--ink);font-weight:500;}
   .sum.tot{border-top:2px solid var(--ink);margin-top:6px;padding-top:10px;font-weight:700;color:var(--ink);font-size:15px;}
   .pay{margin-top:12px;padding-top:6px;border-top:1px solid var(--line);}
+  .pdv-only{display:none;}
+  body.pdv-on .pdv-only{display:block;}
+  body.pdv-on .sum.pdv-only{display:flex;}
+  body.pdv-on .nopdv-only{display:none;}
+  .acc-eur{display:none;}
+  body.acc-eur-on .acc-eur{display:block;}
+  body.acc-eur-on .acc-rsd{display:none;}
   @media (max-width:1000px){ .fakt-cols{grid-template-columns:1fr;} }
+  @media (max-width:700px){ .inv-wrap{display:none;} .inv-cards{display:block;} }
 
   /* mobile nav drawer */
   .burger{display:none;background:none;border:0;padding:6px;margin:-2px 2px -2px -4px;color:var(--ink);cursor:pointer;}
@@ -298,46 +325,96 @@
       <div class="fakt-cols">
         <div>
           <div class="card">
-            <div class="ch"><h2>Stavke</h2><div class="add-acts"><button class="btn sm">Povuci iz vremena</button><button class="btn sm">+ Tarifna radnja</button><button class="btn sm">+ Stavka</button></div></div>
-            <div class="cal-wrap">
-            <table class="inv">
-              <thead><tr><th>Opis</th><th>JM</th><th class="r">Kol</th><th class="r">Cena bez PDV</th><th class="r">PDV</th><th class="r">Iznos</th></tr></thead>
-              <tbody>
-                <tr class="grp"><td colspan="6">Paušal</td></tr>
-                <tr><td>Paušal za oktobar 2026 — pravno praćenje i konsultacije</td><td>mes.</td><td class="r">1</td><td class="r">30.000,00</td><td class="r">20%</td><td class="r">36.000,00</td></tr>
-                <tr class="grp"><td colspan="6">Po advokatskoj tarifi</td></tr>
-                <tr><td>Zastupanje na ročištu 12.09.2026.</td><td>kom</td><td class="r">1</td><td class="r">16.000,00</td><td class="r">20%</td><td class="r">19.200,00</td></tr>
-                <tr><td>Sastav žalbe</td><td>kom</td><td class="r">1</td><td class="r">24.000,00</td><td class="r">20%</td><td class="r">28.800,00</td></tr>
-                <tr class="grp"><td colspan="6">Po satu</td></tr>
-                <tr><td>Savetovanje i prepiska (3h 00min)</td><td>h</td><td class="r">3</td><td class="r">9.000,00</td><td class="r">20%</td><td class="r">32.400,00</td></tr>
-              </tbody>
-            </table>
+            <div class="ch"><h2>Izdavalac — na čiji račun ide faktura</h2></div>
+            <div class="cb">
+              <label class="fld"><span class="fl">Advokat</span>
+                <select class="sel">
+                  <option selected>Strahinja Selaković</option>
+                  <option>Vladan Bošnjak</option>
+                  <option>Stefan Petrović</option>
+                </select>
+              </label>
+              <div class="issuer">
+                <div class="ib"><b>Advokat Strahinja Selaković</b></div>
+                <div class="ib mono">Temerinska 89, 21000 Novi Sad</div>
+                <div class="ib mono">PIB: 109876543</div>
+                <div class="ib muted">Nije u sistemu PDV-a</div>
+              </div>
+              <div class="hint">Može biti različit od advokata koji je radio na predmetu — bira se čiji podaci i račun idu na fakturu. Podaci se menjaju u Podešavanja → Advokati.</div>
             </div>
-            <div class="inv-note">Svaka stavka može biti sa ili bez PDV-a. Paušal ne pokriva ročišta i podneske — oni se uvek tarifiraju posebno.</div>
+          </div>
+
+          <div class="card">
+            <div class="ch"><h2>Stavke</h2><div class="add-acts"><button class="btn sm">Povuci iz vremena</button><button class="btn sm">+ Tarifna radnja</button><button class="btn sm">+ Stavka</button></div></div>
+            <div class="inv-wrap">
+              <div class="lhead"><div>Opis</div><div class="r">JM</div><div class="r">Kol</div><div class="r">Cena</div><div class="r">Iznos</div></div>
+              <div class="lgrp">Paušal</div>
+              <div class="lrow"><div class="opis">Paušal za oktobar 2026 — pravno praćenje i konsultacije</div><div class="r">mes.</div><div class="r">1</div><div class="r">30.000,00</div><div class="r">30.000,00</div></div>
+              <div class="lgrp">Po advokatskoj tarifi</div>
+              <div class="lrow"><div class="opis">Zastupanje na ročištu 12.09.2026.</div><div class="r">kom</div><div class="r">1</div><div class="r">16.000,00</div><div class="r">16.000,00</div></div>
+              <div class="lrow"><div class="opis">Sastav žalbe</div><div class="r">kom</div><div class="r">1</div><div class="r">24.000,00</div><div class="r">24.000,00</div></div>
+              <div class="lgrp">Po satu</div>
+              <div class="lrow"><div class="opis">Savetovanje i prepiska (3h 00min)</div><div class="r">h</div><div class="r">3</div><div class="r">9.000,00</div><div class="r">27.000,00</div></div>
+            </div>
+            <div class="inv-cards">
+              <div class="lcg">Paušal</div>
+              <div class="lc"><div class="lc-o">Paušal za oktobar 2026 — pravno praćenje i konsultacije</div><div class="lc-v"><span>1 × 30.000,00</span><b>30.000,00</b></div></div>
+              <div class="lcg">Po advokatskoj tarifi</div>
+              <div class="lc"><div class="lc-o">Zastupanje na ročištu 12.09.2026.</div><div class="lc-v"><span>1 × 16.000,00</span><b>16.000,00</b></div></div>
+              <div class="lc"><div class="lc-o">Sastav žalbe</div><div class="lc-v"><span>1 × 24.000,00</span><b>24.000,00</b></div></div>
+              <div class="lcg">Po satu</div>
+              <div class="lc"><div class="lc-o">Savetovanje i prepiska (3h 00min)</div><div class="lc-v"><span>3 × 9.000,00</span><b>27.000,00</b></div></div>
+            </div>
+            <div class="inv-note">Paušal ne pokriva ročišta i podneske — oni se uvek tarifiraju posebno.</div>
           </div>
         </div>
 
         <div>
           <div class="card">
-            <div class="ch"><h2>Izdavalac (račun ide na ovog advokata)</h2></div>
+            <div class="ch"><h2>PDV</h2></div>
             <div class="cb">
-              <div class="kv2"><div class="k">Advokat</div><div class="v">Strahinja Selaković</div></div>
-              <div class="kv2"><div class="k">PIB</div><div class="v mono">109876543</div></div>
-              <div class="kv2"><div class="k">U sistemu PDV</div><div class="v">Da · 20%</div></div>
-              <div class="kv2"><div class="k">Račun</div><div class="v mono">160-0000123456-78</div></div>
+              <label class="chk"><input type="checkbox" id="pdvtgl"><span>Račun sa PDV-om (20%)</span></label>
+              <div class="osn nopdv-only">
+                <div class="fl">Osnov izuzeća od PDV-a</div>
+                <div class="osn-v">Obveznik nije u sistemu PDV-a · paušalac</div>
+              </div>
+              <div class="hint pdv-only">Obračunava se PDV po stopi 20% na osnovicu.</div>
             </div>
           </div>
+
+          <div class="card">
+            <div class="ch"><h2>Račun za uplatu</h2></div>
+            <div class="cb">
+              <div class="accsel">
+                <label class="rchip"><input type="radio" name="acc" id="accrsd" checked><span>Tekući · RSD</span></label>
+                <label class="rchip"><input type="radio" name="acc" id="acceur"><span>Devizni · EUR</span></label>
+              </div>
+              <div class="acc-rsd">
+                <div class="kv2"><div class="k">Banka</div><div class="v">Banca Intesa</div></div>
+                <div class="kv2"><div class="k">Račun</div><div class="v mono">160-0000123456-78</div></div>
+                <div class="kv2"><div class="k">Valuta</div><div class="v">RSD</div></div>
+              </div>
+              <div class="acc-eur">
+                <div class="kv2"><div class="k">Banka</div><div class="v">Banca Intesa</div></div>
+                <div class="kv2"><div class="k">IBAN</div><div class="v mono">RS35 1600 0000 1234 5678</div></div>
+                <div class="kv2"><div class="k">SWIFT / BIC</div><div class="v mono">DBDBRSBG</div></div>
+                <div class="kv2"><div class="k">Valuta</div><div class="v">EUR</div></div>
+                <div class="hint">Instrukcije za devizne uplate (korespondentna banka) štampaju se na fakturi.</div>
+              </div>
+            </div>
+          </div>
+
           <div class="card">
             <div class="ch"><h2>Obračun</h2></div>
             <div class="cb">
               <div class="sum"><span>Osnovica</span><span class="mono">97.000,00</span></div>
-              <div class="sum"><span>PDV (20%)</span><span class="mono">19.400,00</span></div>
-              <div class="sum tot"><span>Za plaćanje</span><span class="mono">116.400,00 RSD</span></div>
+              <div class="sum pdv-only"><span>PDV (20%)</span><span class="mono">19.400,00</span></div>
+              <div class="sum tot nopdv-only"><span>Za plaćanje</span><span class="mono">97.000,00 RSD</span></div>
+              <div class="sum tot pdv-only"><span>Za plaćanje</span><span class="mono">116.400,00 RSD</span></div>
               <div class="pay">
                 <div class="kv2"><div class="k">Način plaćanja</div><div class="v">Virman</div></div>
                 <div class="kv2"><div class="k">Datum izdavanja</div><div class="v mono">01.10.2026.</div></div>
                 <div class="kv2"><div class="k">Rok plaćanja</div><div class="v mono">16.10.2026. · 15 dana</div></div>
-                <div class="kv2"><div class="k">Valuta</div><div class="v">RSD</div></div>
               </div>
               <button class="btn" style="width:100%;justify-content:center;margin-top:13px">Pregled PDF-a</button>
             </div>
@@ -346,6 +423,14 @@
       </div>
     </div></div>
   </div>
+  <script>
+  (function(){
+    var p=document.getElementById('pdvtgl'); if(p){p.addEventListener('change',function(e){document.body.classList.toggle('pdv-on',e.target.checked);});}
+    var r=document.getElementById('acceur'), t=document.getElementById('accrsd');
+    if(r)r.addEventListener('change',function(){document.body.classList.add('acc-eur-on');});
+    if(t)t.addEventListener('change',function(){document.body.classList.remove('acc-eur-on');});
+  })();
+  </script>
 
 </div>
 </body>
