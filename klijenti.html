@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spis — Klijenti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    color-scheme: light;
+    --bg:#F1F2EF; --surface:#FFFFFF; --surface-2:#F8F8F5; --surface-3:#F1F1EC;
+    --ink:#1B1E1B; --ink-2:#585F59; --ink-3:#8A9089; --line:#E4E6E0; --line-2:#D4D7CE;
+    --accent:#883240; --accent-2:#A24756; --accent-soft:#F4E7E9; --accent-ink:#FFFFFF;
+    --good:#2E6A4E; --good-soft:#E4EFE8; --warn:#8F6416; --warn-soft:#F5EBD6;
+    --crit:#9C3131; --crit-soft:#F6E0DE;
+    --serif:"Spectral",Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --radius:10px; --shadow:0 1px 2px rgba(20,25,20,.04),0 2px 8px rgba(20,25,20,.05);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#121417; --surface:#1A1D21; --surface-2:#1F2329; --surface-3:#22262C;
+    --ink:#E7E9E4; --ink-2:#A4ABA4; --ink-3:#767D77; --line:#282C31; --line-2:#333940;
+    --accent:#CB8791; --accent-2:#D89aa3; --accent-soft:#2C2023; --accent-ink:#1A1416;
+    --good:#7FBE98; --good-soft:#1C2922; --warn:#D6AB63; --warn-soft:#2A2415;
+    --crit:#E08A86; --crit-soft:#2E1B19;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.32);
+  }}
+  :root[data-theme="dark"]{
+    color-scheme:dark;
+    --bg:#121417; --surface:#1A1D21; --surface-2:#1F2329; --surface-3:#22262C;
+    --ink:#E7E9E4; --ink-2:#A4ABA4; --ink-3:#767D77; --line:#282C31; --line-2:#333940;
+    --accent:#CB8791; --accent-2:#D89aa3; --accent-soft:#2C2023; --accent-ink:#1A1416;
+    --good:#7FBE98; --good-soft:#1C2922; --warn:#D6AB63; --warn-soft:#2A2415;
+    --crit:#E08A86; --crit-soft:#2E1B19;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 2px 10px rgba(0,0,0,.32);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased;}
+  .mono,.num{font-family:var(--mono);font-variant-numeric:tabular-nums;}
+  .warn-txt{color:var(--warn);}
+
+  /* ---------- shell ---------- */
+  .app{display:grid;grid-template-columns:238px 1fr;height:100%;}
+  .side{background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0;}
+  .brand{display:flex;align-items:center;gap:9px;padding:16px 18px 14px;border-bottom:1px solid var(--line);}
+  .brand .mark{width:26px;height:26px;border-radius:7px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:16px;}
+  .brand b{font-family:var(--serif);font-weight:600;font-size:18px;letter-spacing:.01em;}
+  .brand span{font-size:10px;color:var(--ink-3);font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-left:auto;}
+  .nav{padding:10px 10px;overflow:auto;flex:1;}
+  .nav .grp{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);padding:12px 10px 6px;}
+  .nav a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;color:var(--ink-2);text-decoration:none;font-weight:500;font-size:13.5px;margin-bottom:1px;}
+  .nav a .ic{width:16px;height:16px;flex:none;opacity:.75;}
+  .nav a .ct{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--ink-3);background:var(--surface-3);padding:0 6px;border-radius:20px;}
+  .nav a:hover{background:var(--surface-2);color:var(--ink);}
+  .nav a.on{background:var(--accent-soft);color:var(--accent);font-weight:600;}
+  .nav a.on .ic{opacity:1;}
+  .side .me{border-top:1px solid var(--line);padding:12px 14px;display:flex;align-items:center;gap:10px;}
+  .ava{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:600;font-size:12px;flex:none;}
+  .me .nm{font-weight:600;font-size:13px;line-height:1.2;}
+  .me .rl{font-size:11px;color:var(--ink-3);}
+
+  .main{min-width:0;min-height:0;display:flex;flex-direction:column;}
+  .top{display:flex;align-items:center;gap:14px;padding:11px 22px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--surface) 70%,transparent);backdrop-filter:blur(6px);position:sticky;top:0;z-index:5;}
+  .crumb{font-size:13px;color:var(--ink-3);}
+  .crumb b{color:var(--ink-2);font-weight:600;}
+  .crumb .mono{color:var(--ink);}
+  .mbrand{display:none;align-items:center;gap:8px;font-family:var(--serif);font-weight:600;font-size:18px;color:var(--ink);}
+  .mbrand .mark{width:24px;height:24px;border-radius:6px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:14px;}
+  .search{margin-left:8px;flex:1;max-width:340px;}
+  .search input{width:100%;font:inherit;font-size:13px;padding:7px 12px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface-2);color:var(--ink);}
+  .search input::placeholder{color:var(--ink-3);}
+  .demo{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--warn);background:var(--warn-soft);border:1px solid color-mix(in srgb,var(--warn) 30%,transparent);padding:3px 8px;border-radius:6px;}
+  .btn{font:inherit;font-size:13px;font-weight:600;border-radius:8px;padding:7px 13px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:7px;}
+  .btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .btn.pri:hover{background:var(--accent-2);}
+  .btn.icon{padding:7px 10px;}
+  .btn:hover{border-color:var(--ink-3);}
+  .nh{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:20px;}
+  .nh svg{width:12px;height:12px;}
+
+  .scroll{overflow:auto;padding:22px;min-height:0;}
+  .wrap{max-width:1140px;margin:0 auto;}
+
+  /* ---------- matter header ---------- */
+  .head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:16px;}
+  .head .no{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px;}
+  .head .no .caseno{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--ink);letter-spacing:.01em;}
+  h1{font-family:var(--serif);font-weight:600;font-size:27px;line-height:1.14;margin:0 0 5px;text-wrap:balance;letter-spacing:.005em;}
+  h1 .ca{font-style:italic;color:var(--accent);font-weight:500;padding:0 5px;}
+  .subtitle{font-size:14.5px;color:var(--ink-2);font-weight:500;margin-bottom:8px;}
+  .counsel-line{font-size:12.5px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:4px 14px;}
+  .counsel-line b{color:var(--ink-3);font-weight:600;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;margin-right:3px;}
+  .head .acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+
+  .pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:20px;font-family:var(--sans);}
+  .pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
+  .pill.ok{color:var(--good);background:var(--good-soft);}
+  .pill.warn{color:var(--warn);background:var(--warn-soft);}
+  .pill.crit{color:var(--crit);background:var(--crit-soft);}
+  .pill.mut{color:var(--ink-2);background:var(--surface-3);}
+
+  /* ---------- instance / sudski podaci ---------- */
+  .instance{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:18px;overflow:hidden;}
+  .inst-tabs{display:flex;gap:2px;padding:8px 8px 0;border-bottom:1px solid var(--line);background:var(--surface-2);}
+  .inst-tabs button{font:inherit;font-size:12.5px;font-weight:600;color:var(--ink-3);background:none;border:0;border-bottom:2px solid transparent;padding:8px 13px 10px;cursor:pointer;display:flex;align-items:center;gap:7px;}
+  .inst-tabs button .dot{width:7px;height:7px;border-radius:50%;background:var(--ink-3);}
+  .inst-tabs button.on{color:var(--accent);border-bottom-color:var(--accent);}
+  .inst-tabs button.on .dot{background:var(--good);}
+  .inst-tabs button:disabled{opacity:.5;cursor:default;}
+  .inst-tabs .add{margin-left:auto;color:var(--ink-3);font-weight:500;}
+  .inst-body{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);}
+  .inst-body .cell{background:var(--surface);padding:12px 15px;}
+  .inst-body .k{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px;}
+  .inst-body .v{font-size:13.5px;font-weight:500;}
+  .inst-body .v.mono{font-size:13px;}
+
+  /* ---------- section tabs ---------- */
+  .tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:18px;overflow-x:auto;}
+  .tabs a{font-size:13.5px;font-weight:600;color:var(--ink-2);text-decoration:none;padding:9px 14px;border-bottom:2px solid transparent;white-space:nowrap;display:flex;gap:7px;align-items:center;}
+  .tabs a .ct{font-family:var(--mono);font-size:11px;color:var(--ink-3);}
+  .tabs a:hover{color:var(--ink);}
+  .tabs a.on{color:var(--ink);border-bottom-color:var(--accent);}
+
+  /* ---------- content grid ---------- */
+  .cols{display:grid;grid-template-columns:1fr 340px;gap:18px;align-items:start;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);}
+  .card + .card{margin-top:18px;}
+  .card > .ch{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line);}
+  .card > .ch h2{font-size:13px;font-weight:700;letter-spacing:.01em;margin:0;text-transform:none;}
+  .card > .ch .lnk{font-size:12px;font-weight:600;color:var(--accent);text-decoration:none;}
+  .card .cb{padding:16px;}
+
+  .kv{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px;}
+  .kv .k{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px;}
+  .kv .v{font-size:14px;font-weight:500;}
+  .kv .full{grid-column:1/-1;}
+  .desc{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin:0;}
+
+  /* rows / lists */
+  .rows{display:flex;flex-direction:column;}
+  .row{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--line);}
+  .row:first-child{border-top:0;}
+  .row .when{font-family:var(--mono);font-size:12px;color:var(--ink-2);width:96px;flex:none;}
+  .row .ti{font-weight:500;font-size:13.5px;}
+  .row .ti small{display:block;color:var(--ink-3);font-size:11.5px;font-weight:400;}
+  .row .rt{margin-left:auto;display:flex;align-items:center;gap:10px;}
+
+  /* money card */
+  .money .big{font-family:var(--mono);font-size:24px;font-weight:600;letter-spacing:-.01em;}
+  .money .cur{font-size:12px;color:var(--ink-3);font-weight:500;}
+  .money .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+  .money .split .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);}
+  .money .split .n{font-family:var(--mono);font-weight:600;font-size:15px;margin-top:2px;}
+  .money .n.ok{color:var(--good);} .money .n.out{color:var(--warn);}
+  .bar{height:6px;border-radius:4px;background:var(--surface-3);overflow:hidden;margin-top:14px;}
+  .bar > i{display:block;height:100%;background:var(--good);border-radius:4px;}
+  .barcap{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3);margin-top:6px;font-family:var(--mono);}
+  .costs{margin-top:15px;padding-top:14px;border-top:1px solid var(--line);}
+  .costs .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px;}
+  .costs .crow{display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px;color:var(--ink-2);}
+  .costs .crow .mono{color:var(--ink);}
+  .costs .crow .out{color:var(--warn);}
+  .costs .cnote{font-size:11px;color:var(--ink-3);margin-top:8px;line-height:1.45;}
+  .rows .sec{padding:7px 16px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);border-top:1px solid var(--line);}
+
+  /* contribution */
+  .contrib .tot{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;}
+  .contrib .tot b{font-family:var(--mono);font-size:18px;font-weight:600;}
+  .contrib .lw{display:flex;align-items:center;gap:10px;margin-bottom:11px;}
+  .contrib .lw:last-child{margin-bottom:0;}
+  .contrib .lw .ini{width:24px;height:24px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:10.5px;font-weight:600;flex:none;font-family:var(--mono);}
+  .contrib .lw .nm{font-size:13px;font-weight:500;width:104px;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .contrib .lw .track{flex:1;height:7px;background:var(--surface-3);border-radius:4px;overflow:hidden;}
+  .contrib .lw .track > i{display:block;height:100%;background:var(--accent);border-radius:4px;}
+  .contrib .lw .hr{font-family:var(--mono);font-size:12px;color:var(--ink-2);width:66px;text-align:right;flex:none;}
+  .contrib .lw .pc{font-family:var(--mono);font-size:11px;color:var(--ink-3);width:34px;text-align:right;flex:none;}
+  .contrib .note{font-size:11.5px;color:var(--ink-3);margin:12px 0 0;padding-top:12px;border-top:1px solid var(--line);line-height:1.5;}
+
+  .mini{display:flex;gap:11px;align-items:flex-start;}
+  .mini .k{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);}
+  .mini .v{font-size:13.5px;font-weight:500;}
+  .mini + .mini{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);}
+
+  .feed .fi{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:12.5px;}
+  .feed .fi:first-child{border-top:0;padding-top:0;}
+  .feed .fi .ini{width:22px;height:22px;border-radius:50%;background:var(--surface-3);color:var(--ink-2);display:grid;place-items:center;font-size:9.5px;font-weight:600;flex:none;font-family:var(--mono);}
+  .feed .fi .tx{color:var(--ink-2);line-height:1.4;}
+  .feed .fi .tx b{color:var(--ink);font-weight:600;}
+  .feed .fi .tx time{display:block;color:var(--ink-3);font-family:var(--mono);font-size:10.5px;margin-top:2px;}
+
+  @media (max-width:1000px){
+    .app{grid-template-columns:1fr;}
+    .side{display:none;}
+    .mbrand{display:inline-flex;}
+    .inst-body{grid-template-columns:repeat(3,1fr);}
+    .cols{grid-template-columns:1fr;}
+  }
+  @media (max-width:600px){
+    .top{padding:10px 14px;gap:10px;flex-wrap:wrap;}
+    .crumb{display:none;}
+    .search{display:none;}
+    .mbrand{margin-right:auto;}
+    .scroll{padding:14px;}
+    h1{font-size:21px;}
+    .inst-tabs{overflow-x:auto;}
+    .inst-body{grid-template-columns:repeat(2,1fr);}
+    .kv{grid-template-columns:1fr;}
+    .head .acts{width:100%;}
+    .head .acts .btn{flex:1 1 40%;justify-content:center;}
+    .head .acts .btn.icon{flex:0 0 44px;}
+    .row{flex-wrap:wrap;}
+    .row .when{width:auto;}
+    .row .rt{margin-left:0;width:100%;}
+  }
+  @media (max-width:380px){ .inst-body{grid-template-columns:1fr;} }
+
+  .kl-head{margin-bottom:14px;}
+  .kl-head h1{font-family:var(--serif);font-weight:600;font-size:24px;margin:0 0 3px;}
+  .kl-head .date{font-size:13px;color:var(--ink-3);font-family:var(--mono);}
+  .chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+  .chip{font-size:12.5px;font-weight:500;padding:5px 12px;border-radius:20px;border:1px solid var(--line-2);color:var(--ink-2);cursor:pointer;}
+  .chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .kl-strip{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 18px;font-size:13px;color:var(--ink-2);align-items:center;}
+  .kl-strip b{font-family:var(--mono);font-weight:600;color:var(--ink);margin-right:5px;}
+  .kl-strip .hot b{color:var(--accent);}
+  .cl-hd{display:grid;grid-template-columns:1fr 110px 110px 120px;gap:12px;padding:9px 16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line-2);}
+  .cl-row{display:grid;grid-template-columns:1fr 110px 110px 120px;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid var(--line);font-size:13.5px;text-decoration:none;color:var(--ink);}
+  .cl-row:first-of-type{border-top:0;}
+  .cl-row:hover{background:var(--surface-2);}
+  .cl-nm{font-weight:600;min-width:0;}
+  .cl-nm small{display:block;font-weight:400;color:var(--ink-3);font-family:var(--mono);font-size:11px;margin-top:2px;}
+  .cl-pred{color:var(--ink-2);}
+  .cl-potr{text-align:right;color:var(--ink-3);}
+  .cl-potr.due{color:var(--accent);font-weight:600;}
+  .cl-detail-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+  .cl-detail-head h1{font-family:var(--serif);font-weight:600;font-size:23px;margin:0 0 4px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .cl-detail-head .date{font-size:13px;color:var(--ink-3);font-family:var(--mono);}
+  .cl-detail-head .acts{display:flex;gap:8px;}
+  .kl-cols{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;}
+  .d-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13.5px;}
+  .d-row:hover{background:var(--surface-2);}
+  .d-main{font-weight:600;min-width:0;}
+  .d-main small{display:block;font-weight:400;color:var(--ink-3);font-family:var(--mono);font-size:11px;margin-top:2px;}
+  .d-amt{white-space:nowrap;}
+  .kvv2{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .kvv2:last-child{border-bottom:0;}
+  .kvv2 .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);align-self:center;}
+  .kvv2 .v{font-size:13.5px;font-weight:500;text-align:right;overflow-wrap:anywhere;}
+  @media (max-width:1000px){ .kl-cols{grid-template-columns:1fr;} }
+  @media (max-width:640px){
+    .cl-hd{display:none;}
+    .cl-row{grid-template-columns:1fr auto;gap:5px 10px;}
+    .cl-nm{grid-column:1/-1;}
+    .cl-pred{color:var(--ink-3);font-size:12px;}
+  }
+
+  /* mobile nav drawer */
+  .burger{display:none;background:none;border:0;padding:6px;margin:-2px 2px -2px -4px;color:var(--ink);cursor:pointer;}
+  .burger svg{width:22px;height:22px;display:block;}
+  .backdrop{display:none;}
+  @media (max-width:1000px){
+    .burger{display:inline-flex;align-items:center;}
+    .side{display:flex;position:fixed;top:0;left:0;height:100%;width:260px;transform:translateX(-100%);transition:transform .22s ease;z-index:50;box-shadow:0 10px 40px rgba(0,0,0,.28);}
+    body.nav-open .side{transform:none;}
+    body.nav-open .backdrop{display:block;position:fixed;inset:0;background:rgba(10,12,10,.45);z-index:40;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+<div class="backdrop" onclick="document.body.classList.remove('nav-open')"></div>
+<aside class="side">
+    <div class="brand"><span class="mark">S</span><b>Spis</b><span>demo</span></div>
+    <nav class="nav">
+      <a href="index.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>Kontrolna tabla</a>
+      <a href="predmet.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M9 2v4h4"/></svg>Predmeti<span class="ct">6</span></a>
+      <a class="on" href="klijenti.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="2.4"/><path d="M2 13c0-2.2 1.8-3.6 4-3.6s4 1.4 4 3.6"/><path d="M11 6.5c1.3.3 2.3 1.4 2.3 2.8"/></svg>Klijenti</a>
+      <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6h12M5.5 1.5v3M10.5 1.5v3"/></svg>Kalendar</a>
+      <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
+      <a href="vreme.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v6l3.5 2"/><circle cx="8" cy="8" r="6"/></svg>Evidencija vremena</a>
+      <div class="grp">Finansije</div>
+      <a href="fakture.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l2.5 2.5V14H4z"/><path d="M6 7h4M6 9.5h4"/></svg>Fakture</a>
+      <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2v12" stroke-width="0"/><circle cx="8" cy="8" r="6"/><path d="M8 5.2v5.6M6.4 6.2h2.2a1.3 1.3 0 010 2.6H6.4h2.4"/></svg>Naplata</a>
+      <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13V9M6 13V5M10 13V7M14 13V3"/></svg>Troškovi</a>
+      <a href="#"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 10l2-2 2 1.5L11 6"/></svg>Izveštaji</a>
+      <div class="grp">Administracija</div>
+      <a href="podesavanja.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M14.5 8h-2M3.5 8h-2"/></svg>Podešavanja</a>
+    </nav>
+    <div class="me"><span class="ava">SS</span><div><div class="nm">Strahinja Selaković</div><div class="rl">Advokat · vlasnik kancelarije</div></div></div>
+  </aside>
+
+  <div class="main">
+    <div class="top">
+      <button class="burger" aria-label="Meni" onclick="document.body.classList.toggle('nav-open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <span class="mbrand"><span class="mark">S</span>Spis</span>
+      <div class="crumb"><b>Klijenti</b></div>
+      <div class="search"><input placeholder="Pretraga klijenata…" aria-label="Pretraga"></div>
+      <span class="demo">DEMO · primer podaci</span>
+      <button class="btn pri">+ Novi klijent</button>
+    </div>
+    <div class="scroll"><div class="wrap">
+      <div class="kl-head"><div><h1>Klijenti</h1><div class="date">7 klijenata · 2 pravna, 5 fizička lica</div></div></div>
+      <div class="chips"><span class="chip on">Svi</span><span class="chip">Pravna lica</span><span class="chip">Fizička lica</span><span class="chip">Paušalci</span></div>
+      <div class="kl-strip"><span><b>7</b> klijenata</span><span class="hot"><b>373.000 RSD</b> ukupno za naplatu</span></div>
+      <div class="card">
+        <div class="cl-hd"><span>Klijent</span><span>Naplata</span><span>Predmeti</span><span>Za naplatu</span></div>
+        <a class="cl-row" href="klijent.html"><span class="cl-nm">Proleter Gradnja d.o.o.<small>Pravno lice · PIB 100222333</small></span><span class="cl-nac"><span class="pill mut">Tarifa</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono due">75.000 RSD</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Marko Ilić<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Paušal</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono">—</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Nenad Lukić<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Tarifa</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono due">60.000 RSD</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Jovan Jovanović<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Tarifa</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono due">18.000 RSD</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Petar Petrović<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Paušal</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono">—</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Vojvodina Put d.o.o.<small>Pravno lice · PIB 101555777</small></span><span class="cl-nac"><span class="pill mut">Tarifa</span></span><span class="cl-pred mono">2 predmeta</span><span class="cl-potr mono due">220.000 RSD</span></a><a class="cl-row" href="klijent.html"><span class="cl-nm">Mirjana Kostić<small>Fizičko lice · JMBG •••••</small></span><span class="cl-nac"><span class="pill mut">Paušal</span></span><span class="cl-pred mono">1 predmet</span><span class="cl-potr mono">—</span></a>
+      </div>
+    </div></div>
+  </div>
+
+</div>
+</body>
+</html>
