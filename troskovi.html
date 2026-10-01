@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spis — Doprinos i raspodela</title>
+<title>Spis — Troškovi i rezultat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -231,39 +231,28 @@
   .lnk{color:var(--accent);text-decoration:none;font-size:12.5px;font-weight:500;}
 
   .wk-sum{font-family:var(--mono);font-size:12px;color:var(--ink-3);}
-  .note-banner{font-size:12px;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:11px 13px;margin-bottom:14px;line-height:1.5;}
-  .note-banner.acc{background:var(--accent-soft);border-color:var(--line-2);}
   .np-cols{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start;}
-  .two-layer{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:10px 13px;margin-bottom:14px;font-size:13px;}
-  .tl-b{display:flex;flex-direction:column;}
-  .tl-b b{font-size:14px;}
-  .tl-b{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);}
-  .tl-b b{font-family:var(--sans);letter-spacing:0;text-transform:none;color:var(--ink);font-weight:600;}
-  .tl-sep{color:var(--accent);font-size:16px;}
-  .tl-note{color:var(--ink-3);font-size:12px;margin-left:auto;}
-  .ds-row{display:grid;grid-template-columns:1fr 92px 92px;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:13px;}
-  .ds-row.head{border-top:0;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);padding-bottom:4px;}
-  .ds-k{font-weight:500;}
-  .ds-p{display:flex;align-items:center;gap:4px;}
-  .pin{width:54px;font:inherit;font-size:13px;padding:5px 7px;border:1px solid var(--line-2);border-radius:7px;background:var(--surface);color:var(--ink);text-align:right;}
-  .pct{color:var(--ink-3);font-size:12px;}
-  .ds-a{text-align:right;font-weight:600;}
-  .ds-note{font-size:11.5px;color:var(--ink-3);padding:6px 0 0;font-family:var(--mono);}
-  .ds-tot{display:flex;justify-content:space-between;border-top:2px solid var(--ink);margin-top:8px;padding-top:10px;font-weight:700;font-size:15px;}
-  .rp-row{display:grid;grid-template-columns:1fr 84px 104px;gap:10px;align-items:center;padding:11px 16px;border-top:1px solid var(--line);font-size:13px;}
-  .rp-row:first-of-type{border-top:0;}
-  .rp-k{font-weight:600;min-width:0;}
-  .rp-k small{display:block;font-weight:400;color:var(--ink-3);font-family:var(--mono);font-size:10.5px;margin-top:2px;}
-  .rp-a{text-align:right;font-weight:600;}
-  .rp-s{text-align:right;}
-  .vl-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);}
-  .vl-row:first-child{border-top:0;}
-  .vl-nm{font-size:12.5px;font-weight:600;width:72px;flex:none;}
-  .vl-track{flex:1;height:7px;background:var(--surface-3);border-radius:4px;overflow:hidden;min-width:30px;}
-  .vl-track > i{display:block;height:100%;background:var(--accent);border-radius:4px;}
-  .vl-n{font-family:var(--mono);font-size:11.5px;color:var(--ink);text-align:right;flex:none;white-space:nowrap;}
+  .tr-hd{display:grid;grid-template-columns:1fr 110px 100px;gap:12px;padding:9px 16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);border-bottom:1px solid var(--line-2);}
+  .tr-row{display:grid;grid-template-columns:1fr 110px 100px;gap:12px;align-items:center;padding:11px 16px;border-top:1px solid var(--line);font-size:13px;}
+  .tr-row:first-of-type{border-top:0;}
+  .tr-row.pth{grid-template-columns:1fr 100px;}
+  .tr-k{font-weight:600;min-width:0;}
+  .tr-k small{display:block;font-weight:400;color:var(--ink-3);font-family:var(--mono);font-size:10.5px;margin-top:2px;}
+  .tr-a{text-align:right;font-weight:600;}
+  .tr-t{text-align:left;}
+  .inv-note{font-size:11.5px;color:var(--ink-3);padding:11px 16px;border-top:1px solid var(--line);line-height:1.45;}
+  .sum{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;color:var(--ink-2);}
+  .sum .mono{color:var(--ink);font-weight:500;}
+  .sum .mono.ok{color:var(--good);}
+  .sum.tot{border-top:2px solid var(--ink);margin-top:6px;padding-top:10px;font-weight:700;color:var(--ink);font-size:16px;}
+  .age{margin-bottom:12px;}
+  .age-l{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px;}
+  .age-l .mono{font-weight:600;}
+  .age-bar{height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden;}
+  .age-bar > i{display:block;height:100%;background:var(--accent);border-radius:4px;}
   .hint{font-size:11.5px;color:var(--ink-3);margin-top:10px;line-height:1.45;}
   @media (max-width:1000px){ .np-cols{grid-template-columns:1fr;} }
+  @media (max-width:640px){ .tr-hd{display:none;} .tr-row{grid-template-columns:1fr auto;gap:5px 10px;} .tr-k{grid-column:1/-1;} }
 
   /* mobile nav drawer */
   .burger{display:none;background:none;border:0;padding:6px;margin:-2px 2px -2px -4px;color:var(--ink);cursor:pointer;}
@@ -293,8 +282,8 @@
       <div class="grp">Finansije</div>
       <a href="fakture-lista.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l2.5 2.5V14H4z"/><path d="M6 7h4M6 9.5h4"/></svg>Fakture</a>
       <a href="naplata.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2v12" stroke-width="0"/><circle cx="8" cy="8" r="6"/><path d="M8 5.2v5.6M6.4 6.2h2.2a1.3 1.3 0 010 2.6H6.4h2.4"/></svg>Naplata</a>
-      <a class="on" href="raspodela.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 8V2.2M8 8l5 2.9"/></svg>Doprinos i raspodela</a>
-      <a href="troskovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13V9M6 13V5M10 13V7M14 13V3"/></svg>Troškovi</a>
+      <a href="raspodela.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 8V2.2M8 8l5 2.9"/></svg>Doprinos i raspodela</a>
+      <a class="on" href="troskovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13V9M6 13V5M10 13V7M14 13V3"/></svg>Troškovi</a>
       <a href="izvestaji.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 10l2-2 2 1.5L11 6"/></svg>Izveštaji</a>
       <div class="grp">Administracija</div>
       <a href="podesavanja.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M14.5 8h-2M3.5 8h-2"/></svg>Podešavanja</a>
@@ -306,51 +295,43 @@
     <div class="top">
       <button class="burger" aria-label="Meni" onclick="document.body.classList.toggle('nav-open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       <span class="mbrand"><span class="mark">S</span>Spis</span>
-      <div class="crumb"><b>Doprinos i raspodela</b></div>
+      <div class="crumb"><b>Troškovi i rezultat</b></div>
       <div class="search"><input placeholder="Pretraga…" aria-label="Pretraga"></div>
       <span class="demo">DEMO · primer podaci</span>
-      <button class="btn pri">+ Raspodeli uplatu</button>
+      <button class="btn pri">+ Novi trošak</button>
     </div>
     <div class="scroll"><div class="wrap">
-      <div class="kl-head"><div><h1>Doprinos i raspodela</h1><div class="date">Interno · septembar 2026 · vidi samo vlasnik</div></div></div>
-      <div class="note-banner acc">Ovo je <b>interni</b> sloj (Layer 2): ko je radio i kako se naplaćene pare stvarno dele. Ne prikazuje se klijentu, nije faktura ni poreski dokument. Fakturisanje (ko i pod čijim brojem) je odvojeno.</div>
-      <div class="kl-strip"><span><b>110.000</b> primljeno (uklj. avans)</span><span><b>30.000</b> raspoređeno</span><span class="hot"><b>80.000 RSD</b> za raspodelu</span></div>
+      <div class="kl-head"><div><h1>Troškovi i rezultat</h1><div class="date">Septembar 2026 · gotovinski (cash) rezultat</div></div></div>
+      <div class="chips"><span class="chip on">Septembar</span><span class="chip">Avgust</span><span class="chip">Ova godina</span><span class="chip">Ponavljajući</span></div>
+      <div class="kl-strip"><span><b>110.000</b> naplaćeno</span><span><b>102.000</b> troškovi</span><span class="hot"><b>+8.000 RSD</b> rezultat</span></div>
       <div class="np-cols">
         <div>
           <div class="card">
-            <div class="ch"><h2>Raspodela uplate — Slobodan Ilić · SS-2026-0031 · 40.000 RSD</h2></div>
-            <div class="cb">
-              <div class="two-layer"><span class="tl-b">radio<b>Vladan</b></span><span class="tl-sep">→</span><span class="tl-b">fakturisao<b>Strahinja</b></span><span class="tl-note">(„preko kolege")</span></div>
-              <div class="ds-row head"><span>Osnov</span><span>%</span><span>Iznos</span></div>
-              <div class="ds-row"><span class="ds-k">Strahinja — korišćenje računa (+10%)</span><span class="ds-p"><input class="pin" value="10"><span class="pct">%</span></span><span class="ds-a mono">4.000</span></div>
-              <div class="ds-note">Ostatak po doprinosu (rad na predmetu): 36.000 RSD</div>
-              <div class="ds-row"><span class="ds-k">Vladan — rad na predmetu</span><span class="ds-p"><input class="pin" value="100"><span class="pct">%</span></span><span class="ds-a mono">36.000</span></div>
-              <div class="ds-tot"><span>Ukupno raspoređeno</span><span class="mono">40.000 RSD</span></div>
-              <div class="hint">Procenti su <b>predlog</b> iz evidencije vremena — vlasnik ih ručno koriguje po svakoj uplati. „+10% preko tuđeg računa" je dogovor kad se fakturiše preko kolege. Osnovica za 10% je bruto uplata; primenjuje se kad izdavalac nije onaj ko je radio; procenat je podesiv po advokatu/slučaju (potvrditi sa Višnjom).</div>
-              <button class="btn sm" style="margin-top:10px">+ Dodaj red (fiksan iznos / keš)</button>
-              <button class="btn pri" style="width:100%;justify-content:center;margin-top:10px">Potvrdi raspodelu</button>
-            </div>
+            <div class="ch"><h2>Troškovi kancelarije</h2><span class="wk-sum">102.000 RSD</span></div>
+            <div class="tr-hd"><span>Trošak</span><span>Tip</span><span>Iznos</span></div>
+            <div class="tr-row"><span class="tr-k">Zakup kancelarije<small>Kirija</small></span><span class="tr-t"><span class="pill mut">mesečno</span></span><span class="tr-a mono">45.000</span></div><div class="tr-row"><span class="tr-k">Knjigovodstvo (Višnja)<small>Usluge</small></span><span class="tr-t"><span class="pill mut">mesečno</span></span><span class="tr-a mono">20.000</span></div><div class="tr-row"><span class="tr-k">Struja<small>Režije</small></span><span class="tr-t"><span class="pill mut">mesečno</span></span><span class="tr-a mono">9.000</span></div><div class="tr-row"><span class="tr-k">Grejanje<small>Režije</small></span><span class="tr-t"><span class="pill mut">mesečno</span></span><span class="tr-a mono">7.000</span></div><div class="tr-row"><span class="tr-k">Internet i telefon<small>Režije</small></span><span class="tr-t"><span class="pill mut">mesečno</span></span><span class="tr-a mono">5.000</span></div><div class="tr-row"><span class="tr-k">Advokatska komora — članarina<small>Članarine</small></span><span class="tr-t"><span class="pill mut">mesečno</span></span><span class="tr-a mono">6.000</span></div><div class="tr-row"><span class="tr-k">Pravne baze (Paragraf Lex)<small>Licence</small></span><span class="tr-t"><span class="pill mut">mesečno</span></span><span class="tr-a mono">6.000</span></div><div class="tr-row"><span class="tr-k">Kancelarijski materijal<small>Materijal</small></span><span class="tr-t"><span class="pill ">jednokratno</span></span><span class="tr-a mono">4.000</span></div>
+          </div>
+          <div class="card">
+            <div class="ch"><h2>Troškovi u ime i za račun klijenta</h2><span class="wk-sum">26.000 RSD</span></div>
+            <div class="tr-row pth"><span class="tr-k">Sudska taksa — Proleter<small>Proleter Gradnja · 2026-0031</small></span><span class="tr-a mono">12.000</span></div><div class="tr-row pth"><span class="tr-k">Veštačenje (predujam) — Lukić<small>Nenad Lukić · 2026-0028</small></span><span class="tr-a mono">6.000</span></div><div class="tr-row pth"><span class="tr-k">Sudska taksa — Jovanović<small>Jovan Jovanović · 2026-0039</small></span><span class="tr-a mono">8.000</span></div>
+            <div class="inv-note">Prolazne stavke — klijentov trošak koji se refundira. <b>Ne ulaze u rezultat</b> ni u troškove kancelarije.</div>
           </div>
         </div>
         <div>
           <div class="card">
-            <div class="ch"><h2>Uplate</h2><span class="wk-sum">za raspodelu</span></div>
-            <div class="rp-row"><span class="rp-k">Slobodan Ilić<small>SS-2026-0031 · 20.09.2026</small></span><span class="rp-a mono">40.000</span><span class="rp-s"><span class="pill warn">Za raspodelu</span></span></div><div class="rp-row"><span class="rp-k">Mirjana Kostić<small>SP-2026-0006 · 05.09.2026</small></span><span class="rp-a mono">30.000</span><span class="rp-s"><span class="pill ok">Raspoređeno</span></span></div><div class="rp-row"><span class="rp-k">Proleter Gradnja d.o.o.<small>avans · 02.09.2026</small></span><span class="rp-a mono">40.000</span><span class="rp-s"><span class="pill warn">Za raspodelu</span></span></div>
-          </div>
-          <div class="card">
-            <div class="ch"><h2>Doprinos — Ilić ca Cvilić</h2></div>
+            <div class="ch"><h2>Rezultat (septembar)</h2></div>
             <div class="cb">
-              <div class="vl-row"><span class="ini">VB</span><span class="vl-nm">Vladan</span><span class="vl-track"><i style="width:100%"></i></span><span class="vl-n">100%</span></div>
-              <div class="vl-row"><span class="ini">SS</span><span class="vl-nm">Strahinja</span><span class="vl-track"><i style="width:0%"></i></span><span class="vl-n">0%</span></div>
-              <div class="hint">Doprinos = rad iz evidencije vremena na ovom predmetu. Na ovom predmetu je radio samo Vladan.</div>
+              <div class="sum"><span>Naplaćeno (gotovina)</span><span class="mono ok">110.000</span></div>
+              <div class="sum"><span>Troškovi kancelarije</span><span class="mono">− 102.000</span></div>
+              <div class="sum tot"><span>Rezultat</span><span class="mono">+8.000 RSD</span></div>
+              <div class="hint">Gotovinski (cash) rezultat — računa se od stvarno naplaćenog, ne od izdatih faktura. Varira iz meseca u mesec jer pare dolaze neredovno (često na kraju postupka).</div>
             </div>
           </div>
           <div class="card">
-            <div class="ch"><h2>Stanje po advokatu</h2></div>
+            <div class="ch"><h2>Struktura troškova</h2></div>
             <div class="cb">
-              <div class="bal-row"><span class="bal-n">Vladan</span><span class="bal-d mono">obračunato 36.000 · isplaćeno 0</span><span class="bal-x mono">36.000</span></div>
-              <div class="bal-row"><span class="bal-n">Strahinja</span><span class="bal-d mono">obračunato 4.000 · isplaćeno 0</span><span class="bal-x mono">4.000</span></div>
-              <div class="hint">„Plata na ruke" / keš isplata unosi se kao <b>isplata</b> (nije vezana za jednu uplatu). Stanje = obračunato − isplaćeno.</div>
+              <div class="age"><div class="age-l"><span>Ponavljajući (mesečno)</span><span class="mono">98.000</span></div><div class="age-bar"><i style="width:96%"></i></div></div>
+              <div class="age"><div class="age-l"><span>Jednokratno</span><span class="mono">4.000</span></div><div class="age-bar"><i style="width:4%"></i></div></div>
             </div>
           </div>
         </div>
