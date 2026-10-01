@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spis — Zadaci</title>
+<title>Spis — Izveštaji</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -230,30 +230,26 @@
   .btn.sm{font-size:12px;padding:5px 10px;}
   .lnk{color:var(--accent);text-decoration:none;font-size:12.5px;font-weight:500;}
 
-  .kb{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:start;}
-  .kb-col{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px;min-width:0;}
-  .kb-h{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--ink-2);padding:4px 6px 10px;}
-  .kb-ct{font-size:10px;background:var(--surface-3);color:var(--ink-3);border-radius:20px;padding:1px 7px;}
-  .kb-card{position:relative;background:var(--surface);border:1px solid var(--line-2);border-radius:8px;padding:11px 12px;margin-bottom:9px;}
-  .kb-card:last-child{margin-bottom:0;}
-  .kb-prio{position:absolute;top:11px;right:11px;width:8px;height:8px;border-radius:50%;background:var(--ink-3);}
-  .kb-prio.visok{background:var(--accent);}
-  .kb-prio.srednji{background:var(--warn);}
-  .kb-t{font-size:13.5px;font-weight:600;line-height:1.35;margin-bottom:5px;padding-right:12px;overflow-wrap:anywhere;}
-  .kb-m{font-size:11.5px;color:var(--ink-3);margin-bottom:9px;}
-  .kb-m .caa{font-family:var(--serif);font-style:italic;color:var(--accent);padding:0 2px;}
-  .kb-f{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
-  .kb-f .ini{width:22px;height:22px;font-size:9px;margin-left:auto;}
-  .kb-meta{font-size:10.5px;color:var(--ink-3);}
-  .kt{font-family:var(--mono);font-size:9px;letter-spacing:.03em;text-transform:uppercase;padding:2px 6px;border-radius:5px;font-weight:600;}
-  .kt-roc{color:var(--accent-ink);background:var(--accent);}
-  .kt-rok{color:var(--warn);background:var(--warn-soft);}
-  .kt-zad{color:var(--ink-2);background:var(--surface-3);}
-  .kt-cek{color:var(--ink-3);background:var(--surface-2);border:1px solid var(--line-2);}
-  .kt-sas{color:var(--ink);background:var(--surface-3);}
-  .kt-ok{color:var(--good);background:var(--good-soft);}
-  @media (max-width:1280px){ .kb{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .kb{grid-template-columns:1fr;} }
+  .rep-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+  .rb-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);}
+  .rb-row:first-child{border-top:0;}
+  .rb-nm{font-size:12.5px;font-weight:600;width:76px;flex:none;}
+  .rb-nm.wide{width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .rb-track{flex:1;height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden;min-width:30px;}
+  .rb-track > i{display:block;height:100%;background:var(--accent);border-radius:4px;}
+  .rb-track > i.amber{background:var(--warn);}
+  .rb-n{font-size:11.5px;color:var(--ink);text-align:right;flex:none;white-space:nowrap;min-width:60px;}
+  .sum{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;color:var(--ink-2);}
+  .sum .mono{color:var(--ink);font-weight:500;}
+  .sum .mono.ok{color:var(--good);}
+  .sum.tot{border-top:2px solid var(--ink);margin-top:6px;padding-top:10px;font-weight:700;color:var(--ink);font-size:15px;}
+  .hint{font-size:11.5px;color:var(--ink-3);margin-top:10px;line-height:1.45;}
+  .rep-list{display:flex;flex-direction:column;}
+  .rep-list a{padding:9px 0;border-top:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:13px;font-weight:500;}
+  .rep-list a:first-child{border-top:0;}
+  .rep-list a:hover{color:var(--accent);}
+  .rep-list a::after{content:" →";color:var(--ink-3);}
+  @media (max-width:900px){ .rep-grid{grid-template-columns:1fr;} }
 
   /* mobile nav drawer */
   .burger{display:none;background:none;border:0;padding:6px;margin:-2px 2px -2px -4px;color:var(--ink);cursor:pointer;}
@@ -279,13 +275,13 @@
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6h12M5.5 1.5v3M10.5 1.5v3"/></svg>Kalendar</a>
       <a href="rokovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.2l2 1.3"/></svg>Rokovi<span class="ct">6</span></a>
       <a href="vreme.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v6l3.5 2"/><circle cx="8" cy="8" r="6"/></svg>Evidencija vremena</a>
-      <a class="on" href="zadaci.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h10v10H3z"/><path d="M5.7 8l1.4 1.4L10.6 6"/></svg>Zadaci</a>
+      <a href="zadaci.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3h10v10H3z"/><path d="M5.7 8l1.4 1.4L10.6 6"/></svg>Zadaci</a>
       <div class="grp">Finansije</div>
       <a href="fakture-lista.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h6l2.5 2.5V14H4z"/><path d="M6 7h4M6 9.5h4"/></svg>Fakture</a>
       <a href="naplata.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h12M8 2v12" stroke-width="0"/><circle cx="8" cy="8" r="6"/><path d="M8 5.2v5.6M6.4 6.2h2.2a1.3 1.3 0 010 2.6H6.4h2.4"/></svg>Naplata</a>
       <a href="raspodela.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 8V2.2M8 8l5 2.9"/></svg>Doprinos i raspodela</a>
       <a href="troskovi.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 13V9M6 13V5M10 13V7M14 13V3"/></svg>Troškovi</a>
-      <a href="izvestaji.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 10l2-2 2 1.5L11 6"/></svg>Izveštaji</a>
+      <a class="on" href="izvestaji.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 10l2-2 2 1.5L11 6"/></svg>Izveštaji</a>
       <div class="grp">Administracija</div>
       <a href="podesavanja.html"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2.2"/><path d="M8 1.5v2M8 12.5v2M14.5 8h-2M3.5 8h-2"/></svg>Podešavanja</a>
     </nav>
@@ -296,16 +292,54 @@
     <div class="top">
       <button class="burger" aria-label="Meni" onclick="document.body.classList.toggle('nav-open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
       <span class="mbrand"><span class="mark">S</span>Spis</span>
-      <div class="crumb"><b>Zadaci</b></div>
-      <div class="search"><input placeholder="Pretraga zadataka…" aria-label="Pretraga"></div>
+      <div class="crumb"><b>Izveštaji</b></div>
+      <div class="search"><input placeholder="Pretraga…" aria-label="Pretraga"></div>
       <span class="demo">DEMO · primer podaci</span>
-      <button class="btn pri">+ Novi zadatak</button>
+      <button class="btn pri">Izvezi (PDF / Excel)</button>
     </div>
     <div class="scroll"><div class="wrap">
-      <div class="kl-head"><div><h1>Zadaci</h1><div class="date">Tabla · svi advokati</div></div></div>
-      <div class="chips"><span class="chip on">Svi</span><span class="chip">Moji</span><span class="chip">Ročišta</span><span class="chip">Rokovi</span></div>
-      <div class="kl-strip"><span>Opterećenje:</span><span><b>4</b> Strahinja</span><span><b>3</b> Vladan</span><span><b>2</b> Stefan</span></div>
-      <div class="kb"><div class="kb-col"><div class="kb-h">Za danas<span class="kb-ct">2</span></div><div class="kb-card"><span class="kb-prio visok"></span><div class="kb-t">Priprema za pripremno ročište</div><div class="kb-m">Proleter Gradnja <span class="caa">ca</span> Grad NS</div><div class="kb-f"><span class="kt kt-roc">ročište</span><span class="kb-meta mono">danas 14:00</span><span class="ini">SS</span></div></div><div class="kb-card"><span class="kb-prio visok"></span><div class="kb-t">Rok: odgovor na tužbu</div><div class="kb-m">Jovanović <span class="caa">ca</span> Marković</div><div class="kb-f"><span class="kt kt-rok">rok</span><span class="kb-meta mono">danas 12:00</span><span class="ini">SS</span></div></div></div><div class="kb-col"><div class="kb-h">U toku<span class="kb-ct">3</span></div><div class="kb-card"><div class="kb-t">Sastav žalbe</div><div class="kb-m">Proleter Gradnja <span class="caa">ca</span> Grad NS</div><div class="kb-f"><span class="kt kt-zad">zadatak</span><span class="kb-meta mono">rok 08.10</span><span class="ini">SS</span></div></div><div class="kb-card"><div class="kb-t">Proučavanje nalaza veštaka</div><div class="kb-m">Lukić <span class="caa">ca</span> Delta osiguranje</div><div class="kb-f"><span class="kt kt-zad">zadatak</span><span class="ini">SP</span></div></div><div class="kb-card"><span class="kb-prio srednji"></span><div class="kb-t">Priprema podneska</div><div class="kb-m">Ilić <span class="caa">ca</span> Cvilić</div><div class="kb-f"><span class="kt kt-zad">zadatak</span><span class="kb-meta mono">rok 03.10</span><span class="ini">VB</span></div></div></div><div class="kb-col"><div class="kb-h">Čeka<span class="kb-ct">2</span></div><div class="kb-card"><div class="kb-t">Čeka odluku suda</div><div class="kb-m">Vojvodina Put <span class="caa">ca</span> Grad Novi Sad</div><div class="kb-f"><span class="kt kt-cek">čekanje</span><span class="kb-meta mono">podsetiti 15.10</span><span class="ini">VB</span></div></div><div class="kb-card"><div class="kb-t">Čeka nalaz veštaka</div><div class="kb-m">Lukić <span class="caa">ca</span> Delta osiguranje</div><div class="kb-f"><span class="kt kt-cek">čekanje</span><span class="kb-meta mono">podsetiti 10.10</span><span class="ini">SP</span></div></div></div><div class="kb-col"><div class="kb-h">Urađeno<span class="kb-ct">2</span></div><div class="kb-card"><div class="kb-t">Odgovor na tužbu predat</div><div class="kb-m">Ilić <span class="caa">ca</span> Cvilić</div><div class="kb-f"><span class="kt kt-ok">urađeno</span><span class="kb-meta mono">10.09</span><span class="ini">VB</span></div></div><div class="kb-card"><div class="kb-t">Sastanak sa klijentom</div><div class="kb-m">Proleter Gradnja <span class="caa">ca</span> Grad NS</div><div class="kb-f"><span class="kt kt-sas">sastanak</span><span class="kb-meta mono">27.09</span><span class="ini">SS</span></div></div></div></div>
+      <div class="kl-head"><div><h1>Izveštaji</h1><div class="date">Septembar 2026 · kancelarija</div></div></div>
+      <div class="chips"><span class="chip on">Septembar</span><span class="chip">Q3 2026</span><span class="chip">Ova godina</span><span class="chip">Po advokatu</span></div>
+      <div class="kl-strip"><span><b>110.000</b> naplaćeno</span><span class="hot"><b>379.000 RSD</b> za naplatu</span><span><b>+8.000</b> operativni rezultat</span></div>
+      <div class="rep-grid">
+        <div class="card rep">
+          <div class="ch"><h2>Naplaćeno po advokatu</h2><a class="lnk" href="#">Izvezi</a></div>
+          <div class="cb"><div class="rb-row"><span class="ini">SS</span><span class="rb-nm">Strahinja</span><span class="rb-track"><i style="width:100%"></i></span><span class="rb-n mono">80.000</span></div><div class="rb-row"><span class="ini">SP</span><span class="rb-nm">Stefan</span><span class="rb-track"><i style="width:38%"></i></span><span class="rb-n mono">30.000</span></div><div class="rb-row"><span class="ini">VB</span><span class="rb-nm">Vladan</span><span class="rb-track"><i style="width:0%"></i></span><span class="rb-n mono">0</span></div><div class="hint">Gotovina primljena u septembru, po advokatu na čiji je račun ušla. Interna raspodela je posebno (Doprinos i raspodela).</div></div>
+        </div>
+        <div class="card rep">
+          <div class="ch"><h2>Potraživanja po klijentu</h2><a class="lnk" href="#">Izvezi</a></div>
+          <div class="cb"><div class="rb-row"><span class="rb-nm wide">Vojvodina Put d.o.o.</span><span class="rb-track"><i class="amber" style="width:100%"></i></span><span class="rb-n mono">220.000</span></div><div class="rb-row"><span class="rb-nm wide">Nenad Lukić</span><span class="rb-track"><i class="amber" style="width:27%"></i></span><span class="rb-n mono">60.000</span></div><div class="rb-row"><span class="rb-nm wide">Slobodan Ilić</span><span class="rb-track"><i class="amber" style="width:25%"></i></span><span class="rb-n mono">56.000</span></div><div class="rb-row"><span class="rb-nm wide">Petar Petrović</span><span class="rb-track"><i class="amber" style="width:11%"></i></span><span class="rb-n mono">25.000</span></div><div class="rb-row"><span class="rb-nm wide">Jovan Jovanović</span><span class="rb-track"><i class="amber" style="width:8%"></i></span><span class="rb-n mono">18.000</span></div><div class="hint">Za naplatu po izdatim fakturama. Vojvodina Put i Jovanović su dospeli (kasne).</div></div>
+        </div>
+        <div class="card rep">
+          <div class="ch"><h2>Rad po advokatu</h2><a class="lnk" href="#">Izvezi</a></div>
+          <div class="cb"><div class="rb-row"><span class="ini">SS</span><span class="rb-nm">Strahinja</span><span class="rb-track"><i style="width:100%"></i></span><span class="rb-n mono">5 radnji</span></div><div class="rb-row"><span class="ini">VB</span><span class="rb-nm">Vladan</span><span class="rb-track"><i style="width:80%"></i></span><span class="rb-n mono">4 radnji</span></div><div class="rb-row"><span class="ini">SP</span><span class="rb-nm">Stefan</span><span class="rb-track"><i style="width:40%"></i></span><span class="rb-n mono">2 radnji</span></div><div class="hint">Broj radnji iz evidencije vremena (septembar). Vreme je sporedno — tarifne radnje se ne mere satima.</div></div>
+        </div>
+        <div class="card rep">
+          <div class="ch"><h2>Fakturisano i naplata</h2><a class="lnk" href="#">Izvezi</a></div>
+          <div class="cb">
+            <div class="sum"><span>Izdato (fakture)</span><span class="mono">449.000</span></div>
+            <div class="sum"><span>Naplaćeno (po fakturama)</span><span class="mono ok">70.000</span></div>
+            <div class="sum"><span>Za naplatu</span><span class="mono">379.000</span></div>
+            <div class="sum"><span>Dospelo</span><span class="mono">238.000</span></div>
+            <div class="sum"><span>Nacrt (nije izdato)</span><span class="mono">115.000</span></div>
+          </div>
+        </div>
+        <div class="card rep">
+          <div class="ch"><h2>Rezultat (operativni)</h2><a class="lnk" href="#">Izvezi</a></div>
+          <div class="cb">
+            <div class="sum"><span>Primljeno (uplate)</span><span class="mono ok">110.000</span></div>
+            <div class="sum"><span>Troškovi kancelarije</span><span class="mono">− 102.000</span></div>
+            <div class="sum tot"><span>Rezultat</span><span class="mono">+8.000 RSD</span></div>
+            <div class="hint">Pre poreza i isplata („plata na ruke") — vidi Troškovi / Doprinos i raspodela. Mesečno varira; „Ova godina" daje pravu sliku.</div>
+          </div>
+        </div>
+        <div class="card rep">
+          <div class="ch"><h2>Dostupni izveštaji</h2></div>
+          <div class="cb">
+            <div class="rep-list"><a href="#">Prihod po predmetu</a><a href="#">Prihod po klijentu</a><a href="#">Utrošeno vreme po predmetu</a><a href="#">Naplata i kašnjenja (aging)</a><a href="#">Raspodela po advokatu</a><a href="#">Promet za knjigovođu (Višnja)</a></div>
+          </div>
+        </div>
+      </div>
     </div></div>
   </div>
 
