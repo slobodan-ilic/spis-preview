@@ -93,6 +93,7 @@
   .acct-menu a{display:block;padding:9px 11px;border-radius:7px;text-decoration:none;color:var(--ink);font-size:13px;}
   .acct-menu a:hover{background:var(--surface-2);}
   .acct-menu .acct-out{color:var(--crit);}
+  .acct-own{float:right;font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);border-radius:4px;padding:1px 5px;}
   .acct-sec{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:8px 11px 4px;}
   .acct-themes{display:flex;gap:5px;padding:0 8px 6px;}
   .acct-themes button{flex:1;font:inherit;font-size:11.5px;padding:7px 4px;border:1px solid var(--line-2);border-radius:7px;background:var(--surface);color:var(--ink-2);cursor:pointer;}
@@ -305,6 +306,7 @@
     body.nav-open .backdrop{display:block;position:fixed;inset:0;background:rgba(10,12,10,.45);z-index:40;}
   }
 </style>
+<script>(function(){try{var t=localStorage.getItem('spisTheme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();function spisTheme(t){try{if(t){localStorage.setItem('spisTheme',t);document.documentElement.setAttribute('data-theme',t);}else{localStorage.removeItem('spisTheme');document.documentElement.removeAttribute('data-theme');}}catch(e){}}</script>
 </head>
 <body>
 <div class="app">
@@ -333,10 +335,11 @@
       <summary class="me"><span class="ava">SS</span><div><div class="nm">Strahinja Selaković</div><div class="rl">Advokat · vlasnik kancelarije</div></div><svg class="acct-caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10l4-4 4 4"/></svg></summary>
       <div class="acct-menu">
         <div class="acct-sec">Izgled</div>
-        <div class="acct-themes"><button onclick="document.documentElement.removeAttribute('data-theme')">Sistemska</button><button onclick="document.documentElement.setAttribute('data-theme','light')">Svetla</button><button onclick="document.documentElement.setAttribute('data-theme','dark')">Tamna</button></div>
+        <div class="acct-themes"><button onclick="spisTheme('')">Sistemska</button><button onclick="spisTheme('light')">Svetla</button><button onclick="spisTheme('dark')">Tamna</button></div>
         <a href="podesavanja.html">Podešavanja</a>
+        <a href="podesavanja.html">Korisnici i tim <span class="acct-own">vlasnik</span></a>
         <a href="#">Moj nalog</a>
-        <a href="#">Pretplata</a>
+        <a href="#">Pretplata <span class="acct-own">vlasnik</span></a>
         <a href="#">Pomoć i podrška</a>
         <a href="#" class="acct-out">Odjava</a>
       </div>
